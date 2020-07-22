@@ -1,0 +1,320 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #a0a0a0;
+}
+
+.topnav-below-section {
+  border-bottom: 1px solid #d2d2d2;
+}
+
+.topnav-below-section .count-box {
+  max-width: 175px;
+  border: 1px solid #c6c6c65c;
+  border-radius: 5px;
+  margin-left: auto;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .topnav-below-section .count-box {
+    margin: auto;
+  }
+}
+
+.topnav-below-section .count-box .type {
+  font-size: 12px;
+  margin: 0;
+}
+
+.topnav-below-section .count-box .count {
+  color: #a0a0a0;
+  font-size: 20px;
+  margin: 0;
+}
+
+.topnav-below-section .vehicle-pic {
+  width: 80px;
+  height: 80px;
+  background-color: #a0a0a0;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.topnav-below-section .vehicle-pic h3 {
+  color: #fff;
+}
+
+.topnav-below-section .vehicle-pic .vehicle-pic-edit {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background-color: #fff;
+  padding: 0px 5px;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.topnav-below-section .vehicle-pic:hover .vehicle-pic-edit {
+  opacity: 1;
+}
+
+.topnav-below-section .vehicle-num {
+  color: #000;
+  font-weight: 600;
+}
+
+.topnav-below-section .vehicle-num:hover {
+  text-decoration: none;
+  color: #004c84;
+}
+
+.topnav-below-section .vehicle-details span {
+  font-size: 12px;
+  color: #a0a0a0;
+}
+
+.topnav-below-section .vehicle-editable-details p,
+.topnav-below-section .vehicle-editable-details a {
+  font-size: 14px;
+}
+
+.topnav-below-section .vehicle-editable-details .status {
+  position: relative;
+}
+
+.topnav-below-section .vehicle-editable-details .status .status-signal {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #149417;
+  display: block;
+  position: absolute;
+  left: 1px;
+  top: 14px;
+}
+
+@media (max-width: 575px) {
+  .topnav-below-section .vehicle-editable-details {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 575px) {
+  .topnav-below-section .for-md-view {
+    text-align: center;
+  }
+}
+
+.panel {
+  box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.04), 0 2px 5px 0 rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.03);
+  margin-bottom: 16px;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.panel.panel-default {
+  border: 0;
+}
+
+.panel .panel-body {
+  padding: 16px;
+}
+
+.main-section {
+  background-color: #ececec;
+}
+
+.main-section .content-side-nav {
+  margin: 10px 0px;
+}
+
+.main-section .content-side-nav .menu,
+.main-section .content-side-nav .submenu {
+  padding: 8px;
+  color: #004c84;
+}
+
+.main-section .content-side-nav .menu:hover,
+.main-section .content-side-nav .submenu:hover {
+  background-color: #ffffffd9;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #004c84;
+  box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.04), 0 2px 5px 0 rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+.main-section .content-side-nav .menu.active,
+.main-section .content-side-nav .submenu.active {
+  background-color: #ffffffd9;
+  color: #000;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.04), 0 2px 5px 0 rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+.main-section .content-side-nav .submenu {
+  list-style-type: none;
+  padding: 8px 24px;
+  margin: 0;
+}
+
+.main-section .content-side-nav .submenu a:hover {
+  text-decoration: none;
+}
+
+.main-section .content-top-nav .menu {
+  color: #a0a0a0;
+}
+
+.main-section .content-top-nav .menu.active,
+.main-section .content-top-nav .menu:hover {
+  color: #495057;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-bottom: 1px solid #004c84;
+}
+
+.main-section .content-top-nav .info-overview-show {
+  display: flex;
+  align-items: center;
+}
+
+.main-section .content-top-nav .info-overview-show .count span {
+  font-size: 34px;
+  font-weight: 600;
+}
+
+.main-section .content-top-nav .info-overview-show .count span.clr1 {
+  color: #98ccfd;
+}
+
+.main-section .content-top-nav .info-overview-show .count span.clr2 {
+  color: #004c84;
+}
+
+.main-section .content-top-nav .info-overview-show .count span.clr3 {
+  color: #000;
+}
+
+.main-section .content-top-nav .info-overview-show .count .count-info {
+  font-size: 12px;
+  color: #a0a0a0;
+  margin-bottom: 0;
+}
+
+.topnav-sec {
+  height: auto !important;
+  padding: 0 !important;
+}
+
+.topnav-sec .topnav-left-part {
+  display: flex;
+  align-items: center;
+  background-color: #004c84;
+  padding: 8px 0px;
+  justify-content: space-between;
+}
+
+.topnav-sec .topnav-left-part .company-details {
+  font-size: 14px;
+}
+
+.topnav-sec .topnav-left-part .company-details p {
+  font-size: 12px;
+}
+
+.topnav-sec .topnav-left-part .company-details .company-name {
+  background-color: transparent;
+  padding: 0 !important;
+  color: #fff;
+  font-weight: 700;
+}
+
+.topnav-sec .topnav-left-part .company-details .company-name:hover {
+  text-decoration: none;
+}
+
+.topnav-sec .topnav-left-part .company-symbol {
+  width: 30px;
+  height: 30px;
+  display: block;
+  border-radius: 50%;
+  background-color: #a0a0a0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topnav-sec .topnav-left-part .company-symbol span {
+  color: #fff;
+  font-size: 12px;
+}
+
+.topnav-sec .topnav-left-part:hover {
+  cursor: pointer;
+}
+
+.topnav-sec .dropdown-show {
+  top: 40px !important;
+}
+
+.topnav-sec .topnav-right-part i {
+  color: #000;
+  font-size: 20px;
+}
+
+@media (max-width: 575px) {
+  .topnav-sec .topnav-right-part .has-search {
+    display: none;
+  }
+}
+
+.sidenav .nav-link {
+  color: #8ba2b7 !important;
+}
+
+.sidenav .nav-link i {
+  color: #8ba2b7 !important;
+}
+
+.sidenav .nav-link:hover {
+  color: #fff !important;
+}
+
+.sidenav .nav-link:hover i {
+  color: #fff !important;
+}
+
+.sidenav .nav-link:focus {
+  outline: none;
+}
+
+.sidenav .sb-sidenav-footer {
+  font-size: 14px;
+}
+
