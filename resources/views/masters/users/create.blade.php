@@ -58,29 +58,18 @@
                         @endif
                     </div>
 
-{{--                    <div class="form-group m-form__group">--}}
-{{--                        <label for="branch">Branch</label>--}}
-{{--                        <select name="branch_id" id="branch" class="form-control">--}}
-{{--                            @foreach(branches() as $branch)--}}
-{{--                                <option value="{{ $branch->id }}">{{ $branch->name }}</option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-{{--                        @if($errors->has('branch'))--}}
-{{--                            <span class="m-form__help twtext-red">{{ $errors->first('branch') }}</span>--}}
-{{--                        @endif--}}
+                    <div class="form-group m-form__group">
+                        <label for="branch">Branch</label>
+                        <select name="branch_id" id="branch" class="form-control">
+                            @foreach(branches() as $branch)
+                                <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('branch'))
+                            <span class="m-form__help twtext-red">{{ $errors->first('branch') }}</span>
+                        @endif
                     </div>
-{{--                    <div class="form-group m-form__group">--}}
-{{--                        <label for="role">Role</label>--}}
-{{--                        <select name="role" id="roles" class="form-control">--}}
-{{--                            <option value="">Select a value</option>--}}
-{{--                            @foreach(roles() as $role)--}}
-{{--                                <option value="{{ $role->name }}">{{ $role->name }}</option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-{{--                        @if($errors->has('role'))--}}
-{{--                            <span class="m-form__help twtext-red">{{ $errors->first('role') }}</span>--}}
-{{--                        @endif--}}
-{{--                    </div>--}}
+
                 </div>
 
                 <div class="m-portlet__foot">

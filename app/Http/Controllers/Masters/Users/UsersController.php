@@ -12,6 +12,7 @@ class UsersController extends Controller
     public function index()
     {
         $user=User::all();
+
         return view('masters.users.index')->with(['users'=>$user]);
     }
     public function create()
@@ -25,8 +26,8 @@ class UsersController extends Controller
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
-//            'password' => bcrypt($request->phone),
-            'branch_id' => $request->branch_id,
+            'password' => bcrypt($request->phone),
+//            'branch_id' => $request->branch_id,
         ]);
 //        if($request->role)
 //            $user->assignRole($request->role);
@@ -46,22 +47,22 @@ class UsersController extends Controller
 
     public function update(Request $request, $id)
     {
-        User::update([
-            'name' => $request->name,
-            'phone' => $request->phone,
-            'email' => $request->email,
-//            'password' => bcrypt($request->phone),
-            'branch_id' => $request->branch_id,
-        ]);
-
-//        $user=array(
+//        User::update([
 //            'name' => $request->name,
 //            'phone' => $request->phone,
 //            'email' => $request->email,
 ////            'password' => bcrypt($request->phone),
 //            'branch_id' => $request->branch_id,
-//        );
-//        $user=User::find($id)->update($user);
-        return redirect('/users');
+//        ]);
+
+        $user=array(
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+//            'password' => bcrypt($request->phone),
+//            'branch_id' => $request->branch_id,
+        );
+        $user=User::find($id)->update($user);
+        return redirect('users');
     }
 }
