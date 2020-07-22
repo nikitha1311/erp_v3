@@ -58,7 +58,7 @@
                         @endif
                     </div>
 
-                    <div class="form-group m-form__group">
+                    {{-- <div class="form-group m-form__group">
                         <label for="branch">Branch</label>
                         <select name="branch_id" id="branch" class="form-control">
                             @foreach(branches() as $branch)
@@ -68,7 +68,7 @@
                         @if($errors->has('branch'))
                             <span class="m-form__help twtext-red">{{ $errors->first('branch') }}</span>
                         @endif
-                    </div>
+                    </div> --}}
 
                 </div>
 
