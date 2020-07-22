@@ -149,6 +149,20 @@ body{
     }
 }
 
+.card{
+    .card-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        ul{
+            margin: 0;
+            li{
+                list-style: none;
+            }
+        }
+    }
+}
+
 .main-section{
     background-color: $light-ash ;
 

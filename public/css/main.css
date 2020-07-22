@@ -163,6 +163,20 @@ body {
   list-style: none;
 }
 
+.card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card .card-header ul {
+  margin: 0;
+}
+
+.card .card-header ul li {
+  list-style: none;
+}
+
 .main-section {
   background-color: #ececec;
 }
