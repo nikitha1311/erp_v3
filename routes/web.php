@@ -28,3 +28,4 @@ Route::get('/users/{user}','\\App\\Http\\Controllers\\Masters\\Users\\UsersContr
 Route::get('/users/{user}/edit','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@edit');
 Route::PATCH('/users/{user}','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@update')->name('users.update');
 
+Route::resource('/customers','\\App\\Http\\Controllers\\Masters\\Customers\\CustomersController');

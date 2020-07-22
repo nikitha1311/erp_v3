@@ -8,8 +8,8 @@
         {{-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> --}}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
         <link rel='stylesheet' href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-        <link href="css/main.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
+        <link href="{{ asset('css/main.css')  }}"  rel="stylesheet">
+        <link href="{{ asset('css/style.css')  }}" rel="stylesheet">
     </head>
     <body>
         <div class="sb-nav-fixed">
@@ -28,7 +28,7 @@
         <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src='js/main.js'></script>
-        <script src='js/app.js'></script>
+        <script src="{{asset('js/main.js')}}"></script>
+        <script src="{{asset('js/app.js')}}"></script>
     </body>
 </html>

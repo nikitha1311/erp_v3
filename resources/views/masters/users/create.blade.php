@@ -70,6 +70,7 @@
 {{--                        @endif--}}
 {{--                    </div>--}}
 
+
                 </div>
 
                 <div class="m-portlet__foot">
