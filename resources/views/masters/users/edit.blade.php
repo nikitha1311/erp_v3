@@ -12,9 +12,9 @@
                 </div>
 
                 <div class='card-body'>
-                    <form action="{{ route('users.update',$user->id) }}" method='POST' enctype='multipart/form-data'>
+                    <form action="{{ route('users.update',$user->id) }}" method='POST'>
                         @csrf
-                        @method('PUT')
+                        {{method_field('PATCH')}}
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input required type="text" class="form-control" id="name" name="name"

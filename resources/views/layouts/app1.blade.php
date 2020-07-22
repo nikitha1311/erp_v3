@@ -16,13 +16,13 @@
     @include('layouts.topbar')
     <div id="layoutSidenav">
         @include('layouts.sidebar')
-
+        <main id='layoutSidenav_content'class="container">
+            @yield('content')
+        </main>
 {{--        @include('layouts.content')--}}
     </div>
-    
-    <main class="container">
-        @yield('content')
-    </main>
+
+
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>

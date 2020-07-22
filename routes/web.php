@@ -26,5 +26,5 @@ Route::get('/users/create','\\App\\Http\\Controllers\\Masters\\Users\\UsersContr
 Route::post('/users','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@store');
 Route::get('/users/{user}','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@show');
 Route::get('/users/{user}/edit','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@edit');
-Route::patch('/users/{user}','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@update')->name('users.update');
+Route::PATCH('/users/{user}','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@update')->name('users.update');
 
