@@ -1,15 +1,15 @@
-@extends('layouts.app1')
+@extends('layouts.app')
 
 @section('content')
 <div class="container py-4">
-    <div class="m-portlet m-portlet--mobile card">
-        <div class="m-portlet__head card-header">
+    <div class="m-portlet m-portlet--mobile panel panel-default">
+        <div class="m-portlet__head panel-header">
             <div class="m-portlet__head-caption">
                 <div class="m-portlet__head-title">
-                    <h3 class="m-portlet__head-text">
+                    <h5 class="m-portlet__head-text">
                         User List
                         <small></small>
-                    </h3>
+                    </h5>
                 </div>
             </div>
             <div class="m-portlet__head-tools">
@@ -25,10 +25,10 @@
                 </ul>
             </div>
         </div>
-        <div class="m-portlet__body card-body ">
+        <div class="m-portlet__body panel-body ">
             <div class="table-responsive">
 
-                <table class="table table-bordered twtext-base twleading-none" id="users-table">
+                <table class="table table-bordered twtext-base twleading-none text-center" id="users-table">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -36,7 +36,7 @@
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Branch</th>
-
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -57,7 +57,14 @@
                             <td>
                                 {{ $user->branch->name }}
                             </td>
-
+                            <td>
+                                <a  href="{{ route('users.show',$user->id) }}"  class='btn btn-primary btn-sm'>
+                                    <i class='fa fa-eye'></i>
+                                </a>
+                                <a  href="{{ route('users.edit',$user->id) }}"  class='btn btn-primary btn-sm'>
+                                    <i class='fa fa-pencil'></i>
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

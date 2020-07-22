@@ -145,7 +145,7 @@ body {
   padding: 16px;
 }
 
-.panel .panel-heading {
+.panel .panel-header {
   border-color: rgba(38, 44, 45, 0.1);
   color: #262c2d;
   display: flex;
@@ -155,26 +155,20 @@ body {
   padding: 8px 16px;
 }
 
-.panel .panel-heading ul {
+.panel .panel-header ul {
   margin: 0;
 }
 
-.panel .panel-heading ul li {
+.panel .panel-header ul li {
   list-style: none;
 }
 
-.card .card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card .card-header ul {
-  margin: 0;
-}
-
-.card .card-header ul li {
-  list-style: none;
+.panel .panel-footer {
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .main-section {

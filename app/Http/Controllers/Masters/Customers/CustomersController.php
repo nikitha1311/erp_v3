@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Masters\Customers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Domain\Masters\Customers\Models\Customer;
+use App\Domain\Masters\Customers\Requests\CreateCustomerRequest;
 
 class CustomersController extends Controller
 {
@@ -14,7 +16,10 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        //
+        $customers = Customer::all();
+        return view('masters.customers.index')->with([
+            'customers' => $customers
+        ]);
     }
 
     /**
@@ -24,7 +29,7 @@ class CustomersController extends Controller
      */
     public function create()
     {
-        //
+        return view('masters.customers.create');
     }
 
     /**
@@ -33,9 +38,21 @@ class CustomersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCustomerRequest $request)
     {
-        //
+        // Customer::create([
+        //     'name' => $request->name,
+        //     'code' => $request->code,
+        //     'address' => $request->address,
+        //     'is_consignor' => $request->is_consignor,
+        //     'is_consignee' => $request->is_consignee,
+        //     'is_billed_on' => $request->is_billed_on,
+        // ]);
+        // return back()->withNotification([
+        //    'type' => 'success',
+        //    'msg' => 'Customer created successfully',
+        // ]);
+        // return back();
     }
 
     /**
@@ -46,7 +63,7 @@ class CustomersController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('masters.customers.show');
     }
 
     /**
