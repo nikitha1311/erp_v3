@@ -17,7 +17,7 @@
             <div id="layoutSidenav">
                 @include('layouts.sidebar')
 
-                <main id='layoutSidenav_content'class="container">
+                <main id='layoutSidenav_content'class="">
                     @yield('content')
                 </main>
         {{--        @include('layouts.content')--}}

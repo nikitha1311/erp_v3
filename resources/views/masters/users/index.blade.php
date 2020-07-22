@@ -1,11 +1,9 @@
 @extends('layouts.app1')
-{{-- @section('head')
-         
 
-@endsection --}}
 @section('content')
-    <div class="m-portlet m-portlet--mobile ">
-        <div class="m-portlet__head">
+<div class="container py-4">
+    <div class="m-portlet m-portlet--mobile panel panel-default">
+        <div class="m-portlet__head panel-heading">
             <div class="m-portlet__head-caption">
                 <div class="m-portlet__head-title">
                     <h3 class="m-portlet__head-text">
@@ -27,7 +25,7 @@
                 </ul>
             </div>
         </div>
-        <div class="m-portlet__body">
+        <div class="m-portlet__body panel-body ">
             <div class="table-responsive">
 
                 <table class="table table-bordered twtext-base twleading-none" id="users-table">
@@ -67,6 +65,7 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
 {{-- @section('scripts')
     @parent

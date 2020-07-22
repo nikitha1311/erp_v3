@@ -145,6 +145,24 @@ body {
   padding: 16px;
 }
 
+.panel .panel-heading {
+  border-color: rgba(38, 44, 45, 0.1);
+  color: #262c2d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(38, 44, 45, 0.1);
+  padding: 8px 16px;
+}
+
+.panel .panel-heading ul {
+  margin: 0;
+}
+
+.panel .panel-heading ul li {
+  list-style: none;
+}
+
 .main-section {
   background-color: #ececec;
 }
