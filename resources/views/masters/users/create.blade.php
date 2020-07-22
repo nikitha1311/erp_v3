@@ -40,7 +40,7 @@
                                     <span class="m-form__help twtext-red">{{ $errors->first('name') }}</span>
                                 @endif
                             </div>
-        
+
                             <div class="form-group m-form__group">
                                 <label for="email">Email</label>
                                 <input type="text" class="form-control m-input" id="email" name="email" placeholder="Email"
@@ -49,7 +49,7 @@
                                     <span class="m-form__help twtext-red">{{ $errors->first('email') }}</span>
                                 @endif
                             </div>
-        
+
                             <div class="form-group m-form__group">
                                 <label for="phone">Phone</label>
                                 <input type="number" min="0000000000" class="form-control m-input" id="phone" name="phone"
@@ -58,7 +58,7 @@
                                     <span class="m-form__help twtext-red">{{ $errors->first('phone') }}</span>
                                 @endif
                             </div>
-        
+
                             {{-- <div class="form-group m-form__group">
                                 <label for="branch">Branch</label>
                                 <select name="branch_id" id="branch" class="form-control">
@@ -70,9 +70,9 @@
                                     <span class="m-form__help twtext-red">{{ $errors->first('branch') }}</span>
                                 @endif
                             </div> --}}
-        
+
                         </div>
-        
+
                         <div class="m-portlet__foot">
                             <div class="m-form__actions">
                                 <button type="submit" class="btn btn-primary">Submit</button>
