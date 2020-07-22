@@ -1,12 +1,12 @@
 @extends('layouts.app1')
 
-@section('head')
+{{-- @section('head')
     <style>
         .pac-container {
             z-index: 10000 !important;
         }
     </style>
-@append
+@append --}}
 
 @section('content')
     <section class="pt-60 pb-60">
@@ -81,18 +81,4 @@
     </section>
 @endsection
 
-@section('scripts')
-    <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_KEY') }}&libraries=places"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/geocomplete/1.7.0/jquery.geocomplete.min.js"></script>
 
-    <script type="text/javascript">
-        $('#formatted_address').geocomplete({
-            country: ['CA', 'IN'],
-            types: ['establishment'],
-            details: '.address',
-            detailsAttribute: 'id',
-        });
-    </script>
-
-@append

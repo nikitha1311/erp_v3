@@ -1,8 +1,8 @@
 @extends('layouts.app1')
-@section('head')
+{{-- @section('head')
+         
 
-
-@endsection
+@endsection --}}
 @section('content')
     <div class="m-portlet m-portlet--mobile ">
         <div class="m-portlet__head">
@@ -68,7 +68,7 @@
         </div>
     </div>
 @endsection
-@section('scripts')
+{{-- @section('scripts')
     @parent
     <script>
         $('#users-table').DataTable({
@@ -105,6 +105,6 @@
 
         });
     </script>
-@endsection
+@endsection --}}
 
 
