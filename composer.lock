@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "content-hash": "59a7dbf9779699e9e375fe629c36dc5d",
+    "content-hash": "1f06293d7ed9a0d55d5cb92d7ba92ad7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1416,6 +1417,40 @@
                 "psr-3"
             ],
             "time": "2020-05-22T08:12:19+00:00"
+        },
+        {
+            "name": "needim/noty",
+            "version": "v3.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/needim/noty.git",
+                "reference": "77268c46b6db6a1eb7a920ed7c859fbc8de17993"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/needim/noty/zipball/77268c46b6db6a1eb7a920ed7c859fbc8de17993",
+                "reference": "77268c46b6db6a1eb7a920ed7c859fbc8de17993",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nedim Arabaci",
+                    "homepage": "http://ned.im",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Noty is a library that makes it easy to create alert - success - error - warning - information - confirmation messages as an alternative the standard alert dialog.",
+            "homepage": "http://ned.im/noty",
+            "keywords": [
+                "notification",
+                "noty"
+            ],
+            "time": "2017-12-13T20:36:34+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -7458,5 +7493,6 @@
     "platform": {
         "php": "^7.2.5"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
