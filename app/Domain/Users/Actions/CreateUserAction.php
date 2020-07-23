@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Domain\Masters\Users\Actions;
+namespace App\Domain\Users\Actions;
 
 
-use App\Domain\Masters\Users\Models\User;
+use App\Domain\Users\Models\User;
 
 class CreateUserAction
 {
