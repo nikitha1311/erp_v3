@@ -13,7 +13,7 @@ class UpdateCustomerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,11 @@ class UpdateCustomerRequest extends FormRequest
      */
     public function rules()
     {
+        // dd($this->customer->id);
         return [
-            //
+            'name' => 'required|unique:customers,name,'.$this->customer->id,
+            'code' => 'required|unique:customers,code,'.$this->customer->id,
+            'address'=>'required',
         ];
     }
 }

@@ -23,3 +23,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users','\\App\\Http\\Controllers\\Masters\\Users\\UsersController');
 
 Route::resource('/customers','\\App\\Http\\Controllers\\Masters\\Customers\\CustomersController');
+Route::resource('/customers/{customer}/contracts','\\App\\Http\\Controllers\\Masters\\Customers\\CustomerContractsController');

@@ -160,13 +160,13 @@ body {
 }
 
 .panel .panel-header {
-  border-color: rgba(38, 44, 45, 0.1);
   color: #262c2d;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(38, 44, 45, 0.1);
   padding: 8px 16px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
 }
 
 .panel .panel-header ul {

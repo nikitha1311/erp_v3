@@ -5,7 +5,7 @@ namespace App\Domain\Customers\Actions;
 
 use App\Domain\Customers\Models\Customer;
 
-class CreateCustomerAction
+class UpdateCustomerAction
 {
     private $name;
     private $code;
@@ -24,12 +24,9 @@ class CreateCustomerAction
         $this->is_billed_on = $is_billed_on;
     }
 
-    public function handle()
+    public function handle($customer)
     {
-        // if($this->is_consignor || $this->is_consignee || $this->is_billed_on){
-
-        // }
-        return Customer::create([
+      return $customer->update([
             'name' => $this->name,
             'code' => $this->code,
             'address' => $this->address,

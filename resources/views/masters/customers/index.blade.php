@@ -18,25 +18,32 @@
                     <table class="table table-bordered table-hover">
                         <thead>
                           <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Code</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Consignor</th>
-                            <th scope="col">Consignee</th>
-                            <th scope="col">Billed On</th>
-                            <th scope="col">Actions</th>
+                            <th>Name</th>
+                            <th>Code</th>
+                            <th>Address</th>
+                            <th>Consignor</th>
+                            <th>Consignee</th>
+                            <th>Billed On</th>
                           </tr>
                         </thead>
                         <tbody>
                             @foreach ($customers as $customer)
                                 <tr>
-                                    <td>{{$customer->name}}</td>
+                                    <td>
+                                        <a href="{{ route('customers.show', $customer->id) }}">
+                                            {{$customer->name}}
+                                        </a>
+                                    </td>
                                     <td>{{$customer->code}}</td>
                                     <td>{{$customer->address}}</td>
                                     <td>
-                                        <a  href="{{ route('customers.show',$customer->id) }}"  class='btn btn-primary btn-sm'>
-                                            <i class='fa fa-eye'></i>
-                                        </a>
+                                        {{ $customer->is_consignor }}
+                                    </td>
+                                    <td>
+                                        {{ $customer->is_consignee }}
+                                    </td>
+                                    <td>
+                                        {{ $customer->is_billed_on }}
                                     </td>
                                 </tr>
                             @endforeach

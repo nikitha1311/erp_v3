@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Classes\Notification;
 use App\Domain\Customers\Models\Customer;
 use App\Domain\Customers\Requests\CreateCustomerRequest;
+use App\Domain\Customers\Requests\UpdateCustomerRequest;
 use App\Domain\Customers\Actions\CreateCustomerAction;
+use App\Domain\Customers\Actions\UpdateCustomerAction;
 
 class CustomersController extends Controller
 {
@@ -42,19 +44,9 @@ class CustomersController extends Controller
      */
     public function store(CreateCustomerRequest $request)
     {
-        // Customer::create([
-        //     'name' => $request->name,
-        //     'code' => $request->code,
-        //     'address' => $request->address,
-        //     'is_consignor' => $request->is_consignor,
-        //     'is_consignee' => $request->is_consignee,
-        //     'is_billed_on' => $request->is_billed_on,
-        // ]);
-        if($request->is_consignor || $request->is_consignee || $request->is_billed_on){
-            $createCustomerAction = new CreateCustomerAction($request->name, $request->code, $request->address);
-        $customer = $createCustomerAction->handle();
-        }
-        $createCustomerAction = new CreateCustomerAction($request->name, $request->code, $request->address);
+        $createCustomerAction = new CreateCustomerAction($request->name, $request->code,
+                                $request->address,$request->is_consignor,$request->is_consignee,
+                                $request->is_billed_on);
         $customer = $createCustomerAction->handle();
         Notification::success('Customer created successfully!');
         return redirect('/customers');
@@ -66,9 +58,11 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Customer $customer)
     {
-        return view('masters.customers.show');
+        return view('masters.customers.show')->with([
+            'customer' => $customer
+        ]);
     }
 
     /**
@@ -77,9 +71,11 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Customer $customer)
     {
-        //
+        return view('masters.customers.edit')->with([
+            'customer' => $customer
+        ]);
     }
 
     /**
@@ -89,9 +85,14 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCustomerRequest $request,Customer $customer)
     {
-        //
+        $updateCustomerAction = new UpdateCustomerAction($request->name, $request->code,
+                                $request->address,$request->is_consignor,$request->is_consignee,
+                                $request->is_billed_on);
+        $customer = $updateCustomerAction->handle($customer);
+        Notification::success('Customer Updated successfully!');
+        return redirect('/customers');
     }
 
     /**
