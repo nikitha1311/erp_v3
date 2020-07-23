@@ -33,41 +33,41 @@
                             <div class="form-group m-form__group">
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control m-input" id="name" name="name" placeholder="Name"
-                                       value="{{ old('name') }}">
+                                       value="{{ old('name') }}" required>
                                 @if($errors->has('name'))
-                                    <span class="m-form__help twtext-red">{{ $errors->first('name') }}</span>
+                                    <span class="m-form__help text-danger">{{ $errors->first('name') }}</span>
                                 @endif
                             </div>
 
                             <div class="form-group m-form__group">
                                 <label for="email">Email</label>
                                 <input type="text" class="form-control m-input" id="email" name="email" placeholder="Email"
-                                       value="{{ old('email') }}">
+                                       value="{{ old('email') }}" required>
                                 @if($errors->has('email'))
-                                    <span class="m-form__help twtext-red">{{ $errors->first('email') }}</span>
+                                    <span class="m-form__help text-danger">{{ $errors->first('email') }}</span>
                                 @endif
                             </div>
 
-                            <div class="form-group m-form__group">
+                            <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input type="number" min="0000000000" class="form-control m-input" id="phone" name="phone"
+                                <input type="number" min="0000000000" class="form-control" id="phone" name="phone"
                                        placeholder="Phone" value="{{ old('phone') }}">
                                 @if($errors->has('phone'))
-                                    <span class="m-form__help twtext-red">{{ $errors->first('phone') }}</span>
+                                    <span class="text-danger">{{ $errors->first('phone') }}</span>
                                 @endif
                             </div>
 
-                            {{-- <div class="form-group m-form__group">
+                             <div class="form-group m-form__group">
                                 <label for="branch">Branch</label>
                                 <select name="branch_id" id="branch" class="form-control">
-                                    @foreach(branches() as $branch)
-                                        <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                    @foreach($branch as $branches)
+                                        <option value="{{ $branches->id }}">{{ $branches->name }}</option>
                                     @endforeach
                                 </select>
                                 @if($errors->has('branch'))
                                     <span class="m-form__help twtext-red">{{ $errors->first('branch') }}</span>
                                 @endif
-                            </div> --}}
+                            </div>
 
                         </div>
 

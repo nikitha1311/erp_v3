@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Masters\Users;
 
+use App\Domain\Branches\Models\Branch;
+use App\Domain\Masters\Customers\Requests\UpdateCustomerRequest;
 use App\Domain\Masters\Users\Models\User;
 use App\Domain\Masters\Users\Requests\CreateUserRequest;
+use App\Domain\Masters\Users\Requests\UpdateUserRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -17,7 +20,9 @@ class UsersController extends Controller
     }
     public function create()
     {
-        return view('masters.users.create');
+        $branches=Branch::all();
+//        dd($branches);
+        return view('masters.users.create')->with(['branch'=>$branches]);
 
     }
     public function store(CreateUserRequest $request)
@@ -27,7 +32,7 @@ class UsersController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
             'password' => bcrypt($request->phone),
-//            'branch_id' => $request->branch_id,
+            'branch_id' => $request->branch_id,
         ]);
 //        if($request->role)
 //            $user->assignRole($request->role);
@@ -42,27 +47,20 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user=User::find($id);
-        return view('masters.users.edit')->with(['user'=>$user]);
+        $branches=Branch::all();
+        return view('masters.users.edit')->with(['user'=>$user,'branch'=>$branches]);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request,User $user)
     {
-//        User::update([
-//            'name' => $request->name,
-//            'phone' => $request->phone,
-//            'email' => $request->email,
-////            'password' => bcrypt($request->phone),
-//            'branch_id' => $request->branch_id,
-//        ]);
-
-        $user=array(
+        $user->update([
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
 //            'password' => bcrypt($request->phone),
-//            'branch_id' => $request->branch_id,
-        );
-        $user=User::find($id)->update($user);
-        return redirect('users');
+            'branch_id' => $request->branch_id,
+        ]);
+
+               return redirect('users');
     }
 }
