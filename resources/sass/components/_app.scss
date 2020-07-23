@@ -2,15 +2,29 @@
 body{
     margin:0;
     padding: 0;
+    font-size : 13px;
 }
 .row{
     margin-right: 0px !important;
     margin-left: 0px !important;
 }
+
+.form-control{
+   font-size : 13px;
+}
+
+.btn {
+     font-size: 13px;
+
+    &.btn-primary {
+        background-color: $bluish;
+        border-color : $bluish;
+    }
+}
 .has-search {
     .form-control {
         padding-left: 2.375rem;
-    }               
+    }
     .form-control-feedback {
         position: absolute;
         z-index: 2;
@@ -34,7 +48,7 @@ body{
         @media(max-width:768px){
             margin: auto;
         }
-      
+
         .type{
             font-size: 12px;
             margin: 0;
@@ -56,7 +70,7 @@ body{
         align-items: center;
         cursor: pointer;
         position: relative;
-        
+
         h3{
             color: $white;
         }
@@ -222,16 +236,16 @@ body{
             .count{
                 span{
                     font-size: 34px;
-                    font-weight: 600;  
+                    font-weight: 600;
                     &.clr1{
                         color:$dark-blue;
-                    } 
+                    }
                     &.clr2{
                         color: $bluish;
-                    } 
+                    }
                     &.clr3{
                         color: $black;
-                    } 
+                    }
                 }
                 .count-info{
                     font-size: 12px;
@@ -248,13 +262,13 @@ body{
     height: auto !important;
     padding: 0 !important;
 
-   
+
 
     .topnav-left-part{
         display: flex;
         align-items: center;
         background-color: $bluish;
-        padding: 8px 0px;
+        //padding: 8px 0px;
         justify-content: space-between;
         .company-details{
             font-size: 14px;
@@ -265,10 +279,10 @@ body{
                 background-color:transparent;
                 padding: 0 !important;
                 color: #fff;
-                font-weight: 700;  
+                font-weight: 700;
                 &:hover{
                     text-decoration: none;
-                } 
+                }
             }
         }
         .company-symbol{
@@ -302,7 +316,7 @@ body{
             .has-search{
                 display: none;
             }
-        }   
+        }
     }
 }
 
@@ -310,6 +324,8 @@ body{
 .sidenav{
     .nav-link{
         color:$light-blue !important;
+        padding : 9px 20px !important;
+        font-size : 14px;
         i{
             color: $light-blue !important;
         }

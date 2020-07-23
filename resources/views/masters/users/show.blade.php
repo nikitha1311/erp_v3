@@ -2,63 +2,24 @@
 
 
 @section('content')
-    <div class="container py-4">   
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-8">
-                <div class="panel panel-default">
-                    <div class="panel-header">
-                        User Profile
-                        <div class="float-right">
-                            <a href="{{ route('users.index') }}" class="btn btn-primary">
-                                <i class="fa fa-arrow-left mr-2"></i>
-                                <span>Back</span>
-                            </a>
-                        </div>
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-header">
+                    User Profile
+                    <div class="float-right">
+                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-secondary">
+                            <i class="fa fa-edit mr-2"></i>
+                            <span>Edit</span>
+                        </a>
+                        <a href="{{ route('users.index') }}" class="btn btn-primary">
+                            <i class="fa fa-arrow-left mr-2"></i>
+                            <span>Back</span>
+                        </a>
                     </div>
-                    <div class="panel-body">
-
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input disabled required type="text" class="form-control" id="name" name="name"
-                                        placeholder="Name"
-                                        value="{{ old('name', $user->name) }}">
-                                @if($errors->has('name'))
-                                    <span class="help-text text-danger">{{ $errors->first('name') }}</span>
-                                @endif
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input disabled required type="text" class="form-control" id="email" name="email"
-                                        placeholder="Email"
-                                        value="{{ old('email', $user->email) }}">
-                                @if($errors->has('email'))
-                                    <span class="help-text text-danger">{{ $errors->first('email') }}</span>
-                                @endif
-                            </div>
-
-                            <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input disabled required type="text" class="form-control" id="phone" name="phone"
-                                        placeholder="Phone Number"
-                                        value="{{ old('phone', $user->phone) }}">
-                                @if($errors->has('phone'))
-                                    <span class="help-text text-danger">{{ $errors->first('phone') }}</span>
-                                @endif
-                            </div>
-{{--                                <div class="form-group">--}}
-{{--                                    <label for="phone">Plan</label>--}}
-{{--                                    <select name="plan_id" id="plan" class="form-control">--}}
-{{--                                        @foreach($plans as $plan)--}}
-{{--                                            <option value="{{$plan->id}}" @if($user->plan_id == $plan->id) selected @endif>{{$plan->name}}</option>--}}
-{{--                                        @endforeach--}}
-{{--                                    </select>--}}
-
-{{--                                    @if($errors->has('plan_id'))--}}
-{{--                                        <span class="help-text text-danger">{{ $errors->first('plan_id') }}</span>--}}
-{{--                                    @endif--}}
-{{--                                </div>--}}
-                    </div>
+                </div>
+                <div class="panel-body">
+                    @include('masters.users.partials._form',['user' => $user, 'disabled' => true])
                 </div>
             </div>
         </div>
