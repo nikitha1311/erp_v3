@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.app1');
+    return view('layouts.app');
 });
 
 Auth::routes();
@@ -24,8 +24,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@index')->name('users.index');
 Route::get('/users/create','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@create');
 Route::post('/users','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@store');
-Route::get('/users/{user}','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@show');
-Route::get('/users/{user}/edit','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@edit');
+Route::get('/users/{user}','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@show')->name('users.show');
+Route::get('/users/{user}/edit','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@edit')->name('users.edit');
 Route::PATCH('/users/{user}','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@update')->name('users.update');
 
 Route::resource('/customers','\\App\\Http\\Controllers\\Masters\\Customers\\CustomersController');

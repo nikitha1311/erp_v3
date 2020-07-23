@@ -1,18 +1,16 @@
-@extends('layouts.app1')
-@section('head')
+@extends('layouts.app')
 
-@endsection
 @section('content')
     <div class="container py-4">
-        <div class="row twflex twjustify-center">
-            <div class="col-8 offset-2 m-portlet m-portlet--mobile card px-0">
-                <div class="m-portlet__head card-header">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-8  m-portlet m-portlet--mobile panel panel-default px-0">
+                <div class="m-portlet__head panel-header">
                     <div class="m-portlet__head-caption">
                         <div class="m-portlet__head-title">
-                            <h3 class="m-portlet__head-text">
+                            <h5 class="m-portlet__head-text">
                                 Create User
                                 <small></small>
-                            </h3>
+                            </h5>
                         </div>
                     </div>
                     <div class="m-portlet__head-tools">
@@ -28,7 +26,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="panel-body">
                     <form action="{{ url("users") }}" method="post">
                         {{csrf_field()}}
                         <div class="m-portlet__body">
@@ -76,7 +74,7 @@
                         <div class="m-portlet__foot">
                             <div class="m-form__actions">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <button type="reset" class="btn btn-default">Clear</button>
+                                <button type="reset" class="btn btn-secondary">Clear</button>
                             </div>
                         </div>
                     </form>

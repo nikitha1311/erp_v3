@@ -131,7 +131,7 @@ body{
     .panel-body{
         padding: 16px;
     }
-    .panel-heading{
+    .panel-header{
         border-color:rgba(38,44,45,.1);
         color: #262c2d;
         display: flex;
@@ -147,21 +147,28 @@ body{
             }
         }
     }
-}
-
-.card{
-    .card-header{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        ul{
-            margin: 0;
-            li{
-                list-style: none;
-            }
-        }
+    .panel-footer{
+        padding: 10px 15px;
+        background-color: #f5f5f5;
+        border-top: 1px solid #ddd;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
     }
 }
+
+// .card{
+//     .card-header{
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//         ul{
+//             margin: 0;
+//             li{
+//                 list-style: none;
+//             }
+//         }
+//     }
+// }
 
 .main-section{
     background-color: $light-ash ;

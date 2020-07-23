@@ -13,7 +13,8 @@ class CreateCustomerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // return auth()->user()->hasRole('admin');
+        return true;
     }
 
     /**
@@ -24,7 +25,9 @@ class CreateCustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|unique:customers,name',
+            'code' => 'required|unique:customers,code',
+            'address'=>'required',
         ];
     }
 }
