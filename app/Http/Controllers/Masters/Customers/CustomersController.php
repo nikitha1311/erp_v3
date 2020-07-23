@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Masters\Customers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Classes\Notification;
 use App\Domain\Customers\Models\Customer;
 use App\Domain\Customers\Requests\CreateCustomerRequest;
+use App\Domain\Customers\Actions\CreateCustomerAction;
 
 class CustomersController extends Controller
 {
@@ -48,15 +50,18 @@ class CustomersController extends Controller
         //     'is_consignee' => $request->is_consignee,
         //     'is_billed_on' => $request->is_billed_on,
         // ]);
-        // return back()->withNotification([
-        //    'type' => 'success',
-        //    'msg' => 'Customer created successfully',
-        // ]);
-        // return back();
+        if($request->is_consignor || $request->is_consignee || $request->is_billed_on){
+            $createCustomerAction = new CreateCustomerAction($request->name, $request->code, $request->address);
+        $customer = $createCustomerAction->handle();
+        }
+        $createCustomerAction = new CreateCustomerAction($request->name, $request->code, $request->address);
+        $customer = $createCustomerAction->handle();
+        Notification::success('Customer created successfully!');
+        return redirect('/customers');
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource.  
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

@@ -13,15 +13,26 @@
                             {{csrf_field()}}
                             <div class="form-group">
                               <label for="name">Name</label>
-                              <input type="text" class="form-control" name="name"id="name"  placeholder="Name">
+                              <input type="text" class="form-control" name="name"id="name"  placeholder="Name" required>
+                                @if($errors->has('name'))
+                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                @endif
                             </div>
                             <div class="form-group">
                               <label for="code">Code</label>
-                              <input type="text" class="form-control" name="code"id="code" placeholder="Code">
+                              <input type="text" class="form-control" name="code"id="code" placeholder="Code" required>
+
+                                @if($errors->has('code'))
+                                    <span class="text-danger">{{ $errors->first('code') }}</span>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label for="address">Address</label>
-                                <input type="text" class="form-control" name="address" id="address" placeholder="Address">
+                                <input type="text" class="form-control" name="address" id="address" placeholder="Address" required>
+
+                                @if($errors->has('address'))
+                                    <span class="text-danger">{{ $errors->first('address') }}</span>
+                                @endif
                               </div>
                             <div class="form-check">
                               <input type="checkbox" class="form-check-input" id="is_consignor" name="is_consignor">
