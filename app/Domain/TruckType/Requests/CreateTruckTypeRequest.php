@@ -13,7 +13,7 @@ class CreateTruckTypeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class CreateTruckTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'unique:truck_types,name'
+
         ];
     }
 }

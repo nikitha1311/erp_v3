@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\TruckType\Requests;
+namespace App\Domain\Branches\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateTruckTypeRequest extends FormRequest
+class CreateBranchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UpdateTruckTypeRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
