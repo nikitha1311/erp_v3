@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Masters\Users;
 
 use App\Classes\Notification;
 use App\Domain\Branches\Models\Branch;
-use App\Domain\Masters\Customers\Requests\UpdateCustomerRequest;
-use App\Domain\Masters\Users\Actions\CreateUserAction;
-use App\Domain\Masters\Users\Models\User;
-use App\Domain\Masters\Users\Requests\CreateUserRequest;
-use App\Domain\Masters\Users\Requests\UpdateUserRequest;
+use App\Domain\Customers\Requests\UpdateCustomerRequest;
+use App\Domain\Users\Actions\CreateUserAction;
+use App\Domain\Users\Models\User;
+use App\Domain\Users\Requests\CreateUserRequest;
+use App\Domain\Users\Requests\UpdateUserRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Masters\Customers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Domain\Masters\Customers\Models\Customer;
-use App\Domain\Masters\Customers\Requests\CreateCustomerRequest;
+use App\Domain\Customers\Models\Customer;
+use App\Domain\Customers\Requests\CreateCustomerRequest;
 
 class CustomersController extends Controller
 {
