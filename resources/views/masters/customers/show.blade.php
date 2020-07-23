@@ -18,41 +18,10 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name"id="name" value="{{$customer->name}}" placeholder="Name" disabled>
-                          @if($errors->has('name'))
-                              <span class="text-danger">{{ $errors->first('name') }}</span>
-                          @endif
-                      </div>
-                      <div class="form-group">
-                        <label for="code">Code</label>
-                        <input type="text" class="form-control" value="{{$customer->code}}" name="code"id="code" placeholder="Code" disabled>
-
-                          @if($errors->has('code'))
-                              <span class="text-danger">{{ $errors->first('code') }}</span>
-                          @endif
-                      </div>
-                      <div class="form-group">
-                          <label for="address">Address</label>
-                          <input type="text" class="form-control" value="{{$customer->address}}" name="address" id="address" placeholder="Address" disabled>
-
-                          @if($errors->has('address'))
-                              <span class="text-danger">{{ $errors->first('address') }}</span>
-                          @endif
-                        </div>
-                      <div class="form-check">
-                        <input type="checkbox" disabled @if($customer->is_consignor) == 1 ?? checked  @endif class="form-check-input" id="is_consignor" name="is_consignor">
-                        <label class="form-check-label" for="is_consignor">Consignor</label>
-                      </div>
-                      <div class="form-check">
-                          <input type="checkbox" disabled @if($customer->is_consignee) == 1 ?? checked @endif class="form-check-input" id="is_consignee" name="is_consignee">
-                          <label class="form-check-label" for="is_consignee">Consignee</label>
-                      </div>
-                      <div class="form-check">
-                          <input type="checkbox" disabled @if($customer->is_billed_on) == 1 ?? checked @endif class="form-check-input" id="is_billed_on" name="is_billed_on">
-                          <label class="form-check-label" for="is_billed_on">Is Billed On</label>
-                      </div>
+                    @include('masters.customers.partials._form',[
+                        'customer' => $customer,
+                        'disabled' => true
+                    ])
                 </div>
             </div>
             <div class="panel panel-default">

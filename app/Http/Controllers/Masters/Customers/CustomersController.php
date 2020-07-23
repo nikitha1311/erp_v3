@@ -33,7 +33,10 @@ class CustomersController extends Controller
      */
     public function create()
     {
-        return view('masters.customers.create');
+        $customer = new Customer();
+        return view('masters.customers.create')->with([
+            'customer' => $customer
+        ]);
     }
 
     /**
