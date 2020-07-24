@@ -64,7 +64,7 @@ class CustomersController extends Controller
     public function show(Customer $customer)
     {
         return view('masters.customers.show')->with([
-            'customer' => $customer
+            'customer' => $customer->load('contracts'),
         ]);
     }
 
