@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\Masters\Users\Requests;
+namespace App\Domain\Customers\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateUserRequest extends FormRequest
+class UpdateCustomerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,11 @@ class CreateUserRequest extends FormRequest
      */
     public function rules()
     {
+        // dd($this->customer->id);
         return [
-            //
+            'name' => 'required|unique:customers,name,'.$this->customer->id,
+            'code' => 'required|unique:customers,code,'.$this->customer->id,
+            'address'=>'required',
         ];
     }
 }
