@@ -26,7 +26,7 @@ class UpdateCustomerAction
 
     public function handle($customer)
     {
-      return $customer->update([
+       $customer->update([
             'name' => $this->name,
             'code' => $this->code,
             'address' => $this->address,
@@ -34,5 +34,6 @@ class UpdateCustomerAction
             'is_consignee'=>$this->is_consignee == 'on' ? 1  : 0,
             'is_billed_on'=>$this->is_billed_on == 'on' ? 1  : 0,
         ]);
+        return $customer;
     }
 }

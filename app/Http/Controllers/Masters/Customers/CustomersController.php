@@ -94,8 +94,9 @@ class CustomersController extends Controller
                                 $request->address,$request->is_consignor,$request->is_consignee,
                                 $request->is_billed_on);
         $customer = $updateCustomerAction->handle($customer);
+        // dd($customer);
         Notification::success('Customer Updated successfully!');
-        return redirect('/customers');
+        return  redirect("/customers/{$customer->id}");
     }
 
     /**

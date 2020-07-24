@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row justify-content-center align-items-center">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-header">
                     <h5>Customer Details</h5>
@@ -24,13 +24,43 @@
                     ])
                 </div>
             </div>
+        </div>
+        <div class="col-md-6 d-flex">
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-header">hi</div>
+                    <div class="panel-body">heloo</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-header">hi</div>
+                    <div class="panel-body">heloo</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-header">hi</div>
+                    <div class="panel-body">heloo</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-header">hi</div>
+                    <div class="panel-body">heloo</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-header">
                     <h6>
                         {{ $customer->name }} / {{ $customer->signed_at }} /
                         <small>{{$customer->valid_till}}</small>
                     </h6>
-
+    
                     <a href="#" data-toggle='modal' data-target='#add_contract' type="button" class="btn btn-success">
                         <i class="fa fa-plus"></i>
                         Contract

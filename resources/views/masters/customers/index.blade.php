@@ -37,13 +37,28 @@
                                     <td>{{$customer->code}}</td>
                                     <td>{{$customer->address}}</td>
                                     <td>
-                                        {{ $customer->is_consignor }}
+                                        @if($customer->is_consignor)
+                                        <i class="fa fa-check"></i>
+                                        @else
+                                        <i class="fa fa-times"></i>
+                                        @endif
+                                        {{-- {{ $customer->is_consignor }} --}}
                                     </td>
                                     <td>
-                                        {{ $customer->is_consignee }}
+                                        @if($customer->is_consignee)
+                                        <i class="fa fa-check"></i>
+                                        @else
+                                        <i class="fa fa-times"></i>
+                                        @endif
+                                        {{-- {{ $customer->is_consignee }} --}}
                                     </td>
                                     <td>
-                                        {{ $customer->is_billed_on }}
+                                        @if($customer->is_billed_on)
+                                        <i class="fa fa-check"></i>
+                                        @else
+                                        <i class="fa fa-times"></i>
+                                        @endif
+                                        {{-- {{ $customer->is_billed_on }} --}}
                                     </td>
                                 </tr>
                             @endforeach
