@@ -1,10 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Masters\Branches;
+use App\Classes\Notification;
 
 use App\Domain\Branches\Models\Branch;
+use App\Domain\Branches\Requests\CreateBranchRequest;
+use App\Domain\Branches\Requests\UpdateBranchRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Domain\Branches\Actions\CreateBranchesAction;
+
 
 class BranchesController extends Controller
 {
@@ -16,7 +21,7 @@ class BranchesController extends Controller
     public function index()
     {
         $branch=Branch::all();
-        return view();
+        return view('masters.branches.index')->with(['branches'=>$branch]);
     }
 
     /**
@@ -26,7 +31,9 @@ class BranchesController extends Controller
      */
     public function create()
     {
-        //
+
+        $branches=new Branch();
+        return view('masters.branches.create')->with(['branch'=>$branches]);
     }
 
     /**
@@ -35,9 +42,12 @@ class BranchesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateBranchRequest $request)
     {
-        //
+        $createBranchesAction = new CreateBranchesAction($request->name,$request->address);
+        $branch = $createBranchesAction->handle();
+        Notification::success('Branch Created successfully!');
+        return redirect('/branches');
     }
 
     /**
@@ -46,9 +56,12 @@ class BranchesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Branch $branch)
     {
-        //
+        return view('masters.branches.show')
+            ->with([
+                'branch' => $branch,
+            ]);
     }
 
     /**
@@ -57,9 +70,10 @@ class BranchesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Branch $branch)
     {
-        //
+        return view('masters.branches.edit')->with(['branch'=>$branch]);
+
     }
 
     /**
@@ -69,9 +83,14 @@ class BranchesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateBranchRequest $request, Branch $branch)
     {
-        //
+        $branch->update([
+            'name' => $request->name,
+            'address' => $request->address,
+        ]);
+        Notification::success('Branch updated successfully!');
+        return redirect('/branches');
     }
 
     /**

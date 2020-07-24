@@ -32,7 +32,7 @@ class TruckTypesController extends Controller
     public function create()
     {
         $truck=new TruckType();
-        return view('masters.truckType.create')->with(['trucks'=>$truck]);
+        return view('masters.truckType.index')->with(['trucks'=>$truck]);
     }
 
     /**
@@ -83,10 +83,10 @@ class TruckTypesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, TruckType $truck_type)
     {
         $createTruckTypeAction = new CreateTruckTypeAction($request->name);
-        $truck = $createTruckTypeAction->handle();
+        $truck_type = $createTruckTypeAction->handle();
         Notification::success('TruckType Updated successfully!');
         return redirect('/truck-types');
     }

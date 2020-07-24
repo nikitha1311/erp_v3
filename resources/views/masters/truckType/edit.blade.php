@@ -6,7 +6,22 @@
             <div class="col-md-8">
                 <div class='panel panel-default'>
                     <div class='panel-header'>
-                        Edit TruckType Details
+                        <h5>
+                            Edit TruckType
+                            <small></small>
+                        </h5>
+                        <div>
+                            <ul>
+                                <li>
+                                    <a href="{{ url("truck-types") }}">
+                                        <button class="btn btn-primary">
+                                            <i class="fa fa-arrow-left"></i>
+                                            <span>Back</span>
+                                        </button>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                     <form action="{{ route('truck-types.update',$trucks->id) }}" method='POST'>

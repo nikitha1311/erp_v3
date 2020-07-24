@@ -45,7 +45,7 @@
             </div>
             <form action="{{ url("truck-types") }}" method="post">
                 <div class="panel-body">
-                    {!! csrf_field() !!}
+                    @csrf
                     @include('masters.truckType.partials._form',[
                                    'trucks' => $trucks,
                                     'disabled' => false,

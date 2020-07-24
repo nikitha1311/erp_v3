@@ -13,7 +13,7 @@ class UpdateBranchRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class UpdateBranchRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'unique:branches,name,'.$this->branch->id
         ];
     }
 }

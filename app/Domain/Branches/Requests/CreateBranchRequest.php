@@ -13,7 +13,7 @@ class CreateBranchRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class CreateBranchRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'unique:branches,name',
+            'address' => 'unique:branches,address',
+
+
         ];
     }
 }

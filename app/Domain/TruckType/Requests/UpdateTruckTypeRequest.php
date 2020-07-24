@@ -24,7 +24,8 @@ class UpdateTruckTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'unique:truck_types,name,'.$this->truck_type->id
+
         ];
     }
 }

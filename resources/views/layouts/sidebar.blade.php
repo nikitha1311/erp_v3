@@ -30,6 +30,14 @@
                         </a>
                     </nav>
                 </div>
+                <div class="collapse" id="master" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="{{ route('branches.index') }}">
+                            <i class="fa fa-truck mr-2" aria-hidden="true"></i>
+                            Branch
+                        </a>
+                    </nav>
+                </div>
             </div>
         </div>
         <div class="sb-sidenav-footer">
