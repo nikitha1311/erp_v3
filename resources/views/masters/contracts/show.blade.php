@@ -28,25 +28,13 @@
                             <label for="name">Customer Name</label>
                             <input type="text" value="{{ $customer->name }}" class="form-control" id="name"  placeholder="Name" disabled>
                         </div>
-                        <div class="form-group">
-                            <label for="desc">Description</label>
-                            <input type="text" value="{{ $contract->description }}" class="form-control" id="desc"  placeholder="Description" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="signed_on">Signed On</label>
-                            <input type="text" value="{{ $contract->signed_at }}" disabled class="form-control" id="signed_on" name='signed_on' placeholder="Signed on" autocomplete="off">
-                        </div>
-                        <div class="form-group">
-                            <label for="valid_till">Valid Till</label>
-                            <input type="text" value="{{ $contract->valid_till }}" disabled class="form-control" id="valid_till" name='valid_till' placeholder="Valid Till" autocomplete="off">
-                        </div>
-                        <div class="form-group">
-                            <label for="status">Status</label>
-                            <input type="text" value="{{ $contract->status }}" class="form-control" id="status"  placeholder="Status" disabled>
-                        </div>
+                        @include('masters.contracts.partials._form',[
+                            'contract' => $contract,
+                            'disabled' => true
+                        ])
                         <div class="form-group">
                             <label for="created_by">Created By</label>
-                            <input type="text" value="{{ $contract->created_by }}" class="form-control" id="created_by"  placeholder="Created By" disabled>
+                            <input type="text" value="{{ $contract->createdBy->name }}" class="form-control" id="created_by"  placeholder="Created By" disabled>
                         </div>
                     </form>
                 </div>

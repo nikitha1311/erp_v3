@@ -34,8 +34,10 @@ class CustomerContractsController extends Controller
      */
     public function create(Customer $customer)
     {
+        $contract = new Contract();
         return view('masters.contracts.create')->with([
-            'customer' => $customer
+            'customer' => $customer,
+            'contract' => $contract
         ]);
     }
 
@@ -95,7 +97,7 @@ class CustomerContractsController extends Controller
         $updateCustomerContractAction = new UpdateCustomerContractAction($request->description, $request->signed_at,$request->valid_till,$request->status);
         $contract = $updateCustomerContractAction->handle($customer,$contract);
         Notification::success('Contract Updated successfully!');
-        return redirect("/customers/{$customer->id}/contracts");
+        return redirect("/customers/{$customer->id}/contracts/{$contract->id}");
     }
 
     /**

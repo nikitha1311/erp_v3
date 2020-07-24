@@ -19,7 +19,7 @@ class Contract extends Model
         return $this->belongsTo(Customer::class);
     }
 
-    public static function getStatus($num)
+    public static function getStatusAttribute($num)
     {
         switch($num)
         {
