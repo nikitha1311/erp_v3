@@ -62,7 +62,7 @@
                 <div class="panel-header">
                     <h5>
                         TruckTypes List
-                        <span class="text-danger">
+                        <span class="badge badge-danger count-badge">
                                     {{ $trucks->count()}}
                                 </span>
                         <small></small>

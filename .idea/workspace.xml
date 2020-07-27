@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="243e4f12-e2bd-4016-a202-0b79842f0676" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Masters/Branches/BranchesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Masters/Branches/BranchesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/masters/branches/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/masters/branches/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Masters/TruckType/TruckTypesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Masters/TruckType/TruckTypesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/masters/truckType/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/masters/truckType/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/app/Laravel/2020-07-21-12-26-23/home/youcorp-lenovo-2/project/erp-v3/.idea/erp-v3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/storage/app/Laravel/2020-07-21-12-26-23/home/youcorp-lenovo-2/project/erp-v3/.idea/erp-v3.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/app/Laravel/2020-07-21-12-26-23/home/youcorp-lenovo-2/project/erp-v3/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/storage/app/Laravel/2020-07-21-12-26-23/home/youcorp-lenovo-2/project/erp-v3/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/app/Laravel/2020-07-21-12-26-23/home/youcorp-lenovo-2/project/erp-v3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/storage/app/Laravel/2020-07-21-12-26-23/home/youcorp-lenovo-2/project/erp-v3/.idea/workspace.xml" afterDir="false" />
@@ -172,13 +176,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pure-drizzle-v3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../erp-v2/jsm-v2" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/Domain/TruckType" />
+      <recent name="$PROJECT_DIR$/app/Domain/Locations" />
+      <recent name="$PROJECT_DIR$/app/Domain/Vendors/Actions" />
+      <recent name="$PROJECT_DIR$/app/Domain/TruckType/Actions" />
+      <recent name="$PROJECT_DIR$/app/Domain/Branches/Actions" />
+      <recent name="$PROJECT_DIR$/app" />
     </key>
   </component>
   <component name="RunManager">
@@ -202,25 +210,31 @@
       <workItem from="1595313121787" duration="8280000" />
       <workItem from="1595393348493" duration="3897000" />
       <workItem from="1595413112025" duration="16601000" />
+      <workItem from="1595567492755" duration="37823000" />
+      <workItem from="1595655478818" duration="3321000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1595488464738">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1595488464738" />
-    <state x="726" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1595427001916">
+    <state x="740" y="105" width="486" height="895" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595615415964">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="726" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1595427001916" />
-    <state x="776" y="311" width="424" height="484" key="FileChooserDialogImpl" timestamp="1595417571322">
+    <state x="740" y="105" width="486" height="895" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1595615415964" />
+    <state x="726" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1595616617104">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="776" y="311" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1595417571322" />
+    <state x="726" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1595616617104" />
+    <state x="776" y="311" width="424" height="484" key="FileChooserDialogImpl" timestamp="1595655496492">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="776" y="311" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1595655496492" />
     <state x="141" y="39" key="SettingsEditor" timestamp="1595491948769">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -229,10 +243,14 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state width="500" height="445" key="SwitcherDM/0.0.1280.800@0.0.1280.800" timestamp="1595494287130" />
-    <state x="656" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1595532290335">
+    <state x="657" y="253" key="run.anything.popup" timestamp="1595578797216">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="657" y="253" key="run.anything.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1595578797216" />
+    <state x="656" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1595659733879">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="407" y="176" width="670" height="516" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1595493736416" />
-    <state x="656" y="259" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1595532290335" />
+    <state x="656" y="259" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1595659733879" />
   </component>
 </project>

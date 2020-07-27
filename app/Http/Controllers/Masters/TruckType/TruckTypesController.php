@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Masters\TruckType;
 
 use App\Classes\Notification;
 
+use App\Domain\TruckType\Actions\UpdateTruckTypeAction;
 use App\Domain\TruckType\Models\TruckType;
 use App\Domain\TruckType\Requests\CreateTruckTypeRequest;
 use App\Domain\TruckType\Actions\CreateTruckTypeAction;
 
+use App\Domain\TruckType\Requests\UpdateTruckTypeRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -83,12 +85,12 @@ class TruckTypesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TruckType $truck_type)
+    public function update(UpdateTruckTypeRequest $request,TruckType $truck_type)
     {
-        $createTruckTypeAction = new CreateTruckTypeAction($request->name);
-        $truck_type = $createTruckTypeAction->handle();
+        $UpdateTruckTypeAction = new UpdateTruckTypeAction($request->name);
+        $truck_type = $UpdateTruckTypeAction->handle($truck_type);
         Notification::success('TruckType Updated successfully!');
-        return redirect('/truck-types');
+        return redirect("/truck-types/{$truck_type->id}");
     }
 
     /**

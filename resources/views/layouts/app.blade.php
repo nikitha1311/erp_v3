@@ -8,6 +8,8 @@
     {{-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> --}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel='stylesheet' href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto:300,400,500,600,700" media="all">
+    <link rel=stylesheet" href="https://dist/jquery.geocomplete.css">
     <link href="{{ asset('css/style.css')  }}" rel="stylesheet">
     <link href="{{ asset('css/main.css')  }}" rel="stylesheet">
 </head>
@@ -26,6 +28,8 @@
     </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -42,5 +46,6 @@
     }).show();
     @endif
 </script>
+@yield('scripts')
 </body>
 </html>

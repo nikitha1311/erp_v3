@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Masters\Branches;
 use App\Classes\Notification;
 
+use App\Domain\Branches\Actions\UpdateBranchesAction;
 use App\Domain\Branches\Models\Branch;
 use App\Domain\Branches\Requests\CreateBranchRequest;
 use App\Domain\Branches\Requests\UpdateBranchRequest;
@@ -85,12 +86,10 @@ class BranchesController extends Controller
      */
     public function update(UpdateBranchRequest $request, Branch $branch)
     {
-        $branch->update([
-            'name' => $request->name,
-            'address' => $request->address,
-        ]);
+        $UpdateBranchesAction = new UpdateBranchesAction($request->name,$request->address);
+        $branch = $UpdateBranchesAction->handle($branch);
         Notification::success('Branch updated successfully!');
-        return redirect('/branches');
+        return redirect("/branches/{$branch->id}");
     }
 
     /**
