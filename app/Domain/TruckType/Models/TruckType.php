@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\Branches\Models;
+namespace App\Domain\TruckType\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Branch extends Model
+class TruckType extends Model
 {
     protected $guarded = ['id'];
 
