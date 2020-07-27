@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Masters\Locations;
 use App\Classes\Notification;
 
 use App\Domain\Locations\Actions\CreateLocationAction;
+use App\Domain\Locations\Actions\UpdateLocationAction;
 use App\Domain\Locations\Models\Location;
 use App\Domain\Locations\Requests\CreateLocationRequest;
 use App\Domain\Locations\Requests\UpdateLocationRequest;
@@ -71,7 +72,7 @@ class LocationsController extends Controller
      */
     public function edit(Location $location)
     {
-
+        return view('masters.locations.edit')->with(['locations'=>$location]);
     }
 
     /**
@@ -83,6 +84,10 @@ class LocationsController extends Controller
      */
     public function update(UpdateLocationRequest $request,Location $location)
     {
+        $updateLocationAction = new UpdateLocationAction($request->formatted_address, $request->locality, $request->district, $request->state,$request->postal_code);
+        $location = $updateLocationAction->handle($location);
+        Notification::success('Location created successfully!');
+        return redirect("/locations/$location->id");
 
     }
 
