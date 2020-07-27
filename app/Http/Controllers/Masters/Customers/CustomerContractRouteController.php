@@ -52,7 +52,7 @@ class CustomerContractRouteController extends Controller
      */
     public function store(CreateRouteRequest $request,Customer $customer,Contract $contract)
     {
-        dd($request);
+//        dd($request);
         $createContractRouteAction = new CreateContractRouteAction($request->from_id,$request->to_id,$request->is_active,
                                     $request->truck_type_id,$request->deactivation_reason,$request->deactivated_by);
         $route = $createContractRouteAction->handle($contract);

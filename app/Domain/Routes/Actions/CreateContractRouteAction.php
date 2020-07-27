@@ -29,7 +29,6 @@ class CreateContractRouteAction
     {
 
         return Route::create([
-            'contract_id' => $contract->id,
             'from_id' => $this->from_id,
             'to_id' => $this->to_id,
             'truck_type_id'=>$this->truck_type_id,
