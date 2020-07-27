@@ -39,11 +39,11 @@
                         </div>
                         <div class="form-group">
                             <label for="truck_type_id">Truck Type</label>
-                            <select class="form-control" id="truck_type_id" disabled>
+                            {{-- <select class="form-control" id="truck_type_id" disabled> --}}
                                 {{-- @foreach($truck_types as $truck_type) --}}
-                                    <option  selected value="">{{$route->truckType->name}}</option>
+                            {{-- <option  selected value="{{$route->truckType->name ?? '-' }}">{{$route->truckType->name}}</option> --}}
                                 {{-- @endforeach --}}
-                            </select>
+                            {{-- </select> --}}
                         </div>
     
                         <div class="form-group">

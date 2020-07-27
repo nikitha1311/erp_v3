@@ -8,9 +8,10 @@
                 <h5>Edit Route to Contract - {{$contract->id}} </h5>
             </div>
             <div class="panel-body">
-                <form action="{{ route("routes.store", [$customer->id,$contract->id]) }}" method="post">
+                <form action="{{ route("routes.update", [$customer->id,$contract->id,$route->id]) }}" method="post">
+                    @csrf
                     @method('PATCH')
-                    {{csrf_field()}}
+                    {{-- {{csrf_field()}} --}}
                     <div class="form-group">
                         <label for="from_id">From</label>
                         <select class="form-control" id="from_id" name="from_id">
@@ -24,7 +25,7 @@
                         <label for="to_id">To</label>
                         <select class="form-control" id="to_id" name="to_id">
                             @foreach($locations as $location)
-                                <option @if($route->from_id == $location->id) selected
+                                <option @if($route->to_id == $location->id) selected
                                     @endif value="{{ $location->id }}">{{ $location->district }}</option>
                             @endforeach
                         </select>
@@ -34,7 +35,7 @@
                         <select class="form-control" id="truck_type_id" name="truck_type_id">
                             @foreach($truck_types as $truck_type)
                                 <option @if($route->truck_type_id == $truck_type->id) selected
-                                    @endif value="{{ $location->id }}">{{ $location->district }}</option>
+                                    @endif value="{{ $truck_type->id }}">{{ $truck_type->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -55,8 +56,7 @@
                           <option value="0">Inactive</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    
+                    <button type="submit" class="btn btn-primary">Submit</button>  
                 </form>
             </div>
         </div>

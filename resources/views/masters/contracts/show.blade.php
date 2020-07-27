@@ -73,7 +73,7 @@
                                         </td>
                                         <td>{{ $route->from }}</td>
                                         <td>{{ $route->to }}</td>
-                                        <td>{{ $route->truckType->name }}</td>
+                                        <td>{{ $route->truckType->name ?? '-'}}</td>
                                         <td>{{ $route->is_active }}</td>
                                         <td>{{ $route->deactivation_reason ?? '-'}}</td>
                                         <td>{{ $route->deactivated_by ?? '-'}}</td>

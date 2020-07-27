@@ -12,6 +12,7 @@ use App\Domain\TruckType\Models\TruckType;
 use App\Domain\Routes\Requests\CreateRouteRequest;
 use App\Domain\Routes\Requests\UpdateRouteRequest;
 use App\Domain\Routes\Actions\CreateContractRouteAction;
+use App\Domain\Routes\Actions\UpdateContractRouteAction;
 use App\Classes\Notification;
 
 class CustomerContractRouteController extends Controller
@@ -104,9 +105,13 @@ class CustomerContractRouteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRouteRequest $request,Customer $customer,Contract $contract,Route $route)
     {
-        //
+        $updateContractRouteAction = new UpdateContractRouteAction($request->from_id,$request->to_id,$request->is_active,
+                                    $request->truck_type_id,$request->deactivation_reason,$request->deactivated_by);
+        $route = $updateContractRouteAction->handle($contract,$route);
+        Notification::success('Route Updated successfully!');
+        return redirect("/customers/{$customer->id}/contracts/{$contract->id}/routes/{$route->id}");
     }
 
     /**
