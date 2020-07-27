@@ -27,10 +27,10 @@ class CreateLocationAction
     {
         return Location::create([
             'formatted_address' => $this->formatted_address,
-            'locality' => $this->locality,
-            'district' => $this->district,
+            'locality' => $this->locality ?? '-',
+            'district' => $this->district ?? '-',
             'state' => $this->state,
-            'postal_code' => $this->postal_code,
+            'postal_code' => $this->postal_code ?? '-',
 
         ]);
     }
