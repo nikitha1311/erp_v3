@@ -15,28 +15,50 @@
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-hover" id="customers_table">
                         <thead>
                           <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Code</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Consignor</th>
-                            <th scope="col">Consignee</th>
-                            <th scope="col">Billed On</th>
-                            <th scope="col">Actions</th>
+                            <th>Name</th>
+                            <th>Code</th>
+                            <th>Address</th>
+                            <th>Consignor</th>
+                            <th>Consignee</th>
+                            <th>Billed On</th>
                           </tr>
                         </thead>
                         <tbody>
                             @foreach ($customers as $customer)
                                 <tr>
-                                    <td>{{$customer->name}}</td>
+                                    <td>
+                                        <a href="{{ route('customers.show', $customer->id) }}">
+                                            {{$customer->name}}
+                                        </a>
+                                    </td>
                                     <td>{{$customer->code}}</td>
                                     <td>{{$customer->address}}</td>
                                     <td>
-                                        <a  href="{{ route('customers.show',$customer->id) }}"  class='btn btn-primary btn-sm'>
-                                            <i class='fa fa-eye'></i>
-                                        </a>
+                                        @if($customer->is_consignor)
+                                        <i class="fa fa-check"></i>
+                                        @else
+                                        <i class="fa fa-times"></i>
+                                        @endif
+                                        {{-- {{ $customer->is_consignor }} --}}
+                                    </td>
+                                    <td>
+                                        @if($customer->is_consignee)
+                                        <i class="fa fa-check"></i>
+                                        @else
+                                        <i class="fa fa-times"></i>
+                                        @endif
+                                        {{-- {{ $customer->is_consignee }} --}}
+                                    </td>
+                                    <td>
+                                        @if($customer->is_billed_on)
+                                        <i class="fa fa-check"></i>
+                                        @else
+                                        <i class="fa fa-times"></i>
+                                        @endif
+                                        {{-- {{ $customer->is_billed_on }} --}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -46,4 +68,13 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script type='text/javascript'>
+    $(document).ready( function () {
+        alert();
+        $("#customers_table").DataTable();
+    });
+</script>
 @endsection
