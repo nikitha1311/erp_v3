@@ -13,18 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.app1');
-});
+Route::get('/', 'DashboardController@index')->name('dashboard');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/users','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@index')->name('users.index');
-Route::get('/users/create','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@create');
-Route::post('/users','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@store');
-Route::get('/users/{user}','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@show');
-Route::get('/users/{user}/edit','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@edit');
-Route::PATCH('/users/{user}','\\App\\Http\\Controllers\\Masters\\Users\\UsersController@update')->name('users.update');
 
+Route::resource('/users','\\App\\Http\\Controllers\\Masters\\Users\\UsersController');
+Route::resource('/truck-types','\\App\\Http\\Controllers\\Masters\\TruckType\\TruckTypesController');
+Route::resource('/branches','\\App\\Http\\Controllers\\Masters\\Branches\\BranchesController');
+Route::resource('/vendors','\\App\\Http\\Controllers\\Masters\\Vendors\\VendorsController');
+Route::resource('/locations','\\App\\Http\\Controllers\\Masters\\Locations\\LocationsController');
+
+
+Route::resource('/customers','\\App\\Http\\Controllers\\Masters\\Customers\\CustomersController');
+Route::resource('/customers/{customer}/contracts','\\App\\Http\\Controllers\\Masters\\Customers\\CustomerContractsController');

@@ -1,98 +1,29 @@
-@extends('layouts.app1')
+@extends('layouts.app')
 
-@section('head')
-    <style>
-        .pac-container {
-            z-index: 10000 !important;
-        }
-    </style>
-@append
 
 @section('content')
-    <section class="pt-60 pb-60">
-        <div class="container pt-60 pb-60">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">
-                            User Profile
-                            <div class="float-right">
-                                <a href="{{ route('users.index') }}" class="btn btn-blue">
-                                    <i class="fa fa-arrow-left mr-2"></i>
-                                    <span>Back</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input required type="text" class="form-control" id="name" name="name"
-                                           placeholder="Name"
-                                           value="{{ old('name', $user->name) }}">
-                                    @if($errors->has('name'))
-                                        <span class="help-text text-danger">{{ $errors->first('name') }}</span>
-                                    @endif
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input required type="text" class="form-control" id="email" name="email"
-                                           placeholder="Email"
-                                           value="{{ old('email', $user->email) }}">
-                                    @if($errors->has('email'))
-                                        <span class="help-text text-danger">{{ $errors->first('email') }}</span>
-                                    @endif
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="phone">Phone Number</label>
-                                    <input required type="text" class="form-control" id="phone" name="phone"
-                                           placeholder="Phone Number"
-                                           value="{{ old('phone', $user->phone) }}">
-                                    @if($errors->has('phone'))
-                                        <span class="help-text text-danger">{{ $errors->first('phone') }}</span>
-                                    @endif
-                                </div>
-{{--                                <div class="form-group">--}}
-{{--                                    <label for="phone">Plan</label>--}}
-{{--                                    <select name="plan_id" id="plan" class="form-control">--}}
-{{--                                        @foreach($plans as $plan)--}}
-{{--                                            <option value="{{$plan->id}}" @if($user->plan_id == $plan->id) selected @endif>{{$plan->name}}</option>--}}
-{{--                                        @endforeach--}}
-{{--                                    </select>--}}
-
-{{--                                    @if($errors->has('plan_id'))--}}
-{{--                                        <span class="help-text text-danger">{{ $errors->first('plan_id') }}</span>--}}
-{{--                                    @endif--}}
-{{--                                </div>--}}
-
-
-                                <div class="m-form__actions">
-                                    <button type="submit" class="btn btn-blue">Save</button>
-                                    <button type="reset" class="btn btn-default">Clear</button>
-                                </div>
-
-                        </div>
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-header">
+                    User Profile
+                    <div class="float-right">
+                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-secondary">
+                            <i class="fa fa-edit mr-2"></i>
+                            <span>Edit</span>
+                        </a>
+                        <a href="{{ route('users.index') }}" class="btn btn-primary">
+                            <i class="fa fa-arrow-left mr-2"></i>
+                            <span>Back</span>
+                        </a>
                     </div>
+                </div>
+                <div class="panel-body">
+                    @include('masters.users.partials._form',['user' => $user, 'disabled' => true])
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 @endsection
 
-@section('scripts')
-    <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_KEY') }}&libraries=places"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/geocomplete/1.7.0/jquery.geocomplete.min.js"></script>
 
-    <script type="text/javascript">
-        $('#formatted_address').geocomplete({
-            country: ['CA', 'IN'],
-            types: ['establishment'],
-            details: '.address',
-            detailsAttribute: 'id',
-        });
-    </script>
-
-@append
