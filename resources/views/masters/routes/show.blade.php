@@ -21,60 +21,14 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <div class="form-group">
-                            <label for="from_id">From</label>
-                            <select class="form-control" id="from_id" disabled>
-                                {{-- @foreach($locations as $location) --}}
-                                    <option  selected >{{$route->from}}</option>
-                                {{-- @endforeach --}}
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="to_id">To</label>
-                            <select class="form-control" id="to_id" disabled>
-                                {{-- @foreach($locations as $location) --}}
-                                    <option  selected >{{$route->to}}</option>
-                                {{-- @endforeach --}}
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="truck_type_id">Truck Type</label>
-                            {{-- <select class="form-control" id="truck_type_id" disabled> --}}
-                                {{-- @foreach($truck_types as $truck_type) --}}
-                            {{-- <option  selected value="{{$route->truckType->name ?? '-' }}">{{$route->truckType->name}}</option> --}}
-                                {{-- @endforeach --}}
-                            {{-- </select> --}}
-                        </div>
-    
-                        <div class="form-group">
-                          <label for="deactivation_reason">Deactivation Reason</label>
-                        <input type="text" disabled value="{{ $route->deactivation_reason }}" class="form-control" id="deactivation_reason" placeholder="Deactivation Reason">
-                        </div>
-                        {{-- <div class="form-group">
-                            <label for="deactivated_by">Deactivated By</label>
-                            <select class="form-control" id="deactivated_by">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                              <option>5</option>
-                            </select>
-                        </div> --}}
-                        <div class="form-group">
-                            <label for="deactivated_by">Deactivated By</label>
-                            <input type="text" disabled value="{{ $route->deactivated_by }}" class="form-control" id="deactivated_by" placeholder="Deactivated By">
-                        </div>
+                        @include('masters.routes.partials._form',[
+                            'route' => $route,
+                            'disabled' => true
+                        ])                 
                         <div class="form-group">
                             <label for="created_by">Created By</label>
                             <input type="text" disabled value="{{ $route->CreatedBy->name }}" class="form-control" id="created_by" placeholder="Created By">
-                        </div>
-                        <div class="form-group">
-                            <label for="is_active">Status</label>
-                            <select class="form-control" id="is_active" disabled>
-                              <option selected value="1">Active</option>
-                              <option value="0">Inactive</option>
-                            </select>
-                        </div>
+                        </div>      
                     </div>
                 </div>
             </div>

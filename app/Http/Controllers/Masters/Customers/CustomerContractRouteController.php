@@ -38,13 +38,15 @@ class CustomerContractRouteController extends Controller
     public function create(Customer $customer,Contract $contract)
     {
         // dd($customer,$contract);
+        $route = new Route();
         $locations = Location::all();
         $truck_types = TruckType::all();
         return view('masters.routes.create')->with([
             'locations' => $locations,
             'truck_types' => $truck_types,
             'contract' => $contract,
-            'customer' => $customer
+            'customer' => $customer,
+            'route' => $route
         ]);
     }
 
@@ -72,10 +74,14 @@ class CustomerContractRouteController extends Controller
      */
     public function show(Customer $customer,Contract $contract,Route $route)
     {
+        $locations = Location::all();
+        $truck_types = TruckType::all();
         return view('masters.routes.show')->with([
             'route' => $route,
             'customer' => $customer,
-            'contract' => $contract
+            'contract' => $contract,
+            'locations' => $locations,
+            'truck_types' => $truck_types,
         ]);
     }
 

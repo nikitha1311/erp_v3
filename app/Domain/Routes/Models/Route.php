@@ -39,8 +39,8 @@ class Route extends Model
     {
         switch($num)
         {
-            case '0' : return 'Inactive';
             case '1' : return 'Active';
+            default : return 'InActive';
         }
     }
 
