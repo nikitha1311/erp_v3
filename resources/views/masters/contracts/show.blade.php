@@ -8,6 +8,10 @@
                     <h5>Customer Contract Details</h5>
 
                     <div>
+                        <a href="{{ route('routes.create', [$customer->id,$contract->id]) }}" class="btn btn-secondary">
+                            <i class="fa fa-plus mr-2"></i>
+                            <span>Route</span>
+                        </a>
                         <a href="{{ route('contracts.edit', [$customer->id,$contract->id]) }}" class="btn btn-secondary">
                             <i class="fa fa-edit mr-2"></i>
                             <span>Edit</span>
@@ -37,6 +41,44 @@
                             <input type="text" value="{{ $contract->createdBy->name }}" class="form-control" id="created_by"  placeholder="Created By" disabled>
                         </div>
                     </form>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <h5>Contract Route List</h5>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover text-center">
+                            <thead>
+                                <tr>
+                                    <th>Contract Name</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Truck Type</th>
+                                    <th>Status</th>
+                                    <th>Deactivation Reason</th>
+                                    <th>Deactivated By</th>
+                                    <th>Created By</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($contract->routes as $route)
+                                    <tr>
+                                        <td>{{ $route->id }}</td>
+                                        <td>{{ $route->from }}</td>
+                                        <td>{{ $route->to }}</td>
+                                        <td>{{ $route->truckType->name }}</td>
+                                        <td>{{ $route->is_active }}</td>
+                                        <td>{{ $route->deactivation_reason ?? '-'}}</td>
+                                        <td>{{ $route->deactivated_by ?? '-'}}</td>
+                                        <td>{{ $route->CreatedBy->name }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

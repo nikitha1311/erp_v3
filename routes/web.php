@@ -29,3 +29,4 @@ Route::resource('/locations','\\App\\Http\\Controllers\\Masters\\Locations\\Loca
 
 Route::resource('/customers','\\App\\Http\\Controllers\\Masters\\Customers\\CustomersController');
 Route::resource('/customers/{customer}/contracts','\\App\\Http\\Controllers\\Masters\\Customers\\CustomerContractsController');
+Route::resource('/customers/{customer}/contracts/{contract}/routes', '\\App\\Http\\Controllers\\Masters\\Customers\\CustomerContractRouteController');

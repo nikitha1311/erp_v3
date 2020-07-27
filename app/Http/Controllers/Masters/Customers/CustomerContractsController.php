@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Domain\Contracts\Models\Contract;
 use App\Domain\Customers\Models\Customer;
+use App\Domain\Routes\Models\Route;
 use App\Domain\Contracts\Requests\CreateContractRequest;
 use App\Domain\Contracts\Requests\UpdateContractRequest;
 use App\Domain\Contracts\Actions\CreateCustomerContractAction;
@@ -65,9 +66,10 @@ class CustomerContractsController extends Controller
     public function show(Customer $customer,Contract $contract)
     {
         // dd($contract,$customer);
+        // dd( $contract->load('routes'));
         return view('masters.contracts.show')->with([
             'customer' => $customer,
-            'contract' => $contract
+            'contract' => $contract,
         ]);
     }
 
