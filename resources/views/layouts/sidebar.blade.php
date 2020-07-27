@@ -16,9 +16,13 @@
                 </a>
                 <div class="collapse" id="master" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route('users.index') }}">
-                            <i class="fa fa-user mr-2" aria-hidden="true"></i>
+                        <a class="nav-link" href="{{ route('users.index')}}">
+                            <i class="fa fa-user-o mr-2" aria-hidden="true"></i>
                             Users
+                        </a>
+                        <a class="nav-link" href="{{ route('customers.index')}}">
+                            <i class="fa fa-users mr-2" aria-hidden="true"></i>
+                            Customers
                         </a>
                     </nav>
                 </div>

@@ -6,6 +6,7 @@ use App\Classes\Notification;
 use App\Domain\Branches\Models\Branch;
 use App\Domain\Customers\Requests\UpdateCustomerRequest;
 use App\Domain\Users\Actions\CreateUserAction;
+use App\Domain\Users\Actions\UpdateUserAction;
 use App\Domain\Users\Models\User;
 use App\Domain\Users\Requests\CreateUserRequest;
 use App\Domain\Users\Requests\UpdateUserRequest;
@@ -61,16 +62,11 @@ class UsersController extends Controller
                 'branches' => $branches
             ]);
     }
-
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->update([
-            'name' => $request->name,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'branch_id' => $request->branch_id,
-        ]);
+        $updateUserAction = new UpdateUserAction($request->name, $request->email, $request->phone, $request->branch_id);
+        $user = $updateUserAction->handle($user);
         Notification::success('User updated successfully!');
-        return redirect('users');
+        return redirect("/users/{$user->id}");
     }
 }
