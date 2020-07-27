@@ -28,10 +28,4 @@
     </div>
 @endsection
 
-@section('scripts')
-<script type='text/javascript'>
-    $(document).ready( function () {
-        $("#signed_at").datetimepicker();
-    });
-</script>
-@endsection
+

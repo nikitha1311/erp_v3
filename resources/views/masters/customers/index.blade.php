@@ -15,7 +15,7 @@
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-hover" id="customers_table">
                         <thead>
                           <tr>
                             <th>Name</th>
@@ -68,4 +68,13 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script type='text/javascript'>
+    $(document).ready( function () {
+        alert();
+        $("#customers_table").DataTable();
+    });
+</script>
 @endsection

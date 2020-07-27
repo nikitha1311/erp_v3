@@ -8,12 +8,12 @@
 </div>
 <div class="form-group">
     <label for="signed_at">Signed at</label>
-    <input type="text" class="form-control" id="signed_at" name='signed_at' 
+    <input type="text" class="form-control dmy" id="signed_at" name='signed_at' 
     @if($disabled) disabled @endif placeholder="Signed at" value="{{ $contract->signed_at }}" autocomplete="off">
 </div>
 <div class="form-group">
     <label for="valid_till">Valid Till</label>
-    <input type="text" class="form-control" name="valid_till" id="valid_till"
+    <input type="text" class="form-control dmy hm" name="valid_till" id="valid_till"
     @if($disabled) disabled @endif placeholder="valid till" value="{{ $contract->valid_till }}" >
 </div>
 <div class="form-group">
