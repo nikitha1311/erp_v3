@@ -23,7 +23,7 @@ class CustomerContractBillingRateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Route $route)
+    public function index(Customer $customer,Contract $contract,Route $route)
     {
         // return view('masters.routes.show')->with([
         //     'route' => $route,
@@ -32,8 +32,8 @@ class CustomerContractBillingRateController extends Controller
         $truck_types = TruckType::all();
         return view('masters.routes.show')->with([
             'route' => $route,
-            // 'customer' => $customer,
-            // 'contract' => $contract,
+            'customer' => $customer,
+            'contract' => $contract,
             'locations' => $locations,
             'truck_types' => $truck_types,
         ]);
@@ -44,11 +44,13 @@ class CustomerContractBillingRateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Route $route)
+    public function create(Customer $customer,Contract $contract,Route $route)
     {
         // dd($route);
         return view('masters.billingRates.create')->with([
-            'route' => $route
+            'route' => $route,
+            'customer' => $customer,
+            'contract' => $contract
         ]);
     }
 
@@ -58,15 +60,14 @@ class CustomerContractBillingRateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateBillingRateRequest $request,Route $route)
+    public function store(CreateBillingRateRequest $request,Customer $customer,Contract $contract,Route $route,BillingRate $billing_rate)
     {
         // dd($route);
         $createRouteBillingRateAction = new CreateBillingRateAction($request->rate,
                                         $request->description,$request->wef);
         $billing_rate = $createRouteBillingRateAction->handle($route);
         Notification::success('Billing Rate created successfully!');
-        // return redirect("/routes/{$route->id}/billing-rates");
-        return route('billing-rate.index');
+        return redirect("/customers/{$customer->id}/contracts/{$contract->id}/routes/{$route->id}");
     }
 
     /**
@@ -75,12 +76,14 @@ class CustomerContractBillingRateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Route $route,BillingRate $billing_rate)
+    public function show(Customer $customer,Contract $contract,Route $route,BillingRate $billing_rate)
     {
         // dd($billing_rate);
         return view('masters.billingRates.show')->with([
             'route' => $route,
-            'billingrate' => $billing_rate
+            'billingrate' => $billing_rate,
+            'customer' => $customer,
+            'contract' => $contract
         ]);
     }
 
@@ -90,11 +93,13 @@ class CustomerContractBillingRateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Route $route,BillingRate $billing_rate)
+    public function edit(Customer $customer,Contract $contract,Route $route,BillingRate $billing_rate)
     {
         return view('masters.billingRates.edit')->with([
             'route' => $route,
-            'billingrate' => $billing_rate
+            'billingrate' => $billing_rate,
+            'customer' => $customer,
+            'contract' => $contract
         ]);
     }
 
@@ -105,13 +110,13 @@ class CustomerContractBillingRateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBillingRateRequest $request, Route $route,BillingRate $billing_rate)
+    public function update(UpdateBillingRateRequest $request,Customer $customer,Contract $contract,Route $route,BillingRate $billing_rate)
     {
         $updateRouteBillingRateAction = new UpdateBillingRateAction($request->rate,
                 $request->description,$request->wef);
         $billing_rate = $updateRouteBillingRateAction->handle($route,$billing_rate);
         Notification::success('Billing Rate Updated successfully!');
-        return redirect("/routes/{$route->id}/billing-rate/{$billing_rate->id}");
+        return redirect("/customers/{$customer->id}/contracts/{$contract->id}/routes/{$route->id}/billing-rate/{$billing_rate->id}");
     }
 
     /**

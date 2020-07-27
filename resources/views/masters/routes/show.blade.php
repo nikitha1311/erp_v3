@@ -9,7 +9,7 @@
                         Contract Route Details
                     </h5>
                     <div>
-                        <a href="{{ route('billing-rate.create', [$route->id]) }}" class="btn btn-success">
+                        <a href="{{ route('billing-rate.create', [$customer->id,$contract->id,$route->id]) }}" class="btn btn-success">
                             <i class="fa fa-plus mr-2"></i>
                             <span>Billing Rate</span>
                         </a>
@@ -60,7 +60,7 @@
                                 @foreach ($route->billingRates as $billing)
                                     <tr>
                                         <td>
-                                            <a href="{{ route('billing-rate.show', [$route->id,$billing->id]) }}">
+                                            <a href="{{ route('billing-rate.show',[$customer->id,$contract->id,$route->id,$billing->id]) }}">
                                                 {{$billing->id}}
                                             </a>
                                         </td>

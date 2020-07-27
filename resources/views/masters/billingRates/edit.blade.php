@@ -10,7 +10,7 @@
                     </h5>
                 </div>
                 <div class="panel-body">
-                    <form action="{{ route("billing-rate.update", [$route->id,$billingrate->id]) }}" method="post">
+                    <form action="{{ route("billing-rate.update", [$customer->id,$contract->id,$route->id,$billingrate->id]) }}" method="post">
                         @method('PATCH')
                         {{csrf_field()}}
                         <div class="form-group">

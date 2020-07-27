@@ -9,11 +9,11 @@
                         Billing Rate for Route
                     </h5>
                     <div>
-                        <a href="{{ route('billing-rate.edit', [$route->id,$billingrate->id]) }}" class="btn btn-secondary">
+                        <a href="{{ route('billing-rate.edit', [$customer->id,$contract->id,$route->id,$billingrate->id]) }}" class="btn btn-secondary">
                             <i class="fa fa-edit mr-2"></i>
                             <span>Edit</span>
                         </a>
-                        <a href="{{ route('billing-rate.index',[$route->id,$billingrate->id]) }}" class="btn btn-primary">
+                        <a href="{{ route('billing-rate.index',[$customer->id,$contract->id,$route->id]) }}" class="btn btn-primary">
                             <i class="fa fa-arrow-left mr-2"></i>
                             <span>Back</span>
                         </a>

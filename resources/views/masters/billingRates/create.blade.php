@@ -10,7 +10,7 @@
                     </h5>
                 </div>
                 <div class="panel-body">
-                    <form action="{{ route("billing-rate.store", [$route->id]) }}" method="post">
+                    <form action="{{ route("billing-rate.store", [$customer->id,$contract->id,$route->id]) }}" method="post">
                         {{csrf_field()}}
                         <div class="form-group">
                           <label for="rate">Rate</label>
