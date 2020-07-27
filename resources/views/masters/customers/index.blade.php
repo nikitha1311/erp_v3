@@ -73,7 +73,6 @@
 @section('scripts')
 <script type='text/javascript'>
     $(document).ready( function () {
-        alert();
         $("#customers_table").DataTable();
     });
 </script>

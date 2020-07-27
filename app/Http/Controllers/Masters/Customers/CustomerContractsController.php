@@ -50,7 +50,7 @@ class CustomerContractsController extends Controller
      */
     public function store(CreateContractRequest $request,Customer $customer)
     {
-        // dd($customer);
+        // dd($request);
         $createCustomerContractAction = new CreateCustomerContractAction($request->description, $request->signed_at,$request->valid_till,$request->status);
         $contract = $createCustomerContractAction->handle($customer);
         Notification::success('Contract created successfully!');

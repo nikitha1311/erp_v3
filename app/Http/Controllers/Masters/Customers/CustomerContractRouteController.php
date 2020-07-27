@@ -21,9 +21,12 @@ class CustomerContractRouteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Customer $customer,Contract $contract)
     {
-        return view('masters.contracts.show');
+        return view('masters.contracts.show')->with([
+            'customer' => $customer,
+            'contract' => $contract
+        ]);
     }
 
     /**
@@ -52,12 +55,12 @@ class CustomerContractRouteController extends Controller
      */
     public function store(CreateRouteRequest $request,Customer $customer,Contract $contract)
     {
-        dd($request);
+        // dd($request);
         $createContractRouteAction = new CreateContractRouteAction($request->from_id,$request->to_id,$request->is_active,
                                     $request->truck_type_id,$request->deactivation_reason,$request->deactivated_by);
         $route = $createContractRouteAction->handle($contract);
-        Notification::success('Contract created successfully!');
-        return redirect()->back();
+        Notification::success('Route created successfully!');
+        return redirect("/customers/{$customer->id}/contracts/{$contract->id}/routes");
     }
 
     /**
@@ -66,9 +69,13 @@ class CustomerContractRouteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Customer $customer,Contract $contract,Route $route)
     {
-        //
+        return view('masters.routes.show')->with([
+            'route' => $route,
+            'customer' => $customer,
+            'contract' => $contract
+        ]);
     }
 
     /**
@@ -77,9 +84,17 @@ class CustomerContractRouteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Customer $customer,Contract $contract,Route $route)
     {
-        //
+        $locations = Location::all();
+        $truck_types = TruckType::all();
+        return view('masters.routes.edit')->with([
+            'route' => $route,
+            'customer' => $customer,
+            'contract' => $contract,
+            'locations' => $locations,
+            'truck_types' => $truck_types,
+        ]);
     }
 
     /**

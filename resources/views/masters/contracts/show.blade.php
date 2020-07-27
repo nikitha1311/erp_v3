@@ -53,7 +53,7 @@
                         <table class="table table-bordered table-hover text-center">
                             <thead>
                                 <tr>
-                                    <th>Contract Name</th>
+                                    <th>Contract Id</th>
                                     <th>From</th>
                                     <th>To</th>
                                     <th>Truck Type</th>
@@ -66,7 +66,11 @@
                             <tbody>
                                 @foreach ($contract->routes as $route)
                                     <tr>
-                                        <td>{{ $route->id }}</td>
+                                        <td>
+                                            <a href="{{ route('routes.show',[$customer->id,$contract->id,$route->id]) }}">
+                                                {{ $route->id }}
+                                            </a>
+                                        </td>
                                         <td>{{ $route->from }}</td>
                                         <td>{{ $route->to }}</td>
                                         <td>{{ $route->truckType->name }}</td>
