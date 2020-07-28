@@ -101,8 +101,11 @@ class CustomerContractsController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($customer,$contract)
     {
-        //
+        $contract = Contract::findOrFail($contract);
+        $contract->delete();
+        Notification::success('Contract Deleted successfully!');
+        return redirect(route('contracts.index',$customer));
     }
 }

@@ -71,5 +71,13 @@ class CustomersController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
+    public function destroy($customer)
+    {
+        $customer = Customer::findOrFail($customer);
+        $customer->delete();
+        Notification::success('Customer Deleted successfully!');
+        return redirect(route('customers.index'));
+    }
+     
 
 }

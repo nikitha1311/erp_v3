@@ -77,6 +77,7 @@
                                 <th>Valid till</th>
                                 <th>Created by</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -103,6 +104,13 @@
                                     </td>
                                     <td>
                                         {{$contract->status}}
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('contracts.destroy',[$customer->id,$contract->id]) }}" method='POST'>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="fa fa-trash btn btn-danger"></button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

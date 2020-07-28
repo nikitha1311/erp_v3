@@ -25,7 +25,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
+                        <table class="table table-bordered table-hover text-center">
                             <thead>
                             <tr>
                                 <th>Billing Id</th>
@@ -33,6 +33,7 @@
                                 <th>Wef</th>
                                 <th>Description</th>
                                 <th>Created By</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
 
@@ -44,10 +45,25 @@
                                             {{$billing->id}}
                                         </a>
                                     </td>
-                                    <td>{{$billing->rate}}</td>
-                                    <td>{{$billing->wef->format('d-m-Y')}}</td>
-                                    <td>{{$billing->description}}</td>
-                                    <td>{{$billing->createdBy->name}}</td>
+                                    <td>
+                                        {{$billing->rate}}
+                                    </td>
+                                    <td>
+                                        {{$billing->wef->format('d-m-Y')}}
+                                    </td>
+                                    <td>
+                                        {{$billing->description}}
+                                    </td>
+                                    <td>
+                                        {{$billing->createdBy->name}}
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('billing-rates.destroy',[$billing->route_id,$billing->id]) }}" method='POST'>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="fa fa-trash btn btn-danger"></button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

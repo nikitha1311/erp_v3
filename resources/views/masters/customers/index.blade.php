@@ -15,7 +15,7 @@
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover" id="customers_table">
+                    <table class="table table-bordered table-hover text-center" id="customers_table">
                         <thead>
                           <tr>
                             <th>Name</th>
@@ -24,6 +24,7 @@
                             <th>Consignor</th>
                             <th>Consignee</th>
                             <th>Billed On</th>
+                            <th>Actions</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -59,6 +60,13 @@
                                         <i class="fa fa-times"></i>
                                         @endif
                                         {{-- {{ $customer->is_billed_on }} --}}
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('customers.destroy',$customer->id) }}" method='POST'>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="fa fa-trash btn btn-danger"></button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

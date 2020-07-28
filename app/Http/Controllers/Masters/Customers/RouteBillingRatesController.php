@@ -87,8 +87,11 @@ class RouteBillingRatesController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($route,$billing_rate)
     {
-        //
+        $billing_rate = BillingRate::findOrFail($billing_rate);
+        $billing_rate->delete();
+        Notification::success('BillingRate Deleted successfully!');
+        return redirect()->back();
     }
 }
