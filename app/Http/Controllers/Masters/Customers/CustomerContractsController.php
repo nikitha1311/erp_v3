@@ -66,12 +66,7 @@ class CustomerContractsController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Customer $customer, Contract $contract)
     {
         return view('masters.contracts.edit')->with([
@@ -80,13 +75,7 @@ class CustomerContractsController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(UpdateContractRequest $request, Customer $customer, Contract $contract)
     {
         $updateCustomerContractAction = new UpdateCustomerContractAction($request->description, $request->signed_at, $request->valid_till, $request->status);

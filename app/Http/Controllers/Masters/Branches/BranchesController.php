@@ -98,8 +98,12 @@ class BranchesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Branch $branch)
     {
-        //
+        if ($branch) {
+            $branch->delete();
+        }
+        Notification::success('Branch Deleted successfully!');
+        return redirect()->back();
     }
 }

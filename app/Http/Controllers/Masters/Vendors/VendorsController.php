@@ -22,7 +22,9 @@ class VendorsController extends Controller
     public function index()
     {
         $vendor=Vendor::all();
-        return view('masters.vendors.index')->with(['vendors'=>$vendor]);
+        return view('masters.vendors.index')->with([
+            'vendors'=>$vendor->load('createdBy')
+        ]);
     }
 
     /**
@@ -105,8 +107,12 @@ class VendorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Vendor $vendor)
     {
-        //
+        if ($vendor) {
+            $vendor->delete();
+        }
+        Notification::success('Vendor Deleted successfully!');
+        return redirect()->back();
     }
 }
