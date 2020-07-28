@@ -61,14 +61,15 @@
                     <a class="dropdown-item" href="#">Activity Log</a>
                     <div class="dropdown-divider"></div>
                     {{-- <a class="dropdown-item" href="login.html">Logout</a> --}}
-                    
-                    <button onclick="document.getElementById('logout-form').submit()"
-                            class="btn btn-danger">
-                        Logout
-                    </button>
-                    <form action="{{ url('/logout') }}" id="logout-form" method="post">
-                        {!! csrf_field() !!}
-                    </form>
+                    <div class="text-center">
+                        <button onclick="document.getElementById('logout-form').submit()"
+                                class="btn btn-danger">
+                            Logout
+                        </button>
+                        <form action="{{ url('/logout') }}" id="logout-form" method="post">
+                            {!! csrf_field() !!}
+                        </form>
+                    </div> 
                 </div>
             </li>
         </ul>
