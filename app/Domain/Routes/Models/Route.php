@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Domain\Routes\Models;
+use App\Domain\Contracts\Models\Contract;
 use App\Domain\Locations\Models\Location;
 use App\Domain\TruckType\Models\TruckType;
 use App\Traits\CreatedBy;
