@@ -1,20 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row justify-content-center align-items-center">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            @include('masters.routes.partials._show')
+        </div>
         <div class="col-md-8">
             <div class="panel">
                 <div class="panel-header">
                     <h5>
-                        Create Billing Rate for Route - #{{$route->id}}
+                        Create Rate
                     </h5>
                 </div>
                 <div class="panel-body">
-                    <form action="{{ route("billing-rate.store", [$customer->id,$contract->id,$route->id]) }}" method="post">
+                    <form action="{{ route("billing-rates.store", $route->id) }}" method="post">
                         {{csrf_field()}}
                         <div class="form-group">
                           <label for="rate">Rate</label>
-                          <input type="text" required class="form-control" name='rate' id="rate"  placeholder="Rate">
+                          <input type="number" required class="form-control" name='rate' id="rate"  placeholder="Rate">
                             @if($errors->has('rate'))
                                 <span class="text-danger">{{ $errors->first('rate') }}</span>
                             @endif

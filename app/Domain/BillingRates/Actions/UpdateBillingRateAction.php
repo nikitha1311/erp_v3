@@ -10,23 +10,30 @@ class UpdateBillingRateAction
     private $description;
     private $rate;
     private $wef;
+    private $route_id;
+    /**
+     * @var BillingRate
+     */
+    private $billingRate;
 
-    public function __construct($rate, $description, $wef)
+    public function __construct($rate, $description, $wef, $route_id, BillingRate $billingRate)
     {
         $this->description = $description;
         $this->rate = $rate;
         $this->wef = $wef;
+        $this->route_id = $route_id;
+        $this->billingRate = $billingRate;
     }
 
-    public function handle($route,$billingrate)
+    public function handle()
     {
-         $billingrate->update([
+         $this->billingRate->update([
             'rate' => $this->rate,
             'description' => $this->description,
             'wef' => Carbon::createFromFormat('d-m-Y',$this->wef),
-            'route_id' => $route->id,
+            'route_id' => $this->route_id,
             'created_by' => 1
         ]);
-        return $billingrate;
+        return $this->billingRate;
     }
 }
