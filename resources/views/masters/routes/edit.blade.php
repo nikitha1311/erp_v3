@@ -5,16 +5,18 @@
     <div class="col-md-8">
         <div class="panel">
             <div class="panel-header">
-                <h5>Add New Route to Contract - {{$contract->id}} </h5>
+                <h5>Edit Route to Contract - {{$contract->id}} </h5>
             </div>
             <div class="panel-body">
                 <form action="{{ route("routes.store", [$customer->id,$contract->id]) }}" method="post">
+                    @method('PATCH')
                     {{csrf_field()}}
                     <div class="form-group">
                         <label for="from_id">From</label>
                         <select class="form-control" id="from_id" name="from_id">
                             @foreach($locations as $location)
-                                <option  selected value="{{$location->id}}">{{$location->district}}</option>
+                                <option @if($route->from_id == $location->id) selected
+                                    @endif value="{{ $location->id }}">{{ $location->district }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -22,7 +24,8 @@
                         <label for="to_id">To</label>
                         <select class="form-control" id="to_id" name="to_id">
                             @foreach($locations as $location)
-                                <option  selected value="{{$location->id}}">{{$location->district}}</option>
+                                <option @if($route->from_id == $location->id) selected
+                                    @endif value="{{ $location->id }}">{{ $location->district }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -30,19 +33,20 @@
                         <label for="truck_type_id">Truck Type</label>
                         <select class="form-control" id="truck_type_id" name="truck_type_id">
                             @foreach($truck_types as $truck_type)
-                                <option  selected value="{{$truck_type->id}}">{{$truck_type->name}}</option>
+                                <option @if($route->truck_type_id == $truck_type->id) selected
+                                    @endif value="{{ $location->id }}">{{ $location->district }}</option>
                             @endforeach
                         </select>
                     </div>
 
                     <div class="form-group">
                       <label for="deactivation_reason">Deactivation Reason</label>
-                      <input type="text" name="deactivation_reason" class="form-control" id="deactivation_reason" placeholder="Deactivation Reason">
+                      <input type="text" value="{{ $route->deactivation_reason }}" name="deactivation_reason" class="form-control" id="deactivation_reason" placeholder="Deactivation Reason">
                     </div>
                    
                     <div class="form-group">
                         <label for="deactivated_by">Deactivated By</label>
-                        <input type="text" name="deactivated_by" class="form-control" id="deactivated_by" placeholder="Deactivated By">
+                        <input type="text" value="{{ $route->deactivated_by }}" name="deactivated_by" class="form-control" id="deactivated_by" placeholder="Deactivated By">
                       </div>
                     <div class="form-group">
                         <label for="is_active">Status</label>
