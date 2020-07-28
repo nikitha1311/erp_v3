@@ -103,12 +103,17 @@ class ContractRouteController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRouteRequest $request, Customer $customer, Contract $contract, Route $route)
+    public function update(UpdateRouteRequest $request,$contract, $route)
     {
+//        dd($route);
         // dd($request->truck_type_id);
-        $updateContractRouteAction = new UpdateContractRouteAction($request->from_id, $request->to_id, $request->is_active,
-            $request->truck_type_id, $request->deactivation_reason, $request->deactivated_by);
-        $route = $updateContractRouteAction->handle($contract, $route);
+        $updateContractRouteAction = new UpdateContractRouteAction($contract, [
+            'from_id' => $request->from_id,
+            'to_id' => $request->to_id,
+            'is_active' => $request->is_active,
+            'truck_type_id' => $request->truck_type_id,
+        ]);
+        $route = $updateContractRouteAction->handle($route);
         Notification::success('Route Updated successfully!');
         return redirect(route('routes.show', [$route->contract_id, $route->id]));
     }
