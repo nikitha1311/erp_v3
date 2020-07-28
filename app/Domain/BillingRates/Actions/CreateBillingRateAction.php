@@ -28,7 +28,7 @@ class CreateBillingRateAction
             'description' => $this->description,
             'wef' => Carbon::createFromFormat('d-m-Y',$this->wef),
             'route_id' => $this->route_id,
-            'created_by' => 1
+            'created_by' => auth()->user()->id
         ]);
     }
 }

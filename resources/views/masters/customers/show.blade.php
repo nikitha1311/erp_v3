@@ -77,6 +77,7 @@
                                 <th>Valid till</th>
                                 <th>Created by</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -91,16 +92,25 @@
                                         {{$contract->description }}
                                     </td>
                                     <td>
-                                        {{$contract->signed_at->format('d-m-Y')}}
+                                        {{ $contract->signed_at ? $contract->signed_at->format('d-m-Y') : '' }}
+                                        {{-- {{$contract->signed_at->format('d-m-Y')}} --}}
                                     </td>
                                     <td>
-                                        {{$contract->valid_till->format('d-m-Y')}}
+                                        {{ $contract->valid_till ? $contract->valid_till->format('d-m-Y') : '' }}
+                                        {{-- {{$contract->valid_till->format('d-m-Y')}} --}}
                                     </td>
                                     <td>
                                         {{$contract->createdBy->name}}
                                     </td>
                                     <td>
                                         {{$contract->status}}
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('contracts.destroy',[$customer->id,$contract->id]) }}" method='POST'>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="fa fa-trash btn btn-danger"></button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

@@ -67,6 +67,7 @@
                                 <th>Deactivation Reason</th>
                                 <th>Deactivated By</th>
                                 <th>Created By</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -77,13 +78,34 @@
                                             {{ $route->id }}
                                         </a>
                                     </td>
-                                    <td>{{ $route->from }}</td>
-                                    <td>{{ $route->to }}</td>
-                                    <td>{{ $route->truckType->name ?? '-'}}</td>
-                                    <td>{{ $route->is_active }}</td>
-                                    <td>{{ $route->deactivation_reason ?? '-'}}</td>
-                                    <td>{{ $route->deactivated_by ?? '-'}}</td>
-                                    <td>{{ $route->createdBy->name }}</td>
+                                    <td>
+                                        {{ $route->from }}
+                                    </td>
+                                    <td>
+                                        {{ $route->to }}
+                                    </td>
+                                    <td>
+                                        {{ $route->truckType->name ?? '-'}}
+                                    </td>
+                                    <td>
+                                        {{ $route->is_active }}
+                                    </td>
+                                    <td>
+                                        {{ $route->deactivation_reason ?? '-'}}
+                                    </td>
+                                    <td>
+                                        {{ $route->deactivated_by ?? '-'}}
+                                    </td>
+                                    <td>
+                                        {{ $route->createdBy->name }}
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('routes.destroy',[$contract->id,$route->id]) }}" method='POST'>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="fa fa-trash btn btn-danger"></button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

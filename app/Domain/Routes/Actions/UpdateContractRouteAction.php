@@ -9,21 +9,23 @@ class UpdateContractRouteAction
 {
     private $params;
     private $contract_id;
+    private $route_id;
 
-    public function __construct( $contract_id, array $params)
+    public function __construct( $contract_id,$route_id,array $params)
     {
         $this->params = $params;
         $this->contract_id = $contract_id;
+        $this->route_id = $route_id;
     }
 
-    public function handle($route)
+    public function handle()
     {
-        dd($route);
+        // dd();
         $fields = [
             'contract_id' => $this->contract_id,
-            'created_by' => 1
+            'created_by' => auth()->user()->id
         ];
         $params = array_merge($fields, $this->params);
-        return $route->update($params);
+        return $this->route_id->update($params);
     }
 }

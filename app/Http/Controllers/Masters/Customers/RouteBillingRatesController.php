@@ -50,15 +50,11 @@ class RouteBillingRatesController extends Controller
     public function show(Customer $customer, Contract $contract, Route $route, BillingRate $billing_rate)
     {
         // dd($billing_rate->wef->format('d-m-Y'));
-        $locations = Location::all();
-        $truck_types = TruckType::all();
         return view('masters.billingRates.show')->with([
             'route' => $route,
             'billingrate' => $billing_rate,
             'customer' => $customer,
             'contract' => $contract,
-            'locations' => $locations,
-            'truck_types' => $truck_types,
         ]);
     }
 
@@ -87,8 +83,11 @@ class RouteBillingRatesController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($route,$billing_rate)
     {
-        //
+        $billing_rate = BillingRate::findOrFail($billing_rate);
+        $billing_rate->delete();
+        Notification::success('BillingRate Deleted successfully!');
+        return redirect()->back();
     }
 }

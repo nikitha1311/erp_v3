@@ -14,7 +14,7 @@
 <div class="form-group">
     <label for="valid_till">Valid Till</label>
     <input type="text" class="form-control dmy hm" name="valid_till" id="valid_till"
-    @if($disabled) disabled @endif placeholder="valid till" value="{{ $contract->valid_till ? $contract->signed_at->format('d-m-Y') : '' }}" >
+    @if($disabled) disabled @endif placeholder="valid till" value="{{ $contract->valid_till ? $contract->valid_till->format('d-m-Y') : '' }}" >
 </div>
 <div class="form-group">
     <label for="status">Status</label>

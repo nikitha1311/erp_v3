@@ -70,12 +70,10 @@ class ContractRouteController extends Controller
      */
     public function show(Customer $customer, Contract $contract, Route $route)
     {
-
         return view('masters.routes.show')->with([
             'route' => $route->load('billingRates.createdBy'),
             'customer' => $customer,
             'contract' => $contract,
-
         ]);
     }
 
@@ -109,13 +107,13 @@ class ContractRouteController extends Controller
     {
 //        dd($route);
         // dd($request->truck_type_id);
-        $updateContractRouteAction = new UpdateContractRouteAction($contract, [
+        $updateContractRouteAction = new UpdateContractRouteAction($contract,$route, [
             'from_id' => $request->from_id,
             'to_id' => $request->to_id,
             'is_active' => $request->is_active,
             'truck_type_id' => $request->truck_type_id,
         ]);
-        $route = $updateContractRouteAction->handle($route);
+        $route = $updateContractRouteAction->handle();
         Notification::success('Route Updated successfully!');
         return redirect(route('routes.show', [$route->contract_id, $route->id]));
     }
@@ -126,8 +124,11 @@ class ContractRouteController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($contract,$route)
     {
-        //
+        $route = Route::findOrFail($route);
+        $route->delete();
+        Notification::success('Route Deleted successfully!');
+        return redirect()->back();
     }
 }
