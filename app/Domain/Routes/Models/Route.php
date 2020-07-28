@@ -41,13 +41,13 @@ class Route extends Model
         return $this->hasMany(BillingRate::class);
     }
 
-    public static function getIsactiveAttribute($num)
-    {
-        switch($num)
-        {
-            case '1' : return 'Active';
-            default : return 'InActive';
-        }
-    }
+    // public static function getIsactiveAttribute($num)
+    // {
+    //     switch($num)
+    //     {
+    //         case '1' : return 'Active';
+    //         default : return 'InActive';
+    //     }
+    // }
 
 }
