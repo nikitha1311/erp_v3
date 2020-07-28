@@ -32,4 +32,3 @@ Route::resource('/customers/{customer}/contracts','\\App\\Http\\Controllers\\Mas
 
 Route::resource('/contracts/{contract}/routes', '\\App\\Http\\Controllers\\Masters\\Customers\\ContractRouteController');
 Route::resource('/routes/{route}/billing-rates','\\App\\Http\\Controllers\\Masters\\Customers\\RouteBillingRatesController');
-// Route::resource('/customers/{customer}/contracts/{contract}/routes/{route}/billing-rate', '\\App\\Http\\Controllers\\Masters\\Customers\\RouteBillingRatesController');

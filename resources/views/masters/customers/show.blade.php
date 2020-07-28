@@ -91,10 +91,12 @@
                                         {{$contract->description }}
                                     </td>
                                     <td>
-                                        {{$contract->signed_at->format('d-m-Y')}}
+                                        {{ $contract->signed_at ? $contract->signed_at->format('d-m-Y') : '' }}
+                                        {{-- {{$contract->signed_at->format('d-m-Y')}} --}}
                                     </td>
                                     <td>
-                                        {{$contract->valid_till->format('d-m-Y')}}
+                                        {{ $contract->valid_till ? $contract->valid_till->format('d-m-Y') : '' }}
+                                        {{-- {{$contract->valid_till->format('d-m-Y')}} --}}
                                     </td>
                                     <td>
                                         {{$contract->createdBy->name}}

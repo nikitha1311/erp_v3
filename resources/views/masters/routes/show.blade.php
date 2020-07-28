@@ -47,7 +47,7 @@
                                     <td>{{$billing->rate}}</td>
                                     <td>{{$billing->wef->format('d-m-Y')}}</td>
                                     <td>{{$billing->description}}</td>
-                                    <td>{{$billing->CreatedBy->name}}</td>
+                                    <td>{{$billing->createdBy->name}}</td>
                                 </tr>
                             @endforeach
                             </tbody>

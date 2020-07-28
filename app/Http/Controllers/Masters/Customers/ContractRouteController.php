@@ -70,14 +70,10 @@ class ContractRouteController extends Controller
      */
     public function show(Customer $customer, Contract $contract, Route $route)
     {
-        $locations = Location::all();
-        $truck_types = TruckType::all();
         return view('masters.routes.show')->with([
-            'route' => $route,
+            'route' => $route->load('billingRates.createdBy'),
             'customer' => $customer,
             'contract' => $contract,
-            'locations' => $locations,
-            'truck_types' => $truck_types,
         ]);
     }
 
