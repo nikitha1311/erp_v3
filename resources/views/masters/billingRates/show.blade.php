@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-8">
-            <div class="panel">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            @include('masters.routes.partials._show')
+        </div>
+        <div class='col-md-8'>
+             <div class="panel">
                 <div class="panel-header">
                     <h5>
                         Billing Rate for Route
@@ -26,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label for="wef">Wef</label>
-                        <input type="text" disabled class="form-control dmy" value="{{ $billingrate->wef }}" id="wef" placeholder="Wef">
+                        <input type="text" disabled class="form-control" value="{{ $billingrate->wef->format('d-m-Y') }}" id="wef" placeholder="Wef">
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>

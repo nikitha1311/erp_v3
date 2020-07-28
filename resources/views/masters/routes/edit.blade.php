@@ -7,7 +7,7 @@
             <div class="panel-header">
                 <h5>Edit Route to Contract - {{$contract->id}} </h5>
             </div>
-            <form action="{{ route("routes.update", [$customer->id,$contract->id,$route->id]) }}" method="post">
+            <form action="{{ route("routes.update", [$contract->id,$route->id]) }}" method="post">
                 <div class="panel-body">
                     @csrf
                     @method('PATCH')

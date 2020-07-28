@@ -15,7 +15,7 @@ use App\Domain\Routes\Actions\CreateContractRouteAction;
 use App\Domain\Routes\Actions\UpdateContractRouteAction;
 use App\Classes\Notification;
 
-class CustomerContractRouteController extends Controller
+class ContractRouteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,9 +35,8 @@ class CustomerContractRouteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Customer $customer,Contract $contract)
+    public function create(Contract $contract)
     {
-        // dd($customer,$contract);
         $route = new Route();
         $locations = Location::all();
         $truck_types = TruckType::all();
@@ -45,7 +44,7 @@ class CustomerContractRouteController extends Controller
             'locations' => $locations,
             'truck_types' => $truck_types,
             'contract' => $contract,
-            'customer' => $customer,
+            // 'customer' => $customer,
             'route' => $route
         ]);
     }
@@ -56,14 +55,14 @@ class CustomerContractRouteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateRouteRequest $request,Customer $customer,Contract $contract)
+    public function store(CreateRouteRequest $request,Contract $contract)
     {
         // dd($request);
         $createContractRouteAction = new CreateContractRouteAction($request->from_id,$request->to_id,$request->is_active,
                                     $request->truck_type_id,$request->deactivation_reason,$request->deactivated_by);
         $route = $createContractRouteAction->handle($contract);
         Notification::success('Route created successfully!');
-        return redirect("/customers/{$customer->id}/contracts/{$contract->id}/routes");
+        return redirect(route('routes.show',[$route->contract_id, $route->id]));
     }
 
     /**
@@ -91,13 +90,13 @@ class CustomerContractRouteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer,Contract $contract,Route $route)
+    public function edit(Contract $contract,Route $route)
     {
         $locations = Location::all();
         $truck_types = TruckType::all();
         return view('masters.routes.edit')->with([
             'route' => $route,
-            'customer' => $customer,
+            // 'customer' => $customer,
             'contract' => $contract,
             'locations' => $locations,
             'truck_types' => $truck_types,
@@ -113,11 +112,12 @@ class CustomerContractRouteController extends Controller
      */
     public function update(UpdateRouteRequest $request,Customer $customer,Contract $contract,Route $route)
     {
+        // dd($request->truck_type_id);
         $updateContractRouteAction = new UpdateContractRouteAction($request->from_id,$request->to_id,$request->is_active,
                                     $request->truck_type_id,$request->deactivation_reason,$request->deactivated_by);
         $route = $updateContractRouteAction->handle($contract,$route);
         Notification::success('Route Updated successfully!');
-        return redirect("/customers/{$customer->id}/contracts/{$contract->id}/routes/{$route->id}");
+        return redirect(route('routes.show',[$route->contract_id, $route->id]));
     }
 
     /**

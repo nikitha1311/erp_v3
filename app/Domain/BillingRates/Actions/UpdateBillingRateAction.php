@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Domain\BillingRates\Actions;
-
+use Carbon\Carbon;
 
 use App\Domain\BillingRates\Models\BillingRate;
 
@@ -20,11 +20,10 @@ class UpdateBillingRateAction
 
     public function handle($route,$billingrate)
     {
-
          $billingrate->update([
             'rate' => $this->rate,
             'description' => $this->description,
-            'wef' => $this->wef ?? '2018-02-01 15:54:15',
+            'wef' => Carbon::createFromFormat('d-m-Y',$this->wef),
             'route_id' => $route->id,
             'created_by' => 1
         ]);

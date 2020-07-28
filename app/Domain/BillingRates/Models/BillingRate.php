@@ -11,4 +11,6 @@ class BillingRate extends Model
     protected $table = 'billing_rates';
 
     protected $guarded = ['id'];
+
+    protected $dates = ['wef'];
 }

@@ -7,7 +7,7 @@
             <div class="panel-header">
                 <h5>Add New Route to Contract - {{$contract->id}} </h5>
             </div>
-            <form action="{{ route("routes.store", [$customer->id,$contract->id]) }}" method="post">
+            <form action="{{ route("routes.store", [$contract->customer_id,$contract->id]) }}" method="post">
                 <div class="panel-body">
                     {{csrf_field()}}
                     @include('masters.routes.partials._form',[

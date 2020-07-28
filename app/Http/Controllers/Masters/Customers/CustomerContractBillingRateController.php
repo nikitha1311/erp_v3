@@ -78,12 +78,16 @@ class CustomerContractBillingRateController extends Controller
      */
     public function show(Customer $customer,Contract $contract,Route $route,BillingRate $billing_rate)
     {
-        // dd($billing_rate);
+        // dd($billing_rate->wef->format('d-m-Y'));
+        $locations = Location::all();
+        $truck_types = TruckType::all();
         return view('masters.billingRates.show')->with([
             'route' => $route,
             'billingrate' => $billing_rate,
             'customer' => $customer,
-            'contract' => $contract
+            'contract' => $contract,
+            'locations' => $locations,
+            'truck_types' => $truck_types,
         ]);
     }
 

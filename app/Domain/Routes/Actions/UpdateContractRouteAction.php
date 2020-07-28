@@ -15,7 +15,7 @@ class UpdateContractRouteAction
     private $deactivated_by;
 
 
-    public function __construct( $from_id, $to_id,$truck_type_id,$is_active,$deactivation_reason,$deactivated_by)
+    public function __construct( $from_id, $to_id,$is_active,$truck_type_id,$deactivation_reason,$deactivated_by)
     {
         $this->from_id = $from_id;
         $this->to_id = $to_id;
@@ -27,7 +27,6 @@ class UpdateContractRouteAction
 
     public function handle($contract,$route)
     {
-
         $route->update([
             'contract_id' => $contract->id,
             'from_id' => $this->from_id,

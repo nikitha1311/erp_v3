@@ -4,6 +4,7 @@ namespace App\Domain\BillingRates\Actions;
 
 
 use App\Domain\BillingRates\Models\BillingRate;
+use Carbon\Carbon;
 
 class CreateBillingRateAction
 {
@@ -24,7 +25,7 @@ class CreateBillingRateAction
         return BillingRate::create([
             'rate' => $this->rate,
             'description' => $this->description,
-            'wef' => $this->wef ?? '2018-02-01 15:54:15',
+            'wef' => Carbon::createFromFormat('d-m-Y',$this->wef),
             'route_id' => $route->id,
             'created_by' => 1
         ]);

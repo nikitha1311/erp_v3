@@ -20,13 +20,13 @@
                                 <span class="text-danger">{{ $errors->first('rate') }}</span>
                             @endif
                         </div>
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                           <label for="wef">Wef</label>
-                          <input type="text" class="form-control dmy" value="{{$billingrate->wef}}" name='wef' id="wef" placeholder="Wef">
+                          <input type="text" class="form-control dmy" value="{{$billingrate->wef->format('d-m-Y')}}" name='wef' id="wef" placeholder="Wef">
                             @if($errors->has('wef'))
                                 <span class="text-danger">{{ $errors->first('wef') }}</span>
                             @endif
-                        </div> --}}
+                        </div>
                         <div class="form-group">
                             <label for="description">Description</label>
                             <input type="text" required class="form-control" value="{{$billingrate->description}}" name='description' id="description" placeholder="Description">
