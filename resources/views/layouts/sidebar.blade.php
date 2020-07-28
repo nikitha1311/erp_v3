@@ -1,3 +1,4 @@
+@if (!empty(auth()->user()->name))
 <div id="layoutSidenav_nav">
     <nav class="sb-sidenav sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
@@ -66,3 +67,4 @@
         </div>
     </nav>
 </div>
+@endif
