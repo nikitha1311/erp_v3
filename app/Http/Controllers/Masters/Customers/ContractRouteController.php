@@ -22,7 +22,7 @@ class ContractRouteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Customer $customer,Contract $contract)
+    public function index(Customer $customer, Contract $contract)
     {
         return view('masters.contracts.show')->with([
             'customer' => $customer,
@@ -49,29 +49,26 @@ class ContractRouteController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(CreateRouteRequest $request,Contract $contract)
+    public function store(CreateRouteRequest $request, $contract)
     {
-        // dd($request);
-        $createContractRouteAction = new CreateContractRouteAction($request->from_id,$request->to_id,$request->is_active,
-                                    $request->truck_type_id,$request->deactivation_reason,$request->deactivated_by);
-        $route = $createContractRouteAction->handle($contract);
+        $createContractRouteAction = new CreateContractRouteAction($contract, [
+            'from_id' => $request->from_id,
+            'to_id' => $request->to_id,
+            'is_active' => $request->is_active,
+            'truck_type_id' => $request->truck_type_id,
+        ]);
+        $route = $createContractRouteAction->handle();
         Notification::success('Route created successfully!');
-        return redirect(route('routes.show',[$route->contract_id, $route->id]));
+        return redirect(route('routes.show', [$route->contract_id, $route->id]));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer,Contract $contract,Route $route)
+    public function show(Customer $customer, Contract $contract, Route $route)
     {
         $locations = Location::all();
         $truck_types = TruckType::all();
@@ -87,10 +84,10 @@ class ContractRouteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contract $contract,Route $route)
+    public function edit(Contract $contract, Route $route)
     {
         $locations = Location::all();
         $truck_types = TruckType::all();
@@ -106,24 +103,24 @@ class ContractRouteController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRouteRequest $request,Customer $customer,Contract $contract,Route $route)
+    public function update(UpdateRouteRequest $request, Customer $customer, Contract $contract, Route $route)
     {
         // dd($request->truck_type_id);
-        $updateContractRouteAction = new UpdateContractRouteAction($request->from_id,$request->to_id,$request->is_active,
-                                    $request->truck_type_id,$request->deactivation_reason,$request->deactivated_by);
-        $route = $updateContractRouteAction->handle($contract,$route);
+        $updateContractRouteAction = new UpdateContractRouteAction($request->from_id, $request->to_id, $request->is_active,
+            $request->truck_type_id, $request->deactivation_reason, $request->deactivated_by);
+        $route = $updateContractRouteAction->handle($contract, $route);
         Notification::success('Route Updated successfully!');
-        return redirect(route('routes.show',[$route->contract_id, $route->id]));
+        return redirect(route('routes.show', [$route->contract_id, $route->id]));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

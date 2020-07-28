@@ -61,8 +61,8 @@
                         {{-- {{ $customer->name }} / {{ $customer->signed_at }} /
                         <small>{{$customer->valid_till}}</small> --}}
                     </h5>
-    
-                    <a href="{{ route('contracts.create', [$customer->id]) }}"  type="button" class="btn btn-success">
+
+                    <a href="{{ route('contracts.create', [$customer->id]) }}" type="button" class="btn btn-success">
                         <i class="fa fa-plus"></i>
                         Contract
                     </a>
@@ -71,36 +71,40 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover text-center">
                             <thead>
-                              <tr>
+                            <tr>
                                 <th>Id</th>
                                 <th>Description</th>
                                 <th>Signed on</th>
                                 <th>Valid till</th>
                                 <th>Created by</th>
                                 <th>Status</th>
-                              </tr>
+                            </tr>
                             </thead>
                             <tbody>
-                                @foreach ($customer->contracts as $contract)
-                                    <tr>
-                                        <td>
-                                            <a href="{{ route('contracts.show',[$customer->id,$contract->id]) }}">
-                                                {{$contract->id}}
-                                            </a>
-                                        </td>
-                                        <td>{{$contract->description }}</td>
-                                        <td>{{$contract->signed_at}}</td>
-                                        <td>
-                                            {{$contract->valid_till}}
-                                        </td>
-                                        <td>
-                                            {{$contract->createdBy->name}}
-                                        </td>
-                                        <td>
-                                            {{$contract->status}}
-                                        </td>
-                                    </tr>
-                                @endforeach
+                            @foreach ($customer->contracts as $contract)
+                                <tr>
+                                    <td>
+                                        <a href="{{ route('contracts.show',[$customer->id,$contract->id]) }}">
+                                            {{$contract->id}}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        {{$contract->description }}
+                                    </td>
+                                    <td>
+                                        {{$contract->signed_at->format('d-m-Y')}}
+                                    </td>
+                                    <td>
+                                        {{$contract->valid_till->format('d-m-Y')}}
+                                    </td>
+                                    <td>
+                                        {{$contract->createdBy->name}}
+                                    </td>
+                                    <td>
+                                        {{$contract->status}}
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -111,4 +115,4 @@
 @endsection
 
 
-        
+
