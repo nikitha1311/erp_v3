@@ -23,7 +23,7 @@ class UpdateContractRouteAction
         // dd();
         $fields = [
             'contract_id' => $this->contract_id,
-            'created_by' => 1
+            'created_by' => auth()->user()->id
         ];
         $params = array_merge($fields, $this->params);
         return $this->route_id->update($params);

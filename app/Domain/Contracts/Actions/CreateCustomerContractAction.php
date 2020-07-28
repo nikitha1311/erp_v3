@@ -29,7 +29,7 @@ class CreateCustomerContractAction
             'valid_till' => $this->valid_till,
             'status' => $this->status,
             'customer_id' => $customer->id,
-            'created_by' => 1
+            'created_by' => auth()->user()->id
         ]);
     }
 }
