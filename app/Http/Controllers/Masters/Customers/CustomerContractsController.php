@@ -56,19 +56,13 @@ class CustomerContractsController extends Controller
         return redirect("/customers/{$customer->id}/contracts");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function show(Customer $customer, Contract $contract)
     {
         // dd($contract,$customer);
         // dd( $contract->load('routes'));
         return view('masters.contracts.show')->with([
             'customer' => $customer,
-            'contract' => $contract,
+            'contract' => $contract->load('routes.from', 'routes.to', 'routes.truckType', 'routes.createdBy'),
         ]);
     }
 

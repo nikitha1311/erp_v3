@@ -12,10 +12,6 @@
                             <i class="fa fa-edit mr-2"></i>
                             <span>Edit</span>
                         </a>
-                        <a href="{{ route('contracts.index',$customer->id) }}" class="btn btn-primary">
-                            <i class="fa fa-arrow-left mr-2"></i>
-                            <span>Back</span>
-                        </a>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -52,6 +48,10 @@
                             <i class="fa fa-plus mr-2"></i>
                             <span>Route</span>
                         </a>
+                        <a href="{{ route('contracts.index',$customer->id) }}" class="btn btn-primary">
+                            <i class="fa fa-arrow-left mr-2"></i>
+                            <span>Back</span>
+                        </a>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -83,7 +83,7 @@
                                     <td>{{ $route->is_active }}</td>
                                     <td>{{ $route->deactivation_reason ?? '-'}}</td>
                                     <td>{{ $route->deactivated_by ?? '-'}}</td>
-                                    <td>{{ $route->CreatedBy->name }}</td>
+                                    <td>{{ $route->createdBy->name }}</td>
                                 </tr>
                             @endforeach
                             </tbody>

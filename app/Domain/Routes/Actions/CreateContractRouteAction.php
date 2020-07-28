@@ -2,8 +2,6 @@
 
 namespace App\Domain\Routes\Actions;
 
-
-use App\Domain\Contracts\Models\Contract;
 use App\Domain\Routes\Models\Route;
 
 class CreateContractRouteAction

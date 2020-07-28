@@ -42,7 +42,7 @@ class CustomersController extends Controller
     public function show(Customer $customer)
     {
         return view('masters.customers.show')->with([
-            'customer' => $customer->load('contracts'),
+            'customer' => $customer->load('contracts.createdBy'),
         ]);
     }
 
