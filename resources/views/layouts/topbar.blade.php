@@ -16,7 +16,7 @@
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
             <div class="company-details">
                 <a class="company-name" href="/login">
-                    <h5 class="text-gray font-weight-bold">
+                    <h5 class="text-gray font-weight-normal">
                         JSM ERP
                         <i class="fa fa-angle-down" aria-hidden="true"></i>
                     </h5>
