@@ -37,7 +37,17 @@
                                 {{ $branch->name }}
                             </td>
                             <td>
+
                                 {{ $branch->address }}
+
+                                <form id="branchDeleteForm{{$branch->id}}" action="{{route('branches.destroy', $branch->id )}}" method="post" hidden>
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                                <a class="float-right" href="#" onclick="$('#branchDeleteForm{{$branch->id}}').submit()">
+                                    <i class="fa fa-trash ml-4 justify-content-between text-danger"
+                                       aria-hidden="true"></i>
+                                </a>
                             </td>
 
                         </tr>

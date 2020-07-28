@@ -65,11 +65,6 @@ class CustomersController extends Controller
         return redirect("/customers/{$customer->id}");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
 
 }

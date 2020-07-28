@@ -99,8 +99,12 @@ class TruckTypesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TruckType $truckType)
     {
-        //
+        if ($truckType) {
+            $truckType->delete();
+        }
+        Notification::success('TruckType Deleted successfully!');
+        return redirect()->back();
     }
 }

@@ -32,6 +32,7 @@
                         <th>Address</th>
                         <th>Remarks</th>
                         <th>Created By</th>
+                        <th></th>
 
                     </tr>
                     </thead>
@@ -59,7 +60,17 @@
                                 {{ $vendor->remarks }}
                             </td>
                             <td>
-                                {{ $vendor->CreatedBy->name }}
+                                {{ $vendor->createdBy->name }}
+                            </td>
+                            <td>
+                                <form id="vendorDeleteForm{{$vendor->id}}" action="{{route('vendors.destroy', $vendor->id )}}" method="post" hidden>
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                                <a  href="#" onclick="$('#vendorDeleteForm{{$vendor->id}}').submit()">
+                                    <i class="fa fa-trash ml-4 justify-content-between text-danger"
+                                       aria-hidden="true"></i>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
