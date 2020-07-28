@@ -9,6 +9,10 @@
                         Contract Route Details
                     </h5>
                     <div>
+                        <a href="{{ route('billing-rate.create', [$customer->id,$contract->id,$route->id]) }}" class="btn btn-success">
+                            <i class="fa fa-plus mr-2"></i>
+                            <span>Billing Rate</span>
+                        </a>
                         <a href="{{ route('routes.edit', [$customer->id,$contract->id,$route->id]) }}" class="btn btn-secondary">
                             <i class="fa fa-edit mr-2"></i>
                             <span>Edit</span>
@@ -21,60 +25,53 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <div class="form-group">
-                            <label for="from_id">From</label>
-                            <select class="form-control" id="from_id" disabled>
-                                {{-- @foreach($locations as $location) --}}
-                                    <option  selected >{{$route->from}}</option>
-                                {{-- @endforeach --}}
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="to_id">To</label>
-                            <select class="form-control" id="to_id" disabled>
-                                {{-- @foreach($locations as $location) --}}
-                                    <option  selected >{{$route->to}}</option>
-                                {{-- @endforeach --}}
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="truck_type_id">Truck Type</label>
-                            <select class="form-control" id="truck_type_id" disabled>
-                                {{-- @foreach($truck_types as $truck_type) --}}
-                                    <option  selected value="">{{$route->truckType->name}}</option>
-                                {{-- @endforeach --}}
-                            </select>
-                        </div>
-    
-                        <div class="form-group">
-                          <label for="deactivation_reason">Deactivation Reason</label>
-                        <input type="text" disabled value="{{ $route->deactivation_reason }}" class="form-control" id="deactivation_reason" placeholder="Deactivation Reason">
-                        </div>
-                        {{-- <div class="form-group">
-                            <label for="deactivated_by">Deactivated By</label>
-                            <select class="form-control" id="deactivated_by">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                              <option>5</option>
-                            </select>
-                        </div> --}}
-                        <div class="form-group">
-                            <label for="deactivated_by">Deactivated By</label>
-                            <input type="text" disabled value="{{ $route->deactivated_by }}" class="form-control" id="deactivated_by" placeholder="Deactivated By">
-                        </div>
+                        @include('masters.routes.partials._form',[
+                            'route' => $route,
+                            'disabled' => true
+                        ])                 
                         <div class="form-group">
                             <label for="created_by">Created By</label>
                             <input type="text" disabled value="{{ $route->CreatedBy->name }}" class="form-control" id="created_by" placeholder="Created By">
-                        </div>
-                        <div class="form-group">
-                            <label for="is_active">Status</label>
-                            <select class="form-control" id="is_active" disabled>
-                              <option selected value="1">Active</option>
-                              <option value="0">Inactive</option>
-                            </select>
-                        </div>
+                        </div>      
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <h5>
+                        Billing Rates List for Route
+                    </h5>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                              <tr>
+                                <th>Route Id</th>
+                                <th>Rate</th>
+                                <th>Wef</th>
+                                <th>Description</th>
+                                <th>Created By</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach ($route->billingRates as $billing)
+                                    <tr>
+                                        <td>
+                                            <a href="{{ route('billing-rate.show',[$customer->id,$contract->id,$route->id,$billing->id]) }}">
+                                                {{$billing->id}}
+                                            </a>
+                                        </td>
+                                        <td>{{$billing->rate}}</td>
+                                        <td>{{$billing->wef}}</td>
+                                        <td>{{$billing->description}}</td>
+                                        <td>{{$billing->CreatedBy->name}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

@@ -8,7 +8,7 @@
                     <h5>Customer Contract Details</h5>
 
                     <div>
-                        <a href="{{ route('routes.create', [$customer->id,$contract->id]) }}" class="btn btn-secondary">
+                        <a href="{{ route('routes.create', [$customer->id,$contract->id]) }}" class="btn btn-success">
                             <i class="fa fa-plus mr-2"></i>
                             <span>Route</span>
                         </a>
@@ -73,7 +73,7 @@
                                         </td>
                                         <td>{{ $route->from }}</td>
                                         <td>{{ $route->to }}</td>
-                                        <td>{{ $route->truckType->name }}</td>
+                                        <td>{{ $route->truckType->name ?? '-'}}</td>
                                         <td>{{ $route->is_active }}</td>
                                         <td>{{ $route->deactivation_reason ?? '-'}}</td>
                                         <td>{{ $route->deactivated_by ?? '-'}}</td>

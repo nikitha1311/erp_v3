@@ -4,7 +4,7 @@ namespace App\Domain\Routes\Models;
 use App\Domain\Locations\Models\Location;
 use App\Domain\TruckType\Models\TruckType;
 use App\Traits\CreatedBy;
-
+use App\Domain\BillingRates\Models\BillingRate;
 use Illuminate\Database\Eloquent\Model;
 
 class Route extends Model
@@ -35,12 +35,17 @@ class Route extends Model
         return $this->hasOne(TruckType::class,'id','truck_type_id');
     }
 
+    public function billingRates()
+    {
+        return $this->hasMany(BillingRate::class);
+    }
+
     public static function getIsactiveAttribute($num)
     {
         switch($num)
         {
-            case '0' : return 'Inactive';
             case '1' : return 'Active';
+            default : return 'InActive';
         }
     }
 

@@ -12,6 +12,7 @@ use App\Domain\TruckType\Models\TruckType;
 use App\Domain\Routes\Requests\CreateRouteRequest;
 use App\Domain\Routes\Requests\UpdateRouteRequest;
 use App\Domain\Routes\Actions\CreateContractRouteAction;
+use App\Domain\Routes\Actions\UpdateContractRouteAction;
 use App\Classes\Notification;
 
 class CustomerContractRouteController extends Controller
@@ -37,13 +38,15 @@ class CustomerContractRouteController extends Controller
     public function create(Customer $customer,Contract $contract)
     {
         // dd($customer,$contract);
+        $route = new Route();
         $locations = Location::all();
         $truck_types = TruckType::all();
         return view('masters.routes.create')->with([
             'locations' => $locations,
             'truck_types' => $truck_types,
             'contract' => $contract,
-            'customer' => $customer
+            'customer' => $customer,
+            'route' => $route
         ]);
     }
 
@@ -71,10 +74,14 @@ class CustomerContractRouteController extends Controller
      */
     public function show(Customer $customer,Contract $contract,Route $route)
     {
+        $locations = Location::all();
+        $truck_types = TruckType::all();
         return view('masters.routes.show')->with([
             'route' => $route,
             'customer' => $customer,
-            'contract' => $contract
+            'contract' => $contract,
+            'locations' => $locations,
+            'truck_types' => $truck_types,
         ]);
     }
 
@@ -104,9 +111,13 @@ class CustomerContractRouteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRouteRequest $request,Customer $customer,Contract $contract,Route $route)
     {
-        //
+        $updateContractRouteAction = new UpdateContractRouteAction($request->from_id,$request->to_id,$request->is_active,
+                                    $request->truck_type_id,$request->deactivation_reason,$request->deactivated_by);
+        $route = $updateContractRouteAction->handle($contract,$route);
+        Notification::success('Route Updated successfully!');
+        return redirect("/customers/{$customer->id}/contracts/{$contract->id}/routes/{$route->id}");
     }
 
     /**
