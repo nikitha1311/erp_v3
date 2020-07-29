@@ -7,11 +7,11 @@ use App\User;
 use App\Domain\Customers\Models\Customer;
 use App\Domain\Branches\Models\Branch;
 
-class GC extends Model
+class GoodsConsignmentNote extends Model
 {
     protected $guarded = ['id'];
 
-    protected $table = ['goods_consignment_notes'];
+    protected $table = 'goods_consignment_notes';
 
     public function transaction()
     {

@@ -9,18 +9,17 @@ use App\Domain\TruckType\Models\TruckType;
 use App\Domain\Branches\Models\Branch;
 use App\Domain\Transactions\Models\Transaction;
 
-class LHA extends Model
+class LoadingHireAgreement extends Model
 {
-   
+
     protected $guarded = ['id'];
 
-    protected $table = ['loading_hire_agreements'];
 
     protected $dates = [
         'date','deleted_at','loading_reported','loading_released','unloading_reported','unloading_released','expected_delivery_date'
     ];
 
-    
+
 
     public function type()
     {

@@ -8,8 +8,11 @@ use App\Traits\HasApprovals;
 use App\Domain\TruckType\Models\TruckType;
 use App\Domain\Locations\Models\Location;
 use App\Domain\Routes\Models\Route;
-use App\Domain\LHAs\Models\LHA;
-use App\Domain\GCs\Models\GC;
+use App\Domain\LHAs\Models\LoadingHireAgreement;
+use App\Domain\GCs\Models\GoodsConsignmentNote;
+use Illuminate\Support\Facades\DB;
+
+
 class Transaction extends Model
 {
     use HasApprovals,CreatedBy;
@@ -17,6 +20,11 @@ class Transaction extends Model
     protected $guarded = ['id'];
 
     protected $dates = ['date','deleted_at'];
+
+    public function id()
+    {
+        return "TRN#{$this->id}";
+    }
 
     public function route()
     {
@@ -30,13 +38,13 @@ class Transaction extends Model
 
     public function loadingHireAgreements()
     {
-        return $this->belongsToMany(LHA::class, 'lhas_transactions',
+        return $this->belongsToMany(LoadingHireAgreement::class, 'lhas_transactions',
             'transaction_id', 'lha_id')->withTimestamps();
     }
 
     public function goodsConsignmentNotes()
     {
-        return $this->belongsToMany(GC::class, 'gcs_transactions',
+        return $this->belongsToMany(GoodsConsignmentNote::class, 'gcs_transactions',
             'transaction_id', 'gc_id')->withTimestamps();
     }
 }
