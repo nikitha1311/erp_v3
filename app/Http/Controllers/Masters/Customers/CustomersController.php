@@ -13,11 +13,6 @@ use App\Domain\Customers\Actions\UpdateCustomerAction;
 
 class CustomersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $customers = Customer::all();
@@ -26,11 +21,6 @@ class CustomersController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $customer = new Customer();
@@ -39,41 +29,24 @@ class CustomersController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(CreateCustomerRequest $request)
     {
         $createCustomerAction = new CreateCustomerAction($request->name, $request->code,
-                                $request->address,$request->is_consignor,$request->is_consignee,
-                                $request->is_billed_on);
+            $request->address, $request->is_consignor, $request->is_consignee,
+            $request->is_billed_on);
         $customer = $createCustomerAction->handle();
         Notification::success('Customer created successfully!');
-        return redirect('/customers');
+        return redirect(route('customers.show', $customer->id));
     }
 
-    /**
-     * Display the specified resource.  
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show(Customer $customer)
     {
         return view('masters.customers.show')->with([
-            'customer' => $customer->load('contracts'),
+            'customer' => $customer->load('contracts.createdBy'),
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Customer $customer)
     {
         return view('masters.customers.edit')->with([
@@ -81,29 +54,22 @@ class CustomersController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateCustomerRequest $request,Customer $customer)
+    public function update(UpdateCustomerRequest $request, Customer $customer)
     {
         $updateCustomerAction = new UpdateCustomerAction($request->name, $request->code,
-                                $request->address,$request->is_consignor,$request->is_consignee,
-                                $request->is_billed_on);
+            $request->address, $request->is_consignor, $request->is_consignee,
+            $request->is_billed_on);
         $customer = $updateCustomerAction->handle($customer);
         // dd($customer);
         Notification::success('Customer Updated successfully!');
-        return  redirect("/customers/{$customer->id}");
+        return redirect("/customers/{$customer->id}");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
+    public function destroy($customer)
+    {
+        $customer = Customer::findOrFail($customer);
+        $customer->delete();
+        Notification::success('Customer Deleted successfully!');
+        return redirect(route('customers.index'));
+    }
 }

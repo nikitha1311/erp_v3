@@ -1,3 +1,4 @@
+@if (!empty(auth()->user()->name))
 <div id="layoutSidenav_nav">
     <nav class="sb-sidenav sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
@@ -42,6 +43,22 @@
                         </a>
                     </nav>
                 </div>
+                <div class="collapse" id="master" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="{{ route('vendors.index') }}">
+                            <i class="fa fa-user-plus mr-2" aria-hidden="true"></i>
+                            Vendors
+                        </a>
+                    </nav>
+                </div>
+                <div class="collapse" id="master" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="{{ route('locations.index') }}">
+                            <i class="fa fa-map-marker mr-2" aria-hidden="true"></i>
+                           Locations
+                        </a>
+                    </nav>
+                </div>
             </div>
         </div>
         <div class="sb-sidenav-footer">
@@ -50,3 +67,4 @@
         </div>
     </nav>
 </div>
+@endif

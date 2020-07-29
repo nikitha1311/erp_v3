@@ -24,7 +24,7 @@
         "singleDatePicker": true,
         "autoApply": true,
         "locale": {
-            "format": "MM/DD/YYYY",
+            "format": "DD-MM-YYYY",
             "separator": " - ",
             "applyLabel": "Apply",
             "cancelLabel": "Cancel",
@@ -59,54 +59,7 @@
         },
         "linkedCalendars": false,
         "showCustomRangeLabel": false,
-        "startDate": "07/21/2020",
-        "endDate": "07/27/2020"
-    }, function(start, end, label) {
-      console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
-    });
-
-    $('.dmy.hm').daterangepicker({
-        "singleDatePicker": true,
-        "timePicker": true,
-        "autoApply": true,
-        "locale": {
-            "format": "MM/DD/YYYY",
-            "separator": " - ",
-            "applyLabel": "Apply",
-            "cancelLabel": "Cancel",
-            "fromLabel": "From",
-            "toLabel": "To",
-            "customRangeLabel": "Custom",
-            "weekLabel": "W",
-            "daysOfWeek": [
-                "Su",
-                "Mo",
-                "Tu",
-                "We",
-                "Th",
-                "Fr",
-                "Sa"
-            ],
-            "monthNames": [
-                "January",
-                "February",
-                "March",
-                "April",
-                "May",
-                "June",
-                "July",
-                "August",
-                "September",
-                "October",
-                "November",
-                "December"
-            ],
-            "firstDay": 1
-        },
-        "linkedCalendars": false,
-        "showCustomRangeLabel": false,
-        "startDate": "07/21/2020",
-        "endDate": "07/27/2020"
+        // "startDate": new Date()
     }, function(start, end, label) {
       console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
     });

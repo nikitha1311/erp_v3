@@ -29,6 +29,7 @@
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Branch</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -47,6 +48,16 @@
                             </td>
                             <td>
                                 {{ $user->branch->name }}
+                            </td>
+                            <td>
+                                <form id="userDeleteForm{{$user->id}}" action="{{route('users.destroy', $user->id )}}" method="post" hidden>
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                                <a  href="#" onclick="$('#userDeleteForm{{$user->id}}').submit()">
+                                    <i class="fa fa-trash justify-content-between text-danger"
+                                       aria-hidden="true"></i>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

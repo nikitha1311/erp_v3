@@ -23,8 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        Role::create(['name' => 'admin']);
+        // Role::create(['name' => 'admin']);
 
-        return view('home');
+        return view('/home');
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Domain\Contracts\Models\Contract;
 use App\Domain\Customers\Models\Customer;
+use App\Domain\Routes\Models\Route;
 use App\Domain\Contracts\Requests\CreateContractRequest;
 use App\Domain\Contracts\Requests\UpdateContractRequest;
 use App\Domain\Contracts\Actions\CreateCustomerContractAction;
@@ -44,40 +45,29 @@ class CustomerContractsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateContractRequest $request,Customer $customer)
+    public function store(CreateContractRequest $request, Customer $customer)
     {
-        // dd($customer);
-        $createCustomerContractAction = new CreateCustomerContractAction($request->description, $request->signed_at,$request->valid_till,$request->status);
+        $createCustomerContractAction = new CreateCustomerContractAction($request->description, $request->signed_at, $request->valid_till, $request->status);
         $contract = $createCustomerContractAction->handle($customer);
         Notification::success('Contract created successfully!');
         return redirect("/customers/{$customer->id}/contracts");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Customer $customer,Contract $contract)
+    public function show(Customer $customer, Contract $contract)
     {
         // dd($contract,$customer);
+        // dd( $contract->load('routes'));
         return view('masters.contracts.show')->with([
             'customer' => $customer,
-            'contract' => $contract
+            'contract' => $contract->load('routes.from', 'routes.to', 'routes.truckType', 'routes.createdBy'),
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Customer $customer,Contract $contract)
+
+    public function edit(Customer $customer, Contract $contract)
     {
         return view('masters.contracts.edit')->with([
             'customer' => $customer,
@@ -85,29 +75,20 @@ class CustomerContractsController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateContractRequest $request,Customer $customer,Contract $contract)
+
+    public function update(UpdateContractRequest $request, Customer $customer, Contract $contract)
     {
-        $updateCustomerContractAction = new UpdateCustomerContractAction($request->description, $request->signed_at,$request->valid_till,$request->status);
-        $contract = $updateCustomerContractAction->handle($customer,$contract);
+        $updateCustomerContractAction = new UpdateCustomerContractAction($request->description, $request->signed_at, $request->valid_till, $request->status);
+        $contract = $updateCustomerContractAction->handle($customer, $contract);
         Notification::success('Contract Updated successfully!');
         return redirect("/customers/{$customer->id}/contracts/{$contract->id}");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy($customer,$contract)
     {
-        //
+        $contract = Contract::findOrFail($contract);
+        $contract->delete();
+        Notification::success('Contract Deleted successfully!');
+        return redirect(route('contracts.index',$customer));
     }
 }

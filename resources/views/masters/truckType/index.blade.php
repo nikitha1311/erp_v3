@@ -82,11 +82,25 @@
                             @foreach($trucks as $truck )
                                 <tr>
 
-                                    <td>
-                                        {{ $truck->name }}
-                                        <a class="float-right" href="{{route('truck-types.edit',$truck->id)}}">
-                                            <i class="fa fa-edit mr-2"></i>
-                                        </a>
+                                    <td class="d-flex justify-content-between">
+                                        <div>
+                                            {{ $truck->name }}
+
+                                        </div>
+                                        <div>
+                                            <a  href="{{route('truck-types.edit',$truck->id)}}">
+                                                <i class="fa fa-edit mr-2"></i>
+                                            </a>
+                                            <form id="truckDeleteForm{{$truck->id}}" action="{{route('truck-types.destroy', $truck->id )}}" method="post" hidden>
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                            <a href="#" onclick="$('#truckDeleteForm{{$truck->id}}').submit()">
+                                                <i class="fa fa-trash ml-4 justify-content-between text-danger"
+                                                   aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+
                                     </td>
 
                                 </tr>

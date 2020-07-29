@@ -20,7 +20,7 @@ class UsersController extends Controller
         $user = User::all();
         return view('masters.users.index')
             ->with([
-                'users' => $user
+                'users' => $user->load('branch')
             ]);
     }
 
@@ -68,5 +68,13 @@ class UsersController extends Controller
         $user = $updateUserAction->handle($user);
         Notification::success('User updated successfully!');
         return redirect("/users/{$user->id}");
+    }
+    public function destroy(User $user)
+    {
+        if ($user) {
+            $user->delete();
+        }
+        Notification::success('User Deleted successfully!');
+        return redirect()->back();
     }
 }

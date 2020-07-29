@@ -33,8 +33,7 @@ class UpdateVendorAction
             'address' => $this->address,
             'company_name' => $this->company_name,
             'remarks' => $this->remarks,
-            'created_by' => 1,
-
+            'created_by' => auth()->user()->id,
         ]);
         return $vendor;
     }
