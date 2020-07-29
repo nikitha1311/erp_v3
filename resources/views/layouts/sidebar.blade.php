@@ -57,28 +57,20 @@
                 </a>
                 <div class="collapse" id="transactions" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="#">
-                            <i class="fa fa-file mr-2" aria-hidden="true">
-
-                            </i>
+                        <a class="nav-link" href="{{ route('transactions.create') }}">
+                            <i class="fa fa-file mr-2" aria-hidden="true"></i>
                             Create
                         </a>
                         <a class="nav-link" href="#">
-                            <i class="fa fa-list mr-2" aria-hidden="true">
-
-                            </i>
+                            <i class="fa fa-list mr-2" aria-hidden="true"></i>
                             List
                         </a>
                         <a class="nav-link" href="#">
-                            <i class="fa fa-exclamation-triangle mr-2" aria-hidden="true">
-
-                            </i>
+                            <i class="fa fa-exclamation-triangle mr-2" aria-hidden="true"></i>
                             Rate Pending
                         </a>
                         <a class="nav-link" href="#">
-                            <i class="fa fa-exclamation-triangle mr-2" aria-hidden="true">
-
-                            </i>
+                            <i class="fa fa-exclamation-triangle mr-2" aria-hidden="true"></i>
                             Unbilled
                         </a>
                     </nav>
@@ -87,7 +79,7 @@
         </div>
         <div class="sb-sidenav-footer">
             <div class="small">Logged in as:</div>
-            Younus Farveaz
+            {{ !empty(auth()->user()->name) ? auth()->user()->name:''}}
         </div>
     </nav>
 </div>
