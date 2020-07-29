@@ -29,6 +29,7 @@ Route::resource('/branches','\\App\\Http\\Controllers\\Masters\\Branches\\Branch
 Route::resource('/vendors','\\App\\Http\\Controllers\\Masters\\Vendors\\VendorsController');
 Route::resource('/locations','\\App\\Http\\Controllers\\Masters\\Locations\\LocationsController');
 
+Route::resource('/transactions','\\App\\Http\\Controllers\\Transactions\\TransactionsController');
 
 Route::resource('/customers','\\App\\Http\\Controllers\\Masters\\Customers\\CustomersController');
 Route::resource('/customers/{customer}/contracts','\\App\\Http\\Controllers\\Masters\\Customers\\CustomerContractsController');
