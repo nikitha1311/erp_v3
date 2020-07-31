@@ -11,11 +11,12 @@ use App\Domain\Routes\Models\Route;
 use App\Domain\LHAs\Models\LoadingHireAgreement;
 use App\Domain\GCs\Models\GoodsConsignmentNote;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class Transaction extends Model
 {
-    use HasApprovals,CreatedBy;
+    use SoftDeletes,HasApprovals,CreatedBy;
 
     protected $guarded = ['id'];
 
@@ -26,6 +27,16 @@ class Transaction extends Model
         return "TRN#{$this->id}";
     }
 
+    public function isEditable()
+    {
+        if (!$this->invoice)
+            return true;
+        elseif ($this->invoice->status() == 'Open for Modification')
+            return true;
+        return false;
+    }
+
+
     public function route()
     {
         return $this->hasOne(Route::class, 'id', 'route_id')->withDefault([
@@ -34,6 +45,32 @@ class Transaction extends Model
             'route.truck_type' => new TruckType(['name' => '-']),
             'route.truckType' => new TruckType(['name' => '-']),
         ]);
+    }
+    public function addLHA(int $lhaID)
+    {
+        $oldVal['LHA Numbers'] = $this->loadingHireAgreements->pluck('number')->toArray();
+        $this->loadingHireAgreements()->syncWithoutDetaching($lhaID);
+        return $this;
+    }
+
+    public function makeDefaultLHA(int $lha_id)
+    {
+        if ($this->loadingHireAgreements()->where('id', $lha_id)->exists() || $lha_id == 0) {
+            $updateValue = $lha_id;
+            if ($this->lha_id == $lha_id)
+                $updateValue = null;
+            if ($lha_id == 0)
+                $updateValue = null;
+            return (bool)$this->update([
+                'lha_id' => $updateValue,
+            ]);
+        }
+        return false;
+    }
+
+    public function defaultLHA()
+    {
+        return $this->hasOne(LoadingHireAgreement::class, 'id', 'lha_id');
     }
 
     public function loadingHireAgreements()

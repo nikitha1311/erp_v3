@@ -40,13 +40,9 @@ class TransactionsController extends Controller
     public function show(Transaction $transaction)
     {
 //        dd($transaction->load('loadingHireAgreements.from'));
-//         dd(($transaction)->load('route.from', 'route.to', 'route.truckType','goodsConsignmentNotes.consignor'));
         $transaction = $transaction->load('route.from', 'route.to', 'route.truckType',
             'loadingHireAgreements.from','loadingHireAgreements.to','loadingHireAgreements.truckType',
-            'loadingHireAgreements.branch','loadingHireAgreements.createdBy'
-
-//            'goodsConsignmentNotes.consignor','goodsConsignmentNotes.consignee','goodsConsignmentNotes.billedOn',
-//            'goodsConsignmentNotes.files','goodsConsignmentNotes.approval',
+            'loadingHireAgreements.branch','loadingHireAgreements.createdBy','loadingHireAgreements.vendor'
             );
         return view('transactions.show')
             ->with([

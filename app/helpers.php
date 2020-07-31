@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Config;
 use Carbon\Carbon;
 
+function formatDMY($date)
+{
+    return \Carbon\Carbon::createFromFormat('d-m-Y', $date);
+}
 
 function branches()
 {

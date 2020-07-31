@@ -13,7 +13,7 @@ class UpdateLHARequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,17 @@ class UpdateLHARequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'number'=>'unique:loading_hire_agreements,number,'.$this->loading_hire_agreement->id
         ];
+    }
+    public function handle($loading_hire_agreement)
+    {
+        if($this->request->has('date'))
+            $loading_hire_agreement->update([
+                'date' => formatDMY($this->request->get('date')),
+                'expected_delivery_date' => formatDMY($this->request->get('expected_delivery_date'))
+            ]);
+        return $loading_hire_agreement->fill(request()->except('date','expected_delivery_date'))
+            ->update();
     }
 }

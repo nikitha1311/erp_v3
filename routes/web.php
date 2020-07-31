@@ -30,6 +30,13 @@ Route::resource('/vendors','\\App\\Http\\Controllers\\Masters\\Vendors\\VendorsC
 Route::resource('/locations','\\App\\Http\\Controllers\\Masters\\Locations\\LocationsController');
 
 Route::resource('/transactions','\\App\\Http\\Controllers\\Transactions\\TransactionsController');
+Route::resource('loading-hire-agreements','\\App\\Http\\Controllers\\Transactions\\LHA\\LoadingHireAgreementsController');
+Route::resource('loading-hire-agreements/{loading_hire_agreement}/approvals', '\\App\\Http\\Controllers\\Transactions\\LHA\\LHAsApprovalController');
+Route::PATCH('loading-hire-agreements/{loading_hire_agreement}/timestamps', '\\App\\Http\\Controllers\\Transactions\\LHA\\LHATimestampsController@store');
+
+Route::post('loading-hire-agreements/{loading_hire_agreement}/driver-owner-details', '\\App\\Http\\Controllers\\Transactions\\LHA\\LHAOwnerDriverDetailsController@store');
+
+Route::resource('transactions/{transaction}/default-lha','\\App\\Http\\Controllers\\Transactions\\LHA\\DefaultLHAController');
 
 Route::resource('/customers','\\App\\Http\\Controllers\\Masters\\Customers\\CustomersController');
 Route::resource('/customers/{customer}/contracts','\\App\\Http\\Controllers\\Masters\\Customers\\CustomerContractsController');
