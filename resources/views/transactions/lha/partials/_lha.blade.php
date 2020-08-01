@@ -18,7 +18,7 @@
                 @endif
             </li>
             <li class="d-flex">
-                @if($lha->isNotApproved() || auth()->user()->hasRole('admin'))
+{{--                @if($lha->isNotApproved() || auth()->user()->hasRole('admin'))--}}
                     @if(!$lha->trashed())
                         <div>
                             <a href="{{ url("loading-hire-agreements/{$lha->id}/edit") }}">
@@ -45,7 +45,7 @@
                             </button>
                         </form>
                     </div>
-                @endif
+{{--                @endif--}}
 
             </li>
             <li class="d-flex">

@@ -8,19 +8,22 @@
 
             @include('transactions.lha.show')
 
-            <div class="panel">
-                <div class="panel-header">
-                    <h5>
-                        Goods Consignment Notes
-                    </h5>
-                    <div>
+            @include('transactions.gc.show')
 
-                    </div>
-                </div>
-                <div class="panel-body">
+{{--            <div class="panel">--}}
+{{--                <div class="panel-header">--}}
+{{--                    <h5>--}}
+{{--                        Goods Consignment Notes--}}
+{{--                    </h5>--}}
+{{--                    <div>--}}
 
-                </div>
-            </div>
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="panel-body">--}}
+{{--                    @include('transactions.gc.show')--}}
+
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </div>
 @endsection

@@ -1,4 +1,6 @@
-<div class="">
+
+
+<div>
     <div class="row">
         <div class="col-sm-12 col-lg-4">
             <div class="form-group m-form__group">
@@ -41,11 +43,11 @@
             <div class="form-group m-form__group">
                 <label for="number">Number</label>
                 <div class="input-group">
-                    <input type="text" class="form-control m-input" id="number" name="number"
+                    <input type="text" style="border-color: #ebedf2; color: #575962;" class="form-control m-input" id="number" name="number"
                            placeholder="Number" autocomplete="off"
                            value="{{ $lha->number ? $lha->number : old('number') }}"
                            style="text-transform:uppercase">
-                    <span class="input-group-text">
+                    <span class="input-group-text" style="border-left: 0;">
                         <input type="checkbox" name="autogenerate" onclick="var input = document.getElementById('number'); if(!this.checked){ input.disabled = false; input.focus();}else{input.disabled=true;}"/>
                         Auto-Generate
                     </span>
@@ -114,8 +116,8 @@
             <div>
                 <label for="truck_number">Truck Number</label>
                 <div class="input-group">
-                    <span class="input-group-text"><i class="fa fa-truck"></i></span>
-                    <input required type="text" class="form-control m-input" id="truck_number" name="truck_number"
+                    <span class="input-group-text" style=" border-right: 0;"><i class="fa fa-truck"></i></span>
+                    <input required type="text" style="border-color: #ebedf2; color: #575962;" class="form-control m-input" id="truck_number" name="truck_number"
                            placeholder="Truck Number"
                            value="{{ $lha->truck_number }}" style="text-transform:uppercase">
                 </div>
@@ -125,12 +127,13 @@
             </div>
         </div>
         <div class="col-sm-12 col-lg-4">
-            <div class="form-group m-form__group">
-
+            <div class="form-group">
                 <label for="hire">Hire</label>
                 <div class="input-group">
-                    <span class="input-group-text"><i class="fa fa-inr"></i></span>
-                    <input required type="number" min="0" class="form-control m-input" id="hire" name="hire"
+                    <span class="input-group-text" style=" border-right: 0;">
+                        <i class="fa fa-inr"></i>
+                    </span>
+                    <input required type="number" style="border-color: #ebedf2; color: #575962;"  min="0" class="form-control" id="hire" name="hire"
                            placeholder="Hire"
                            value="{{ $lha->hire }}">
                 </div>

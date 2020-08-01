@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Classes\Notification;
 use App\Domain\Transactions\Models\Transaction;
 use App\Domain\LHAs\Models\LoadingHireAgreement;
+use App\Domain\GCs\Models\GoodsConsignmentNote;
 use Carbon\Carbon;
 
 
@@ -42,7 +43,10 @@ class TransactionsController extends Controller
 //        dd($transaction->load('loadingHireAgreements.from'));
         $transaction = $transaction->load('route.from', 'route.to', 'route.truckType',
             'loadingHireAgreements.from','loadingHireAgreements.to','loadingHireAgreements.truckType',
-            'loadingHireAgreements.branch','loadingHireAgreements.createdBy','loadingHireAgreements.vendor'
+            'loadingHireAgreements.branch','loadingHireAgreements.createdBy','loadingHireAgreements.vendor',
+            'goodsConsignmentNotes.consignor','goodsConsignmentNotes.consignee','goodsConsignmentNotes.billedOn',
+            'goodsConsignmentNotes.approval',
+            'approval'
             );
         return view('transactions.show')
             ->with([

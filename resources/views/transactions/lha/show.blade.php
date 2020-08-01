@@ -6,8 +6,15 @@
             <small> {{ $transaction->loadingHireAgreements->pluck('number') }} </small>
         </h5>
         <div>
-            <ul>
-                <li class="m-portlet__nav-item">
+            <ul class="d-flex justify-content-between">
+{{--                <li>--}}
+{{--                    <button class="btn btn-sm btn-default" href="twfloat-left" data-toggle="modal"--}}
+{{--                            data-target="#attachLHA">--}}
+{{--                        <i class="fa fa-link"></i>--}}
+{{--                        &nbsp;Attach--}}
+{{--                    </button>--}}
+{{--                </li>--}}
+                <li>
                     <a href="{{ url("/loading-hire-agreements/create?t_id={$transaction->id}") }}">
                         <button class="btn btn-sm btn-primary">
                             <i class="fa fa-plus"></i>
@@ -15,6 +22,12 @@
                         </button>
                     </a>
                 </li>
+{{--                <li>--}}
+{{--                    <button class="btn btn-sm btn-info"--}}
+{{--                            onclick="$('#m_accordion_3 .m-accordion__item-body').collapse('hide')">--}}
+{{--                        <i class="fa fa-arrow-circle-up"></i>--}}
+{{--                    </button>--}}
+{{--                </li>--}}
 
             </ul>
         </div>
@@ -55,6 +68,7 @@
     </div>
 </div>
 
+{{--@include('modals.attachLHAtoTransaction')--}}
 
 
 

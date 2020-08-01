@@ -19,7 +19,7 @@
                    placeholder="Owner Name"
                    value="{{ old('owner_name') ?? $lha->owner_name }}">
             @if($errors->has('owner_name'))
-                <span class="m-form__help twtext-red">{{ $errors->first('owner_name') }}</span>
+                <span class="text-danger">{{ $errors->first('owner_name') }}</span>
             @endif
         </div>
         <div class="form-group m-form__group">
@@ -28,7 +28,7 @@
                    placeholder="Owner Phone"
                    value="{{ old('owner_phone') ?? $lha->owner_phone }}">
             @if($errors->has('owner_phone'))
-                <span class="m-form__help twtext-red">{{ $errors->first('owner_phone') }}</span>
+                <span class="text-danger">{{ $errors->first('owner_phone') }}</span>
             @endif
         </div>
 
@@ -38,7 +38,7 @@
                    placeholder="Driver Name"
                    value="{{ old('driver_name') ?? $lha->driver_name }}">
             @if($errors->has('driver_name'))
-                <span class="m-form__help twtext-red">{{ $errors->first('driver_name') }}</span>
+                <span class="text-danger">{{ $errors->first('driver_name') }}</span>
             @endif
         </div>
         <div class="form-group m-form__group">
@@ -47,7 +47,7 @@
                    placeholder="Driver Phone"
                    value="{{ old('driver_phone') ?? $lha->driver_phone }}">
             @if($errors->has('driver_phone'))
-                <span class="m-form__help twtext-red">{{ $errors->first('driver_phone') }}</span>
+                <span class="text-danger">{{ $errors->first('driver_phone') }}</span>
             @endif
         </div>
         <button class="btn btn-primary">Update</button>

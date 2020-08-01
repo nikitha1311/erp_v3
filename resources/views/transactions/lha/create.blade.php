@@ -32,11 +32,13 @@
             </div>
             <div class="m-separator m-separator--space m-separator--dashed"></div>
         @endif
+
         <form action="{{ url('/loading-hire-agreements') }}" method="POST">
             @csrf
             <input type="text" name="transaction_id" value="{{ $transaction->id ?? null }}" hidden>
+
             @include('transactions.lha.partials._create',['lha'=>new \App\Domain\LHAs\Models\LoadingHireAgreement(['type'=>''])])
-{{--            <hr>--}}
+
             <div class="panel-footer">
                 @include('components._formButtons', ['primaryText' => 'Create'])
             </div>

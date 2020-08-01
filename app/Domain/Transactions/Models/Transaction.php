@@ -84,4 +84,11 @@ class Transaction extends Model
         return $this->belongsToMany(GoodsConsignmentNote::class, 'gcs_transactions',
             'transaction_id', 'gc_id')->withTimestamps();
     }
+    public function addGC(int $goodsConsignmentNote)
+    {
+        $oldVal['GC Numbers'] = $this->goodsConsignmentNotes->pluck('number')->toArray();
+        $this->goodsConsignmentNotes()->syncWithoutDetaching($goodsConsignmentNote);
+        return $this;
+    }
+
 }
