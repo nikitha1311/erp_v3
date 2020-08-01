@@ -6,7 +6,7 @@
     <form action="{{ "/loading-hire-agreements/".$lha->id."/driver-owner-details" }}" method="POST">
         {!! csrf_field() !!}
         @if($transaction)
-            <div class="twflex twjustify-between">
+            <div class="d-flex justify-content-between">
                 <p><b>Transaction ID : </b>{{ $transaction->id() }}</p>
                 <p><b>LHA Date : </b>{{ $lha->date->format('d-m-Y') }}</p>
                 <p><b>LHA Number : </b>{{ $lha->number}}</p>

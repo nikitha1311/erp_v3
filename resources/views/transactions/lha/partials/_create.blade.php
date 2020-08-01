@@ -7,7 +7,7 @@
                        placeholder="Date"
                        value="{{ $lha->date ? $lha->date->format('d-m-Y') : '' }}">
                 @if($errors->has('date'))
-                    <span class="m-form__help twtext-red">{{ $errors->first('date') }}</span>
+                    <span class="text-danger">{{ $errors->first('date') }}</span>
                 @endif
             </div>
         </div>
@@ -20,7 +20,7 @@
                     @endforeach
                 </select>
                 @if($errors->has('branch_id'))
-                    <span class="m-form__help twtext-red">{{ $errors->first('branch_id') }}</span>
+                    <span class="text-danger">{{ $errors->first('branch_id') }}</span>
                 @endif
             </div>
         </div>
@@ -31,7 +31,7 @@
                        name="expected_delivery_date" placeholder="Expected Delivery"
                        value="{{ old('expected_delivery_date') }}">
                 @if($errors->has('expected_delivery_date'))
-                    <span class="m-form__help twtext-red">{{ $errors->first('expected_delivery_date') }}</span>
+                    <span class="text-danger">{{ $errors->first('expected_delivery_date') }}</span>
                 @endif
             </div>
         </div>
@@ -45,7 +45,7 @@
                            placeholder="Number" autocomplete="off"
                            value="{{ $lha->number ? $lha->number : old('number') }}"
                            style="text-transform:uppercase">
-                    <span class="input-group-addon">
+                    <span class="input-group-text">
                         <input type="checkbox" name="autogenerate" onclick="var input = document.getElementById('number'); if(!this.checked){ input.disabled = false; input.focus();}else{input.disabled=true;}"/>
                         Auto-Generate
                     </span>
@@ -63,7 +63,7 @@
                     <option value="1" {{$lha->type == 1 ? 'selected="selected"': ''}}>Full Trip</option>
                 </select>
                 @if($errors->has('type'))
-                    <span class="m-form__help twtext-red">{{ $errors->first('type') }}</span>
+                    <span class="text-danger">{{ $errors->first('type') }}</span>
                 @endif
             </div>
         </div>
@@ -78,7 +78,7 @@
                     @endforeach
                 </select>
                 @if($errors->has('from_id'))
-                    <span class="m-form__help twtext-red">{{ $errors->first('from_id') }}</span>
+                    <span class="text-danger">{{ $errors->first('from_id') }}</span>
                 @endif
             </div>
         </div>
@@ -91,7 +91,7 @@
                     @endforeach
                 </select>
                 @if($errors->has('to_id'))
-                    <span class="m-form__help twtext-red">{{ $errors->first('to_id') }}</span>
+                    <span class="text-danger">{{ $errors->first('to_id') }}</span>
                 @endif
             </div>
         </div>
@@ -104,37 +104,38 @@
                     @endforeach
                 </select>
                 @if($errors->has('truck_type_id'))
-                    <span class="m-form__help twtext-red">{{ $errors->first('truck_type_id') }}</span>
+                    <span class="text-danger">{{ $errors->first('truck_type_id') }}</span>
                 @endif
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12 col-lg-4">
-            <div class="form-group m-form__group">
+            <div>
                 <label for="truck_number">Truck Number</label>
                 <div class="input-group">
-                    <span><i class="fa fa-truck my-2"></i></span>
+                    <span class="input-group-text"><i class="fa fa-truck"></i></span>
                     <input required type="text" class="form-control m-input" id="truck_number" name="truck_number"
                            placeholder="Truck Number"
                            value="{{ $lha->truck_number }}" style="text-transform:uppercase">
                 </div>
                 @if($errors->has('truck_number'))
-                    <span class="m-form__help twtext-red">{{ $errors->first('truck_number') }}</span>
+                    <span class="text-danger">{{ $errors->first('truck_number') }}</span>
                 @endif
             </div>
         </div>
         <div class="col-sm-12 col-lg-4">
             <div class="form-group m-form__group">
+
                 <label for="hire">Hire</label>
                 <div class="input-group">
-                    <span><i class="fa fa-inr my-2"></i></span>
+                    <span class="input-group-text"><i class="fa fa-inr"></i></span>
                     <input required type="number" min="0" class="form-control m-input" id="hire" name="hire"
                            placeholder="Hire"
                            value="{{ $lha->hire }}">
                 </div>
                 @if($errors->has('hire'))
-                    <span class="m-form__help twtext-red">{{ $errors->first('hire') }}</span>
+                    <span class="text-danger">{{ $errors->first('hire') }}</span>
                 @endif
             </div>
         </div>
@@ -148,7 +149,7 @@
                     @endforeach
                 </select>
                 @if($errors->has('vendor_id'))
-                    <span class="m-form__help twtext-red">{{ $errors->first('vendor_id') }}</span>
+                    <span class="text-danger">{{ $errors->first('vendor_id') }}</span>
                 @endif
                 {{--<label for="vendor_id">Vendor</label>--}}
                 {{--<select name="vendor_id" id="vendor_id" class="form-control">--}}

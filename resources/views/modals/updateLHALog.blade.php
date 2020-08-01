@@ -7,7 +7,7 @@
     {!! csrf_field() !!}
     {!! method_field('PATCH') !!}
     @if($transaction)
-        <div class="twflex twjustify-between">
+        <div class="d-flex justify-content-between">
             <p><b>Transaction ID : </b>{{ $transaction->id() }}</p>
             <p> <b>LHA Date : </b>{{ $lha->date->format('d-m-Y') }}</p>
             <p><b>LHA Number : </b>{{ $lha->number}}</p>
@@ -26,7 +26,7 @@
     <div class="form-group">
         <label>Time</label>
         <div class="input-group">
-                <span class="input-group-addon">
+                <span class="input-group-text">
                     <i class="fa fa-calendar"></i>
                 </span>
             <input type="text" class="form-control date" required id="time" name="time" placeholder="Enter Time"

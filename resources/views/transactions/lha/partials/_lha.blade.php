@@ -68,7 +68,7 @@
     </div>
 </div>
 <div class="row printLHA{{$lha->id}}">
-    <div class="col col-lg-12">
+    <div class="col col-lg-6">
         <div class="table-responsive">
             <table class="table table-bordered table-striped ">
                 <tr>
@@ -124,87 +124,87 @@
             </table>
         </div>
     </div>
-{{--        <div class="col col-lg-6">--}}
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped ">
-            <tr>
-                <td colspan="2">
-                    <b>Loading & Unloading Detention Details</b>
-                    <a class="float-right updateLHATimestamps"
-                       data-toggle="modal"
-                       data-lhaid="{{ $lha->id }}"
-                       style="margin-top: -5px;"
-                       data-target="#updateLHALog{{$lha->id}}">
-                        <button class="btn btn-info btn-sm">
-                            <i class="fa fa-calendar"></i>
-                        </button>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <th class="w-50">Loading Detention</th>
-                <td>{{$lha->loading_detention ? $lha->loading_detention." hours" : '-'}}</td>
-            </tr>
-            <tr>
-                <td>Loading Reported</td>
-                <td>{{ $lha->loading_reported ? $lha->loading_reported->toDayDateTimeString() : 'Not Updated' }}</td>
-            </tr>
-            <tr>
-                <td>Loading Released</td>
-                <td>{{ $lha->loading_released ? $lha->loading_released->toDayDateTimeString() : 'Not Updated' }}</td>
-            </tr>
-            <tr>
-                <th>Unloading Detention</th>
-                <td>{{$lha->unloading_detention ? $lha->unloading_detention." hours" : '-'}} </td>
-            </tr>
-            <tr>
-                <td>Unloading Reported</td>
-                <td>{{ $lha->unloading_reported ? $lha->unloading_reported->toDayDateTimeString() : 'Not Updated' }}</td>
-            </tr>
-            <tr>
-                <td>Unloading Released</td>
-                <td>{{ $lha->unloading_released ? $lha->unloading_released->toDayDateTimeString() : 'Not Updated' }}</td>
-            </tr>
-            <tr>
-                <th class="twtext-center" colspan="2">
-                    Owner Details
-                    <a class="float-right"
-                       data-toggle="modal"
-                       style="margin-top: -5px;"
-                       data-target="#updateLHADriverOwnerDetails{{$lha->id}}">
-                        <button class="btn btn-info btn-sm">
-                            <i class="fa fa-user-circle-o"></i>
-                        </button>
-                    </a>
-                </th>
-            </tr>
-            <tr>
-                <td class="w-50">Owner Name</td>
-                <td class="w-50">
-                    {{ $lha->owner_name ?? 'Not Updated' }}
-                </td>
-            </tr>
-            <tr>
-                <td>Owner Phone</td>
-                <td>
-                    {{ $lha->owner_phone ?? 'Not Updated' }}
-                </td>
-            </tr>
-            <tr>
-                <td>Driver Name</td>
-                <td>
-                    {{ $lha->driver_name ?? 'Not Updated' }}
-                </td>
-            </tr>
-            <tr>
-                <td>Driver Phone</td>
-                <td>
-                    {{ $lha->driver_phone ?? 'Not Updated' }}
-                </td>
-            </tr>
-        </table>
+    <div class="col col-lg-6">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped ">
+                <tr>
+                    <td colspan="2">
+                        <b>Loading & Unloading Detention Details</b>
+                        <a class="float-right updateLHATimestamps"
+                           data-toggle="modal"
+                           data-lhaid="{{ $lha->id }}"
+                           style="margin-top: -5px;"
+                           data-target="#updateLHALog{{$lha->id}}">
+                            <button class="btn btn-info btn-sm">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="w-50">Loading Detention</th>
+                    <td>{{$lha->loading_detention ? $lha->loading_detention." hours" : '-'}}</td>
+                </tr>
+                <tr>
+                    <td>Loading Reported</td>
+                    <td>{{ $lha->loading_reported ? $lha->loading_reported->toDayDateTimeString() : 'Not Updated' }}</td>
+                </tr>
+                <tr>
+                    <td>Loading Released</td>
+                    <td>{{ $lha->loading_released ? $lha->loading_released->toDayDateTimeString() : 'Not Updated' }}</td>
+                </tr>
+                <tr>
+                    <th>Unloading Detention</th>
+                    <td>{{$lha->unloading_detention ? $lha->unloading_detention." hours" : '-'}} </td>
+                </tr>
+                <tr>
+                    <td>Unloading Reported</td>
+                    <td>{{ $lha->unloading_reported ? $lha->unloading_reported->toDayDateTimeString() : 'Not Updated' }}</td>
+                </tr>
+                <tr>
+                    <td>Unloading Released</td>
+                    <td>{{ $lha->unloading_released ? $lha->unloading_released->toDayDateTimeString() : 'Not Updated' }}</td>
+                </tr>
+                <tr>
+                    <th class="twtext-center" colspan="2">
+                        Owner Details
+                        <a class="float-right"
+                           data-toggle="modal"
+                           style="margin-top: -5px;"
+                           data-target="#updateLHADriverOwnerDetails{{$lha->id}}">
+                            <button class="btn btn-info btn-sm">
+                                <i class="fa fa-user-circle-o"></i>
+                            </button>
+                        </a>
+                    </th>
+                </tr>
+                <tr>
+                    <td class="w-50">Owner Name</td>
+                    <td class="w-50">
+                        {{ $lha->owner_name ?? 'Not Updated' }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Owner Phone</td>
+                    <td>
+                        {{ $lha->owner_phone ?? 'Not Updated' }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Driver Name</td>
+                    <td>
+                        {{ $lha->driver_name ?? 'Not Updated' }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Driver Phone</td>
+                    <td>
+                        {{ $lha->driver_phone ?? 'Not Updated' }}
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-{{--        </div>--}}
 </div>
 <hr>
 <div class="row">
