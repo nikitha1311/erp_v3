@@ -85,10 +85,10 @@
                             <div class="row">
                                 <div class="col-12 col-lg-6 table-responsive">
                                     <table class="table table-bordered printGC">
-{{--                                                                                    <tr>--}}
-{{--                                                                                        <td>Date</td>--}}
-{{--                                                                                        <td class="">{{ $gc->date->format('d-m-Y') }}</td>--}}
-{{--                                                                                    </tr>--}}
+                                        <tr>
+                                            <td>Date</td>
+                                            <td class="">{{ $gc->date->format('d-m-Y') }}</td>
+                                        </tr>
                                         <tr>
                                             <td>GC Number</td>
                                             <td class=""><b>{{ $gc->number }}</b></td>
