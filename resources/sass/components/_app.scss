@@ -347,3 +347,28 @@ body{
         font-size: 14px;
     }
 }
+
+#accordion {
+    .panel-header{
+        &:after {
+            font-family: 'FontAwesome';  
+            content: "\f068";
+            float: right; 
+        }
+        &.collapsed{
+            &:after {
+                content: "\f067";  
+            } 
+        }
+    }
+}
+
+.input-group{
+    .input-grp-text{
+        padding: 0.25rem 0.75rem;
+        border-right: 0px;
+    }
+    input{
+        border-left: 0px;
+    }
+}

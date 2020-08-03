@@ -408,6 +408,8 @@
     clear: none !important;
   }
 }
+@charset "UTF-8";
+
 body {
   margin: 0;
   padding: 0;
@@ -767,6 +769,25 @@ body {
 
 .sidenav .sb-sidenav-footer {
   font-size: 14px;
+}
+
+#accordion .panel-header:after {
+  font-family: "FontAwesome";
+  content: "\F068";
+  float: right;
+}
+
+#accordion .panel-header.collapsed:after {
+  content: "\F067";
+}
+
+.input-group .input-grp-text {
+  padding: 0.25rem 0.75rem;
+  border-right: 0px;
+}
+
+.input-group input {
+  border-left: 0px;
 }
 
 .noty_layout_mixin,
