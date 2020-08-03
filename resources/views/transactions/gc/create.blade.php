@@ -9,40 +9,31 @@
                 Create GC     <small></small>
 
             </h5>
-            <div>
-                <ul>
-                    <li>
-
-                    </li>
-                </ul>
-            </div>
         </div>
 
-        <div class="panel-body">
-            @if($transaction)
-                <div class="d-flex justify-content-between">
-                    <p><b>Transaction ID : </b>{{ $transaction->id() }}</p>
-                    <p><b>Date : </b>{{ $transaction->date->format('d-m-Y') }}</p>
-                    <p>
-                        <b>Created By: </b>{{ $transaction->createdBy->name }} <br>
-                        <span class="text-muted">{{ $transaction->created_at->toDayDateTimeString() }}</span>
-                    </p>
+        <form action="{{ url('/goods-consignment-notes') }}" method="post">
+            <div class="panel-body">
+                @if($transaction)
+                    <div class="d-flex justify-content-between">
+                        <p><b>Transaction ID : </b>{{ $transaction->id() }}</p>
+                        <p><b>Date : </b>{{ $transaction->date->format('d-m-Y') }}</p>
+                        <p>
+                            <b>Created By: </b>{{ $transaction->createdBy->name }} <br>
+                            <span class="text-muted">{{ $transaction->created_at->toDayDateTimeString() }}</span>
+                        </p>
+                    </div>
+                @endif
+                    
+                {!! csrf_field() !!}
+                <div>
+                    <input type="text" name="transaction_id" value="{{ $transaction->id ?? null }}" hidden>
+                    @include('transactions.gc.partials._create',['gc'=>new \App\Domain\GCs\Models\GoodsConsignmentNote()])
                 </div>
-                <div class="m-separator m-separator--space m-separator--dashed"></div>
-            @endif
-                <form action="{{ url('/goods-consignment-notes') }}" method="post">
-                    {!! csrf_field() !!}
-                    <div class="m-portlet__body">
-
-                        <input type="text" name="transaction_id" value="{{ $transaction->id ?? null }}" hidden>
-                        @include('transactions.gc.partials._create',['gc'=>new \App\Domain\GCs\Models\GoodsConsignmentNote()])
-                    </div>
-                    <div class="panel-footer">
-                        @include('components._formButtons', ['primaryText' => 'Create'])
-                    </div>
-                </form>
-
-        </div>
+            </div>
+            <div class="panel-footer">
+                @include('components._formButtons', ['primaryText' => 'Create'])
+            </div>
+        </form>
     </div>
 
 

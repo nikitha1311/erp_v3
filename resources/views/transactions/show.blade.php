@@ -10,20 +10,6 @@
 
             @include('transactions.gc.show')
 
-{{--            <div class="panel">--}}
-{{--                <div class="panel-header">--}}
-{{--                    <h5>--}}
-{{--                        Goods Consignment Notes--}}
-{{--                    </h5>--}}
-{{--                    <div>--}}
-
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="panel-body">--}}
-{{--                    @include('transactions.gc.show')--}}
-
-{{--                </div>--}}
-{{--            </div>--}}
         </div>
     </div>
 @endsection

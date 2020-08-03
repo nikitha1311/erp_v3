@@ -49,7 +49,7 @@
                             Auto-Generate
                         </span>
                     </div>
-                    <input type="text" style="border-color: #ebedf2; color: #575962;" class="form-control m-input" id="number" name="number"
+                    <input type="text"  class="form-control  left-border" id="number" name="number"
                     placeholder="Number" autocomplete="off"
                     value="{{ $lha->number ? $lha->number : old('number') }}"
                     style="text-transform:uppercase">
@@ -124,7 +124,7 @@
                           <i class="fa fa-truck"></i>
                       </span>
                     </div>
-                    <input required type="text" style="border-color: #ebedf2; color: #575962;" class="form-control m-input" id="truck_number" name="truck_number"
+                    <input required type="text"  class="form-control left-border" id="truck_number" name="truck_number"
                     placeholder="Truck Number"
                     value="{{ $lha->truck_number }}" style="text-transform:uppercase">
                 </div>
@@ -143,7 +143,7 @@
                           <i class="fa fa-inr"></i>
                       </span>
                     </div>
-                    <input required type="number" style="border-color: #ebedf2; color: #575962;"  min="0" class="form-control" id="hire" name="hire"
+                    <input required type="number"  min="0" class="form-control left-border" id="hire" name="hire"
                            placeholder="Hire"
                            value="{{ $lha->hire }}">
                 </div>
