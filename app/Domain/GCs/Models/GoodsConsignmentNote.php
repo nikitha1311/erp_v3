@@ -6,12 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Domain\Customers\Models\Customer;
 use App\Domain\Branches\Models\Branch;
+use App\Traits\HasApprovals;
 
-class GC extends Model
+class GoodsConsignmentNote extends Model
 {
+    use HasApprovals;
+    
     protected $guarded = ['id'];
 
-    protected $table = ['goods_consignment_notes'];
+    protected $table = 'goods_consignment_notes';
 
     public function transaction()
     {
