@@ -29,7 +29,10 @@ class GoodsConsignmentNote extends Model
 
     public function ackStatus()
     {
-        return $this->ack_status == 0 ? 'Not Received' : $this->ack_received_date->format('d-m-Y')." - ".$this->ack_received_remarks;
+//        return $this->ack_status == 0 ? 'Not Received' : $this->ack_received_date->format('d-m-Y')." - ".$this->ack_received_remarks ;
+        return $this->ack_status == 0 ? 'Not Received' : optional($this->ack_received_date)->format('d-m-Y')." - ".$this->ack_received_remarks ;
+
+//        optional($this->files->last())->path ?? "/assets/app/media/img/users/user4.jpg"
     }
 
 
