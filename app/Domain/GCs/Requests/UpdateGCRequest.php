@@ -13,7 +13,7 @@ class UpdateGCRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,24 @@ class UpdateGCRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'number' => 'unique:goods_consignment_notes,number,'.$this->goods_consignment_note->id
         ];
+    }
+    public function messages()
+    {
+        return [
+            'number.unique'  => 'GC Number is assigned to another transaction',
+        ];
+    }
+
+    public function handle($goodsConsignmentNote)
+    {
+        if($this->request->has('date'))
+            $goodsConsignmentNote->update([
+                'date' => formatDMY($this->request->get('date'))
+            ]);
+        return $goodsConsignmentNote
+            ->fill(request()->except('date'))
+            ->update();
     }
 }

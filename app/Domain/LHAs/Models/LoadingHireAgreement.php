@@ -2,8 +2,13 @@
 
 namespace App\Domain\LHAs\Models;
 
+use App\Domain\Vendors\Models\Vendor;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use App\Traits\HasApprovals;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
+
 use App\Domain\Locations\Models\Location;
 use App\Domain\TruckType\Models\TruckType;
 use App\Domain\Branches\Models\Branch;
@@ -11,6 +16,7 @@ use App\Domain\Transactions\Models\Transaction;
 
 class LoadingHireAgreement extends Model
 {
+    use SoftDeletes,HasApprovals;
 
     protected $guarded = ['id'];
 
@@ -19,7 +25,15 @@ class LoadingHireAgreement extends Model
         'date','deleted_at','loading_reported','loading_released','unloading_reported','unloading_released','expected_delivery_date'
     ];
 
+    public function id()
+    {
+        return "LH#".$this->id;
+    }
 
+    public function url()
+    {
+        return '/loading-hire-agreements/'.$this->id;
+    }
 
     public function type()
     {
@@ -59,6 +73,10 @@ class LoadingHireAgreement extends Model
     public function createdBy()
     {
         return $this->belongsTo(User::class,'created_by');
+    }
+    public function vendor()
+    {
+        return $this->belongsTo(Vendor::class,'vendor_id');
     }
 
     public function calculateDetention()
