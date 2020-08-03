@@ -162,9 +162,9 @@
                 {{--<span class="m-form__help twtext-red">{{ $errors->first('vendor_id') }}</span>--}}
                 {{--@endif--}}
                 <div class="m-separator m-separator--space m-separator--dashed"></div>
-{{--                <a href="" class="pull-right" data-toggle="modal" data-target="#createVendor">--}}
-{{--                    <u>Create Vendor</u>--}}
-{{--                </a>--}}
+               {{-- <a href="" class="pull-right" data-toggle="modal" data-target="#createVendor">
+                   <u>Create Vendor</u>
+               </a> --}}
             </div>
         </div>
     </div>
