@@ -8,6 +8,7 @@ use App\Domain\GCs\Requests\UpdateGCRequest;
 use App\Domain\Transactions\Models\Transaction;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Classes\Notification;
 
 class GoodsConsignmentNotesController extends Controller
 {
@@ -77,10 +78,9 @@ class GoodsConsignmentNotesController extends Controller
             $notification['type'] = 'error';
             $notification['msg'] = 'Unable to edit GC';
         }
-        return redirect()->back()->with([
-            'notification' => $notification
-        ]);
-
+        Notification::success($notification);
+        return redirect()->back();
+    
     }
 
 
@@ -92,9 +92,8 @@ class GoodsConsignmentNotesController extends Controller
                 $goods_consignment_note->disapprove();
         } else
             $goods_consignment_note->delete();
-        return back()->withNotification([
-            'type' => 'success',
-            'msg' => 'GC Updated Successfully'
-        ]);
+        
+        Notification::success('GC Deleted Successfully!');
+        return redirect()->back();
     }
 }

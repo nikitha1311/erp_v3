@@ -15,7 +15,7 @@
             <div id="layoutSidenav">
                 @include('layouts.sidebar')
                 <main id='layoutSidenav_content' class='{{ (!empty(auth()->user()->name)) ? '' : 'pl-0'}}'>
-                    <div class="container py-4">
+                    <div class="container py-4" id='app'>
                         @yield('content')
                     </div>
                 </main>

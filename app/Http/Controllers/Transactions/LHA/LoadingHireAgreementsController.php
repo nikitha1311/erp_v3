@@ -9,6 +9,7 @@ use App\Domain\Vendors\Models\Vendor;
 use App\Domain\LHAs\Models\LoadingHireAgreement;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Classes\Notification;
 
 class LoadingHireAgreementsController extends Controller
 {
@@ -88,6 +89,8 @@ class LoadingHireAgreementsController extends Controller
         return redirect()->back()->with([
             'notification' => $notification
         ]);
+        // Notification::success($notification);
+        // return redirect()->back();
     }
 
 
