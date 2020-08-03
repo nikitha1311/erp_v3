@@ -25,13 +25,15 @@
     </div>
     <div class="form-group">
         <label>Time</label>
-        <div class="input-group">
-                <span class="input-group-text">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text input-grp-text">
                     <i class="fa fa-calendar"></i>
                 </span>
+            </div>
             <input type="text" class="form-control date" required id="time" name="time" placeholder="Enter Time"
                    value="">
-        </div>
+          </div>
     </div>
     <button class="btn btn-primary">Update</button>
 </form>

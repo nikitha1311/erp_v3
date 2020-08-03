@@ -42,16 +42,19 @@
         <div class="col-sm-12 col-lg-6">
             <div class="form-group m-form__group">
                 <label for="number">Number</label>
-                <div class="input-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text input-grp-text">
+                            <input class='mr-2' type="checkbox" name="autogenerate" onclick="var input = document.getElementById('number'); if(!this.checked){ input.disabled = false; input.focus();}else{input.disabled=true;}"/>
+                            Auto-Generate
+                        </span>
+                    </div>
                     <input type="text" style="border-color: #ebedf2; color: #575962;" class="form-control m-input" id="number" name="number"
-                           placeholder="Number" autocomplete="off"
-                           value="{{ $lha->number ? $lha->number : old('number') }}"
-                           style="text-transform:uppercase">
-                    <span class="input-group-text" style="border-left: 0;">
-                        <input type="checkbox" name="autogenerate" onclick="var input = document.getElementById('number'); if(!this.checked){ input.disabled = false; input.focus();}else{input.disabled=true;}"/>
-                        Auto-Generate
-                    </span>
+                    placeholder="Number" autocomplete="off"
+                    value="{{ $lha->number ? $lha->number : old('number') }}"
+                    style="text-transform:uppercase">
                 </div>
+               
                 @if($errors->has('number'))
                     <span class="text-danger">{{ $errors->first('number') }}</span>
                 @endif
@@ -115,24 +118,31 @@
         <div class="col-sm-12 col-lg-4">
             <div>
                 <label for="truck_number">Truck Number</label>
-                <div class="input-group">
-                    <span class="input-group-text" style=" border-right: 0;"><i class="fa fa-truck"></i></span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text input-grp-text" id="inputGroup-sizing-default">
+                          <i class="fa fa-truck"></i>
+                      </span>
+                    </div>
                     <input required type="text" style="border-color: #ebedf2; color: #575962;" class="form-control m-input" id="truck_number" name="truck_number"
-                           placeholder="Truck Number"
-                           value="{{ $lha->truck_number }}" style="text-transform:uppercase">
+                    placeholder="Truck Number"
+                    value="{{ $lha->truck_number }}" style="text-transform:uppercase">
                 </div>
                 @if($errors->has('truck_number'))
                     <span class="text-danger">{{ $errors->first('truck_number') }}</span>
                 @endif
             </div>
         </div>
+        
         <div class="col-sm-12 col-lg-4">
             <div class="form-group">
                 <label for="hire">Hire</label>
-                <div class="input-group">
-                    <span class="input-group-text" style=" border-right: 0;">
-                        <i class="fa fa-inr"></i>
-                    </span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text input-grp-text" id="inputGroup-sizing-default">
+                          <i class="fa fa-inr"></i>
+                      </span>
+                    </div>
                     <input required type="number" style="border-color: #ebedf2; color: #575962;"  min="0" class="form-control" id="hire" name="hire"
                            placeholder="Hire"
                            value="{{ $lha->hire }}">

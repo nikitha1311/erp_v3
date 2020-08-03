@@ -781,6 +781,15 @@ body {
   content: "\F067";
 }
 
+.input-group .input-grp-text {
+  padding: 0.25rem 0.75rem;
+  border-right: 0px;
+}
+
+.input-group input {
+  border-left: 0px;
+}
+
 .noty_layout_mixin,
 #noty_layout__centerRight,
 #noty_layout__centerLeft,
