@@ -24,7 +24,7 @@
                     @include('transactions.gc.partials._create',['gc'=>$gc])
 
                 <div class="panel-footer">
-                    @include('components._formButtons', ['primaryText' => 'Create'])
+                    @include('components._formButtons', ['primaryText' => 'Update'])
 
                 </div>
             </form>

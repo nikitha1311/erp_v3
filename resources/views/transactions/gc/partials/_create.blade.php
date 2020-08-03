@@ -5,7 +5,7 @@
                 <label>GC Number</label>
                 <input type="text" class="form-control" required name="number" placeholder="Enter GC Number" value="{{$gc->number}}">
                 @if($errors->has('number'))
-                    <span class="m-form__help twtext-red">{{ $errors->first('number') }}</span>
+                    <span class="text-danger">{{ $errors->first('number') }}</span>
                 @endif
             </div>
         </div>

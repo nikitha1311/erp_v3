@@ -78,8 +78,11 @@ class GoodsConsignmentNotesController extends Controller
             $notification['type'] = 'error';
             $notification['msg'] = 'Unable to edit GC';
         }
-        Notification::success($notification);
-        return redirect()->back();
+        // Notification::success($notification);
+        // return redirect()->back();
+        return redirect()->back()->with([
+            'notification' => $notification
+        ]);
     
     }
 
@@ -93,7 +96,10 @@ class GoodsConsignmentNotesController extends Controller
         } else
             $goods_consignment_note->delete();
         
-        Notification::success('GC Deleted Successfully!');
-        return redirect()->back();
+        // Notification::success('GC Deleted Successfully!');
+        // return redirect()->back();
+        return redirect()->back()->with([
+            'notification' => 'GC Deleted Successfully'
+        ]);
     }
 }

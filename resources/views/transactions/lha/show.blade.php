@@ -49,13 +49,7 @@
                     </div>
                     <div class="collapse" id="{{ $lha->number }}_body" role="tabpanel">
                         <div>
-                            <div class="float-right">
-                                <a onclick="printLHA({{$lha->id}})">
-                                    <button class="btn btn-sm btn-primary">
-                                        <i class="fa fa-print"></i>
-                                    </button>
-                                </a>
-                            </div>
+                            
                             @include('transactions.lha.partials._lha')
                         </div>
                     </div>
