@@ -44,6 +44,7 @@ class CreateLHARequest extends FormRequest
     {
 
         $request=request()->all();
+        dd($request);
 //        dd($request['date'],now(),Carbon::createFromFormat('d-m-Y', $request['date']));
         return LoadingHireAgreement::create([
             'branch_id' => $request['branch_id'],
