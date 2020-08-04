@@ -25,7 +25,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover text-center">
+                        <table class="table table-bordered table-hover text-center" id="billing_rate_table">
                             <thead>
                             <tr>
                                 <th>Billing Id</th>
@@ -73,4 +73,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#billing_rate_table').DataTable();
+    });
+</script>
 @endsection

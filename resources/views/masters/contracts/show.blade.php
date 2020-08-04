@@ -56,7 +56,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover text-center">
+                        <table class="table table-bordered table-hover text-center" id='route_table'>
                             <thead>
                             <tr>
                                 <th>Route ID</th>
@@ -115,4 +115,11 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#route_table').DataTable();
+    });
+</script>
 @endsection
