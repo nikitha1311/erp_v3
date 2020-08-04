@@ -6,6 +6,7 @@ use App\Domain\LHAs\Models\LHAsTimestampCreater;
 use App\Domain\LHAs\Models\LoadingHireAgreement;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Classes\Notification;
 
 class LHATimestampsController extends Controller
 {
@@ -16,11 +17,9 @@ class LHATimestampsController extends Controller
             $timeStampCreater = new LHAsTimestampCreater($loading_hire_agreement,$request);
             $notification = $timeStampCreater->handle();
         } catch (\Exception $e){
-            $notification =[
-                'type' => 'error',
-                'msg' => 'Unable to update log'
-            ];
+            Notification::error('Unable to Update Log!');
+
         }
-        return back()->with(['notification' => $notification]);
+        return back();
     }
 }
