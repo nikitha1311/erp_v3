@@ -7,13 +7,13 @@
         {!! csrf_field() !!}
         <div class="form-group m-form__group">
             <label for="gc_id">GC Number</label>
-            <select required type="text" class="form-control m-input" id="gc_id" name="gc_id" style="width: 100%;">
+            <select required type="text" class="form-control" id="gc_id" name="gc_id" style="width: 100%;">
             </select>
             @if($errors->has('gc_id'))
-                <span class="m-form__help twtext-red">{{ $errors->first('gc_id') }}</span>
+                <span class="text-danger">{{ $errors->first('gc_id') }}</span>
             @endif
         </div>
-        <div class="m-form__actions">
+        <div>
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="reset" class="btn btn-default">Clear</button>
         </div>

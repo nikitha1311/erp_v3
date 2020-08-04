@@ -9,19 +9,12 @@
             <h5>
                 Edit LHA
             </h5>
-            <div>
-                <ul>
-                    <li>
-
-                    </li>
-                </ul>
-            </div>
         </div>
         <div class="panel-body">
             <form action="{{ url("/loading-hire-agreements/{$lha->id}") }}" method="post">
                 {!! csrf_field() !!}
                 {!! method_field('PATCH') !!}
-                <div class="m-portlet__body">
+                <div>
                     @include('transactions.lha.partials._create',['lha' => $lha])
                 </div>
                 <div class="panel-footer">

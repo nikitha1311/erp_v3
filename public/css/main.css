@@ -786,7 +786,7 @@ body {
   border-right: 0px;
 }
 
-.input-group input {
+.input-group input.left-no-border {
   border-left: 0px;
 }
 

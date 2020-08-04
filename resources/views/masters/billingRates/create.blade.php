@@ -12,33 +12,20 @@
                         Create Rate
                     </h5>
                 </div>
-                <div class="panel-body">
-                    <form action="{{ route("billing-rates.store", $route->id) }}" method="post">
-                        {{csrf_field()}}
-                        <div class="form-group">
-                          <label for="rate">Rate</label>
-                          <input type="number" required class="form-control" name='rate' id="rate"  placeholder="Rate">
-                            @if($errors->has('rate'))
-                                <span class="text-danger">{{ $errors->first('rate') }}</span>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                          <label for="wef">Wef</label>
-                          <input type="text" class="form-control dmy" name='wef' id="wef" placeholder="Wef">
-                            @if($errors->has('wef'))
-                                <span class="text-danger">{{ $errors->first('wef') }}</span>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <input type="text" required class="form-control" name='description' id="description" placeholder="Description">
-                            @if($errors->has('description'))
-                                <span class="text-danger">{{ $errors->first('description') }}</span>
-                            @endif
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
+                <form action="{{ route("billing-rates.store", $route->id) }}" method="post">
+                    <div class="panel-body">
+                            {{csrf_field()}}
+                            @include('masters.billingRates.partials._form',[
+                                'billing_rate' => $billing_rate,
+                                'disabled' => false
+                            ])
+                    </div>
+                    <div class="panel-footer">
+                        @include('components._formButtons',[
+                                'primaryText' => 'Create'
+                            ])
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -8,16 +8,8 @@
 <div class="panel panel-default">
     <div class="panel-header">
         <h5>
-            Loading Hire Agreements / Create<small></small>
-
+            Loading Hire Agreements / Create
         </h5>
-        <div>
-            <ul>
-                <li>
-
-                </li>
-            </ul>
-        </div>
     </div>
 
     <div class="panel-body">
@@ -30,7 +22,6 @@
                     <span class="text-muted">{{ $transaction->created_at->toDayDateTimeString() }}</span>
                 </p>
             </div>
-            <div class="m-separator m-separator--space m-separator--dashed"></div>
         @endif
 
         <form action="{{ url('/loading-hire-agreements') }}" method="POST">

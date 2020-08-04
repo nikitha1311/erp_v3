@@ -32,8 +32,10 @@ class RouteBillingRatesController extends Controller
     public function create(Route $route)
     {
         // dd($route);
+        $billing_rate = new BillingRate();
         return view('masters.billingRates.create')->with([
             'route' => $route,
+            'billing_rate' => $billing_rate
         ]);
     }
 
