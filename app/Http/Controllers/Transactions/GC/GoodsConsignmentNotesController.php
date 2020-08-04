@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Transactions\GC;
 
+use App\Domain\GCs\Actions\CreateGCAction;
+use App\Domain\GCs\Actions\UpdateGCAction;
 use App\Domain\GCs\Models\GoodsConsignmentNote;
 use App\Domain\GCs\Requests\CreateGCRequest;
 use App\Domain\GCs\Requests\UpdateGCRequest;
@@ -30,19 +32,21 @@ class GoodsConsignmentNotesController extends Controller
 
     public function store(CreateGCRequest $request)
     {
+//        dd($request);
+        $createGcAction = new CreateGCAction($request->number, $request->branch_id,
+            $request->date, $request->consignor_id, $request->consignee_id,
+            $request->bill_on_id,$request->desc,$request->invoice_number,$request->gst_number,$request->value);
+
         try {
-            $gc = $request->handle();
+            $gc = $createGcAction->handle();
             if (request('transaction_id') != null) {
                 $transaction = Transaction::find(request('transaction_id'))->addGC($gc->id);
-                return redirect("transactions/{$transaction->id}")->withNotification([
-                    'type' => 'success',
-                    'msg' => 'GC created successfully',
-                ]);
+                Notification::success('GC created successfully!');
+                return redirect("transactions/{$transaction->id}");
             }
-            return redirect()->back()->withNotification([
-                'type' => 'success',
-                'msg' => 'GC created successfully',
-            ]);
+            Notification::success('GC created successfully!');
+
+            return redirect()->back();
         } catch (\Exception $exception) {
             throw $exception;
         }
@@ -66,24 +70,22 @@ class GoodsConsignmentNotesController extends Controller
 
     public function update(UpdateGCRequest $request,GoodsConsignmentNote $goods_consignment_note)
     {
-        $notification = [];
+        $updateGcAction = new UpdateGCAction($request->number, $request->branch_id,
+            $request->date, $request->consignor_id, $request->consignee_id,
+            $request->bill_on_id,$request->desc,$request->invoice_number,$request->gst_number,$request->value);
         try {
-            $request->handle($goods_consignment_note);
+            $gc=$updateGcAction->handle($goods_consignment_note);
             if ($goods_consignment_note->isApproved())
                 $goods_consignment_note->disapprove();
-            $notification['type'] = 'success';
-            $notification['msg'] = 'GC Edited Successfully';
+            Notification::success('Gc updated successfully!');
+
         } catch (\Exception $e) {
+            Notification::error('Unable to edit GC!');
             throw $e;
-            $notification['type'] = 'error';
-            $notification['msg'] = 'Unable to edit GC';
         }
-        // Notification::success($notification);
-        // return redirect()->back();
-        return redirect()->back()->with([
-            'notification' => $notification
-        ]);
-    
+        Notification::success('Gc updated successfully!');
+        return redirect()->back();
+
     }
 
 
@@ -95,11 +97,8 @@ class GoodsConsignmentNotesController extends Controller
                 $goods_consignment_note->disapprove();
         } else
             $goods_consignment_note->delete();
-        
-        // Notification::success('GC Deleted Successfully!');
-        // return redirect()->back();
-        return redirect()->back()->with([
-            'notification' => 'GC Deleted Successfully'
-        ]);
+
+         Notification::success('GC Deleted Successfully!');
+        return redirect()->back();
     }
 }

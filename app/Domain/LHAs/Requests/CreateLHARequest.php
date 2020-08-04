@@ -40,5 +40,4 @@ class CreateLHARequest extends FormRequest
             'hire'=>'required'
         ];
     }
-
 }
