@@ -10,6 +10,8 @@ use App\Domain\LHAs\Models\LoadingHireAgreement;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Classes\Notification;
+use App\Domain\LHAs\Actions\CreateLHAAction;
+use App\Domain\LHAs\Actions\UpdateLHAAction;
 
 class LoadingHireAgreementsController extends Controller
 {
@@ -23,8 +25,7 @@ class LoadingHireAgreementsController extends Controller
     public function create(Transaction $transaction)
     {
         $transaction = Transaction::find(request('t_id'));
-        return view("transactions.lha.create")
-            ->with([
+        return view("transactions.lha.create")->with([
             'transaction' => $transaction,
             'vendors' => Vendor::all()
         ]);
@@ -33,27 +34,23 @@ class LoadingHireAgreementsController extends Controller
 
     public function store(CreateLHARequest $request)
     {
-        $notification = [];
+        $createLhaAction = new CreateLHAAction($request->branch_id, $request->number,
+        $request->from_id, $request->to_id, $request->truck_type_id,
+        $request->vendor_id,$request->truck_number,$request->hire,$request->date,$request->expected_delivery_date,$request->type);
         try {
-            $lha = $request->handle();
-            $notification['type'] = 'success';
-            $notification['msg'] = 'LHA Created Successfully';
+            $lha = $createLhaAction->handle();
+            Notification::success('LHA created successfully!');
         } catch (\Exception $e) {
-            $notification['type'] = 'error';
-            $notification['msg'] = 'Unable to Create LHA';
+            Notification::error('Unable to create LHA!');
             throw $e;
         }
         if (request('transaction_id')) {
             Transaction::find(request('transaction_id'))->addLHA($lha->id);
-            return redirect("/transactions/" . request('transaction_id'))->with([
-                'notification' => $notification
-            ]);
+            Notification::success('LHA created successfully!');
+            return redirect("/transactions/" . request('transaction_id'));
         }
-
-        return redirect("/loading-hire-agreements/{$lha->id}")->with([
-            'notification' => $notification
-        ]);
-
+        Notification::success('LHA created successfully!');
+        return redirect("/loading-hire-agreements/{$lha->id}");
     }
 
 
@@ -74,40 +71,36 @@ class LoadingHireAgreementsController extends Controller
 
     public function update(UpdateLHARequest $request, LoadingHireAgreement $loading_hire_agreement)
     {
-        $notification = [];
+        $updateLhaAction = new UpdateLHAAction($request->branch_id, $request->number,
+        $request->from_id, $request->to_id, $request->truck_type_id,
+        $request->vendor_id,$request->truck_number,$request->hire,$request->date,$request->expected_delivery_date,$request->type);
         try {
-            $request->handle($loading_hire_agreement);
+            $lha = $updateLhaAction->handle($loading_hire_agreement);
             if ($loading_hire_agreement->isApproved())
                 $loading_hire_agreement->disapprove();
-            $notification['type'] = 'success';
-            $notification['msg'] = 'LHA Updated Successfully';
+            Notification::success('LHA updated successfully!');
         } catch (\Exception $e) {
-            $notification['type'] = 'error';
-            $notification['msg'] = 'Unable to edit LHA';
+            Notification::error('Unable to edit LHA!');
             throw $e;
         }
-        return redirect()->back()->with([
-            'notification' => $notification
-        ]);
-        // Notification::success($notification);
-        // return redirect()->back();
+        Notification::success('LHA updated successfully!');
+        return redirect()->back();
+ 
     }
 
 
     public function destroy(LoadingHireAgreement $loading_hire_agreement)
     {
-        $notification = [];
         if ($loading_hire_agreement->trashed()) {
             $loading_hire_agreement->restore();
             if ($loading_hire_agreement->isApproved())
                 $loading_hire_agreement->disapprove();
-            $notification['type'] = 'success';
-            $notification['msg'] = 'LHA Restored Successfully';
+            Notification::success('LHA Restored successfully!');
         } else {
             $loading_hire_agreement->delete();
-            $notification['type'] = 'success';
-            $notification['msg'] = 'LHA Deleted Successfully';
+            Notification::success('LHA Deleted successfully!');
         }
-        return back()->with(['notification' => $notification]);
+        Notification::success('LHA Deleted successfully!');
+        return redirect()->back();
     }
 }

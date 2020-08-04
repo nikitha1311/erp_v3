@@ -68,7 +68,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover text-center">
+                        <table class="table table-bordered table-hover text-center" id="contracts_table">
                             <thead>
                             <tr>
                                 <th>Id</th>
@@ -123,5 +123,11 @@
     </div>
 @endsection
 
-
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#contracts_table').DataTable();
+    });
+</script>
+@endsection
 

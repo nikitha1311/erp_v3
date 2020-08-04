@@ -85,13 +85,18 @@
                        placeholder="Enter GST Number" value="{{$gc->gst_number}}">
             </div>
         </div>
+      
         <div class="col-sm-4">
             <div class="form-group">
                 <label>Value of Cargo</label>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-rupee"></i></span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text input-grp-text" id="inputGroup-sizing-default">
+                          <i class="fa fa-inr"></i>
+                      </span>
+                    </div>
                     <input type="text" class="form-control" required name="value"
-                           placeholder="Enter Value of Cargo" value="{{$gc->value}}">
+                                   placeholder="Enter Value of Cargo" value="{{$gc->value}}">
                 </div>
             </div>
         </div>

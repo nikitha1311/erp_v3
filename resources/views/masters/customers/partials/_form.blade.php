@@ -26,16 +26,16 @@
     </div>
   <div class="form-check">
     <input type="checkbox" class="form-check-input" id="is_consignor"
-        @if ($customer->is_consignor) == 1 ?? checked @endif  name="is_consignor" @if($disabled) disabled @endif>
+        @if ($customer->is_consignor) != 0 ?? checked @endif  name="is_consignor" @if($disabled) disabled @endif>
     <label class="form-check-label" for="is_consignor">Consignor</label>
   </div>
   <div class="form-check">
       <input type="checkbox" class="form-check-input" id="is_consignee" 
-      @if ($customer->is_consignee) == 1 ?? checked @endif name="is_consignee" @if($disabled) disabled @endif>
+      @if ($customer->is_consignee) != 0 ?? checked @endif name="is_consignee" @if($disabled) disabled @endif>
       <label class="form-check-label" for="is_consignee">Consignee</label>
   </div>
   <div class="form-check">
       <input type="checkbox" class="form-check-input" id="is_billed_on"
-      @if ($customer->is_billed_on) == 1 ?? checked @endif  name="is_billed_on" @if($disabled) disabled @endif>
+      @if ($customer->is_billed_on) != 0 ?? checked @endif  name="is_billed_on" @if($disabled) disabled @endif>
       <label class="form-check-label" for="is_billed_on">Is Billed On</label>
   </div>

@@ -22,7 +22,7 @@
         </div>
         <div class="panel-body ">
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="vendor_table">
                     <thead>
                     <tr>
                         <th>Name</th>
@@ -79,4 +79,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#vendor_table').DataTable();
+    });
+</script>
 @endsection

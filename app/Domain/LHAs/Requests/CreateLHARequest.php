@@ -40,25 +40,4 @@ class CreateLHARequest extends FormRequest
             'hire'=>'required'
         ];
     }
-    public function handle()
-    {
-
-        $request=request()->all();
-        dd($request);
-//        dd($request['date'],now(),Carbon::createFromFormat('d-m-Y', $request['date']));
-        return LoadingHireAgreement::create([
-            'branch_id' => $request['branch_id'],
-            'number' => request()->has('autogenerate') ? Constant::LHANumber() : strtoupper($request['number']),
-            'from_id' => $request['from_id'],
-            'to_id' => $request['to_id'],
-            'truck_type_id' => $request['truck_type_id'],
-            'vendor_id' => $request['vendor_id'],
-            'truck_number' => strtoupper($request['truck_number']),
-            'hire' => $request['hire'],
-            'date' => formatDMY($request['date']),
-            'expected_delivery_date' => formatDMY($request['expected_delivery_date']),
-            'type' => $request['type'],
-            'created_by' => auth()->user()->id,
-        ]);
-    }
 }

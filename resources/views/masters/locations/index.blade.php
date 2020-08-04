@@ -60,7 +60,7 @@
         </div>
         <div class="panel-body ">
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="location_table">
                     <thead>
                     <tr>
                         <th>Id</th>
@@ -121,14 +121,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/geocomplete/1.7.0/jquery.geocomplete.min.js"></script>
 
     <script>
+        $(document).ready( function () {
+            $('#location_table').DataTable();
 
-        $('#name').geocomplete({
-            country: ["IN", "NP"],
-            details: '.address',
-            detailsAttribute: 'id',
-            types: ["(regions)"]
+            
+            $('#name').geocomplete({
+                country: ["IN", "NP"],
+                details: '.address',
+                detailsAttribute: 'id',
+                types: ["(regions)"]
+            });
         });
-
     </script>
 
 @endsection
