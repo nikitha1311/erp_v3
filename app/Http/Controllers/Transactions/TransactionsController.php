@@ -9,7 +9,7 @@ use App\Domain\Transactions\Models\Transaction;
 use App\Domain\LHAs\Models\LoadingHireAgreement;
 use App\Domain\GCs\Models\GoodsConsignmentNote;
 use Carbon\Carbon;
-
+use App\Domain\Transactions\Actions\CreateTransactionAction;
 
 class TransactionsController extends Controller
 {
@@ -22,13 +22,10 @@ class TransactionsController extends Controller
 
     public function create()
     {
-        $transaction = Transaction::create([
-            'date' => Carbon::now(),
-            'created_by' => auth()->user()->id
-        ]);
-
-        return redirect("/transactions/{$transaction->id}");
+        $createTransactionAction = new CreateTransactionAction();
+        $transaction = $createTransactionAction->handle();
         Notification::success('Transactions created successfully!');
+        return redirect("/transactions/{$transaction->id}");
     }
 
 
@@ -48,8 +45,7 @@ class TransactionsController extends Controller
             'goodsConsignmentNotes.approval',
             'approval'
             );
-        return view('transactions.show')
-            ->with([
+        return view('transactions.show')->with([
                 'transaction' => $transaction,
             ]);
     }
