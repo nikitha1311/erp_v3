@@ -1,6 +1,22 @@
 @extends('layouts.app')
 @section('content')
 
+<div class="panel">
+    <div class="panel-header">
+        <h5>
+            {{$truck->number}}
+        </h5>
+        <div>
+            <a href="{{ route('trucks.edit',$truck->id) }}" class="btn btn-success">
+                <i class="fa fa-pencil mr-2"></i>
+                <span>Edit</span>
+            </a>
+            <a href="#" class="btn btn-primary">
+                <span>In Trip</span>
+            </a>
+        </div>
+    </div>
+</div>
 <div class="panel panel-default">
     <div class="panel-header">
         <h5>
@@ -30,7 +46,7 @@
                 <th>Details</th>
                 <th>Billed</th>
                 <th>Collection</th>
-{{--                <th>Expense</th>--}}
+    {{--                <th>Expense</th>--}}
                 <th>Trip Days</th>
                 <th></th>
             </tr>
@@ -48,7 +64,7 @@
                     <td>{{ $trip->info() }}</td>
                     <td>{{ numberToCurrency($trip->billing) }}</td>
                     <td>{{ numberToCurrency($trip->collection) }}</td>
-{{--                    <td>{{ numberToCurrency($trip->ledgers()->sum('amount')) }}</td>--}}
+    {{--                    <td>{{ numberToCurrency($trip->ledgers()->sum('amount')) }}</td>--}}
                     <td>{{ $trip->days() }}</td>
                     <td>
                         <a class="btn btn-sm btn-primary" href="{{ url("fleetomata/trips/{$trip->id}") }}">

@@ -9,11 +9,10 @@
             <small></small>
         </h5>
         <div>
-            <ul>
-                <li>
-
-                </li>
-            </ul>
+            <a href="{{ route('trucks.create') }}" class="btn btn-success">
+                <i class="fa fa-plus mr-2"></i>
+                <span>Create Truck</span>
+            </a>
         </div>
     </div>
     <div class="panel-body">
@@ -27,6 +26,7 @@
                     <th>Today Distance</th>
                     <th class="w-25">Location</th>
                     <th>Last Update</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -46,6 +46,13 @@
                             {{ $truck->location }}<br>
                         </td>
                         <td>{{ optional($truck->last_seen)->diffForHumans() }}</td>
+                        <td>
+                            <form action="{{ route('trucks.destroy',$truck->id) }}" method='POST'>
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="fa fa-trash btn btn-danger"></button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

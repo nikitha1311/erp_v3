@@ -13,7 +13,7 @@ class UpdateTruckRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,11 @@ class UpdateTruckRequest extends FormRequest
      */
     public function rules()
     {
+        // dd($this);
         return [
-            //
+            'number' => 'required|unique:trucks,number,'.$this->truck->id,
+            'truck_type_id' => 'required',
+            'group' => 'required'
         ];
     }
 }
