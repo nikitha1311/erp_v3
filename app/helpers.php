@@ -55,4 +55,24 @@ function numberToCurrency($number)
     return preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $number);
 }
 
+function getBaseMileage($group, $weight)
+{
+    switch($group)
+    {
+        case 'JSM2518' : return $weight >= 15 ? 4 : 4.5;
+        case 'JSMTN' : return $weight >= 10 ? 5.5 : 6;
+        case 'JSM4923' : return $weight >= 38 ? 2 : 2.25;
+        default : return 0;
+    }
+}
 
+function getEnroutePerKm($group)
+{
+    switch($group)
+    {
+        case 'JSM2518' : return 2;
+        case 'JSMTN' : return 1;
+        case 'JSM4923' : return 4;
+        default : return 0;
+    }
+}

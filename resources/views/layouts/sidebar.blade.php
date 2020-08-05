@@ -83,7 +83,7 @@
                 </a>
                 <div class="collapse" id="fleetomata" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                        <a class="nav-link" href="/fleetomata">
+                        <a class="nav-link" href="/fleetomata/trucks">
                             <div class="sb-nav-link-icon"><i class="fa fa-truck mr-2"></i></div>
                            Truck
                         </a>

@@ -11,6 +11,12 @@ class Vendor extends Model
 
     protected $guarded = ['id'];
 
+    public function syncOutstanding()
+    {
+        return $this->update([
+            'current_outstanding' => $this->orders()->where('outstanding','>',0)->sum('outstanding')
+        ]);
+    }
 
     public function orders()
     {

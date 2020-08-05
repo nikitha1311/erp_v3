@@ -66,3 +66,11 @@
     </div>
 </div>
 @endsection
+
+@section('scripts')
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#truck_trip_table').DataTable();
+        });
+    </script>
+@endsection

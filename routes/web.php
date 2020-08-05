@@ -47,3 +47,5 @@ Route::resource('/contracts/{contract}/routes', '\\App\\Http\\Controllers\\Maste
 Route::resource('/routes/{route}/billing-rates','\\App\\Http\\Controllers\\Masters\\Customers\\RouteBillingRatesController');
 
 Route::resource('/fleetomata/trucks','\\App\\Http\\Controllers\\Fleetomata\\Trucks\\TrucksController');
+Route::resource('/fleetomata/trips','\\App\\Http\\Controllers\\Fleetomata\\Trips\\TripsController');
+// Route::resource('/fleetomata/trips/{trip}','\\App\\Http\\Controllers\\Fleetomata\\Orders\\OrdersController');

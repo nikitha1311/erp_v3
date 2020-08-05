@@ -5,9 +5,13 @@ namespace App\Domain\Trips\Models;
 use App\Domain\Orders\Models\Order;
 use App\Domain\Truck\Models\Truck;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Traits\CreatedBy;
 class Trip extends Model
 {
+    use CreatedBy;
+
+    protected $guarded = ['id'];
+
     protected $dates = [
         'when', 'accounting_date', 'completed_at'
     ];
@@ -45,4 +49,18 @@ class Trip extends Model
         return $this->hasMany(Order::class);
     }
 
+     /*
+     * Total Kms = Order Kms - Part load Kms.
+     */
+    public function getKmsAttribute()
+    {
+        return $this->orders->sum('kms') - $this->orders->where('type', 1)->sum('kms');
+    }
+
+    public function updateBilling()
+    {
+        return $this->update([
+            'billing' => $this->orders()->sum('hire'),
+        ]);
+    }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Fleetomata\Trips;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Domain\Truck\Models\Truck;
+use App\Domain\Trips\Models\Trip;
 
 class TripsController extends Controller
 {
@@ -35,7 +37,18 @@ class TripsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $truck = Truck::findOrFail($request->truck_id);
+        if ($truck->trip_id)
+            return back()->withNotification([
+                'type' => 'error',
+                'msg' => 'Trip already exists'
+            ]);
+        $trip = $truck->trips()->create([
+            'created_by' => auth()->user()->id,
+        ]);
+        $truck->trip_id = $trip->id;
+        $truck->save();
+        return redirect("fleetomata/trips/{$trip->id}");
     }
 
     /**
@@ -44,9 +57,11 @@ class TripsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Trip $trip)
     {
-        //
+        return view("fleetomata.trips.show")->with([
+           'trip' => $trip->load('truck','orders.vendor')
+        ]);
     }
 
     /**
