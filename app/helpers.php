@@ -50,5 +50,9 @@ function billedOn()
     }
     return cache('billedOn');
 }
+function numberToCurrency($number)
+{
+    return preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $number);
+}
 
 
