@@ -37,5 +37,12 @@ class Order extends Model
     {
         return $this->pod_received_date ? 'Received at ' . $this->pod_received_date->format('d-m-Y') : 'Not Received';
     }
+    public function income()
+    {
+        return $this->vendor->income()
+            ->where('ledgerable_id', $this->id)
+            ->where('ledgerable_type', get_class($this));
+    }
+
 
 }
