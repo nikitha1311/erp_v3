@@ -45,6 +45,13 @@ class Trip extends Model
             return "No order";
         return $order->info();
     }
+    public function updateBilling()
+    {
+        return $this->update([
+            'billing' => $this->orders()->sum('hire'),
+        ]);
+    }
+    
     public function orders()
     {
         return $this->hasMany(Order::class);
@@ -58,10 +65,4 @@ class Trip extends Model
         return $this->orders->sum('kms') - $this->orders->where('type', 1)->sum('kms');
     }
 
-    public function updateBilling()
-    {
-        return $this->update([
-            'billing' => $this->orders()->sum('hire'),
-        ]);
-    }
 }

@@ -26,7 +26,7 @@
     <div class="panel-body">
         <div class="tab-content">
             @foreach($orders as $order)
-                <div class="tab-pane @if($loop->first) active @endif" id="ODR{{ $order->id }}" role="tabpanel">
+                <div class="tab-pane fade show @if($loop->first) active @endif" id="ODR{{ $order->id }}" role="tabpanel">
                     <div class="row">
                         <div class="col-md-4">
                             <table class="table table-bordered m-table">
@@ -248,7 +248,7 @@
                                         <span class="twtext-sm">{{ $order->created_at->toDayDateTimeString() }}</span>
                                     </td>
                                     <td>
-                                        @role('admin')
+                                        {{-- @role('admin') --}}
                                         <form action="{{ url("fleetomata/trips/{$order->trip_id}/orders/{$order->id}") }}"
                                               method="POST">
                                             @csrf
@@ -257,7 +257,7 @@
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </form>
-                                        @endrole
+                                        {{-- @endrole --}}
                                     </td>
                                 </tr>
                             </table>

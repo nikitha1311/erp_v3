@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\Fleetomata\Orders;
 
+use App\Classes\Notification;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Domain\Trips\Models\Trip;
 use App\Domain\Vendors\Models\Vendor;
-
+use App\Domain\Orders\Models\Order;
+use Illuminate\Support\Facades\DB;
 class OrdersController extends Controller
 {
     
     public function index()
     {
-        //
+       
     }
 
    
@@ -49,13 +51,11 @@ class OrdersController extends Controller
             'remarks' => $request->remarks,
             'created_by' => auth()->user()->id,
         ]);
-
         $trip->updateBilling();
         Vendor::findOrFail($request->vendor_id)->syncOutstanding();
-        return redirect()->back()->withNotification([
-            'type' => 'success',
-            'msg' => 'Order created successfully'
-        ]);
+
+        Notification::success('Order Created Successfully');
+        return redirect("/fleetomata/trips/{$trip->id}");       
     }
 
    
@@ -76,9 +76,16 @@ class OrdersController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function destroy(Trip $trip, Order $order, Request $request)
     {
-        //
+        
+        DB::transaction(function () use ($trip, $order) {
+            $vendor = $order->vendor;
+            $order->delete();
+            $vendor->syncOutstanding();
+            $trip->updateBilling();
+        });
+        return redirect()->back();
     }
 
     protected function getBudgetedExpenses($group, $weight, $kms, $type)
