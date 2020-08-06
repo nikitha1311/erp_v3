@@ -33,7 +33,7 @@
                                 <tr>
                                     <th class="w-25">Vendor</th>
                                     <td>
-                                        <a href="{{ url("vendors/{$order->vendor_id}") }}">{{ $order->vendor }}</a>
+                                        <a href="{{ url("vendors/{$order->vendor_id}") }}">{{ optional($order->vendor)->name }}</a>
                                     </td>
                                 </tr>
                                 <tr>

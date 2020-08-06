@@ -44,7 +44,7 @@ class TripsController extends Controller
     public function show(Trip $trip)
     {
         return view("fleetomata.trips.show")->with([
-           'trip' => $trip->load('truck','orders.vendor')
+           'trip' => $trip->load('truck','ledgers.createdBy','orders.vendor','ledgers.approval.approvedBy')
         ]);
     }
 

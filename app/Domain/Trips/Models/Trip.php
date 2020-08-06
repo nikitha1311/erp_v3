@@ -6,9 +6,10 @@ use App\Domain\Orders\Models\Order;
 use App\Domain\Truck\Models\Truck;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CreatedBy;
+use App\Traits\HasTruckLedgers;
 class Trip extends Model
 {
-    use CreatedBy;
+    use CreatedBy,HasTruckLedgers;
 
     protected $guarded = ['id'];
 

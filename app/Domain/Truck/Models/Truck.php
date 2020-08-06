@@ -25,4 +25,9 @@ class Truck extends Model
         return $this->hasOne(TruckType::class, 'id', 'truck_type_id');
     }
 
+    public function ledgers()
+    {
+        return $this->hasMany(TruckLedger::class);
+    }
+
 }
