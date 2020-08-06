@@ -160,34 +160,33 @@
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.js"></script>
-
     <script>
         $.fn.editable.defaults.ajaxOptions = {type: "PATCH"};
         $('.trip-editable').editable();
-        // $('.modal select').css('width', '100%');
-        // $('#from_id, #to_id').select2();
-        // $('#vendor_id').select2({
-        //     minimumInputLength: 3,
-        //     ajax: {
-        //         url: '/select2/vendors',
-        //         data: function (params) {
-        //             var query = {
-        //                 q: params.term,
-        //             }
-        //             return query;
-        //         },
-        //         processResults: function (data) {
-        //             return {
-        //                 results: $.map(data, function (item) {
-        //                     return {
-        //                         text: item.name + " - " + item.phone,
-        //                         id: item.id,
-        //                     }
-        //                 })
-        //             }
-        //         }
-        //     }
-        // });
+        $('.modal select').css('width', '100%');
+        $('#from_id, #to_id').select2();
+        $('#vendor_id').select2({
+            minimumInputLength: 3,
+            ajax: {
+                url: '/select2/vendors',
+                data: function (params) {
+                    var query = {
+                        q: params.term,
+                    }
+                    return query;
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.name + " - " + item.phone,
+                                id: item.id,
+                            }
+                        })
+                    }
+                }
+            }
+        });
     </script>
 
 @endsection

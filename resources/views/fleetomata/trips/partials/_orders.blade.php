@@ -248,7 +248,7 @@
                                         <span class="twtext-sm">{{ $order->created_at->toDayDateTimeString() }}</span>
                                     </td>
                                     <td>
-                                        {{-- @role('admin') --}}
+                                        @role('admin')
                                         <form action="{{ url("fleetomata/trips/{$order->trip_id}/orders/{$order->id}") }}"
                                               method="POST">
                                             @csrf
@@ -257,7 +257,7 @@
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </form>
-                                        {{-- @endrole --}}
+                                        @endrole
                                     </td>
                                 </tr>
                             </table>

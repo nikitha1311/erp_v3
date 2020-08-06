@@ -52,3 +52,5 @@ Route::resource('/fleetomata/trips/{trip}/orders','\\App\\Http\\Controllers\\Fle
 Route::post('/fleetomata/trucks/{truck}/truck-expenses','\\App\\Http\\Controllers\\Fleetomata\\TruckExpenses\\TruckExpensesController@store');
 Route::DELETE('/fleetomata/trucks/{truck}/truck-expenses/{truck_expense}','\\App\\Http\\Controllers\\Fleetomata\\TruckExpenses\\TruckExpensesController@destroy');
 Route::post('fleetomata/trucks/{truck}/truck-expenses/{truck_expense}','\\App\\Http\\Controllers\\Fleetomata\\TruckExpenses\\TruckExpensesController@approve');
+
+Route::get('select2/vendors','Select2Controller@vendors');
