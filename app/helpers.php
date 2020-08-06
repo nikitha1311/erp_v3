@@ -76,3 +76,11 @@ function getEnroutePerKm($group)
         default : return 0;
     }
 }
+function expenseType(){
+    return [
+        'Challan',
+        'Food',
+        'Case',
+        'Unplanned Maintainance',
+    ];
+}

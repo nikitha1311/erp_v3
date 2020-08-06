@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\Truck\Requests;
+namespace App\Domain\TruckExpenses\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateTruckRequest extends FormRequest
+class CreateTruckExpenseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class CreateTruckRequest extends FormRequest
     public function rules()
     {
         return [
-            'number' => 'required',
-            'truck_type_id' => 'required',
-            'group' => 'required'
+            //
         ];
     }
 }

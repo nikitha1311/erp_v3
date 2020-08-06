@@ -14,6 +14,11 @@ class Order extends Model
 
     protected $guarded = ['id'];
 
+    public $dates = [
+        'loading_reported', 'loading_released', 'unloading_reported', 'unloading_released', 'pod_received_date', 'expected_delivery',
+        'actual_delivery', 'budget_transferred_at'
+    ];
+
     public function id()
     {
         return "ORD#" . $this->id;
