@@ -55,3 +55,5 @@ Route::post('fleetomata/trucks/{truck}/truck-expenses/{truck_expense}','\\App\\H
 Route::resource('/fleetomata/trips/{trip}/incomes','\\App\\Http\\Controllers\\Fleetomata\\VendorLedgers\\TripIncomeController');
 
 Route::get('select2/vendors','Select2Controller@vendors');
+
+Route::resource('/fleetomata/trips/{trip}/expenses','\\App\\Http\\Controllers\\Fleetomata\\Trips\\TripsExpensesController');
