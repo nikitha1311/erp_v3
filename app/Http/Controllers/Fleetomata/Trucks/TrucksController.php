@@ -41,9 +41,13 @@ class TrucksController extends Controller
 
     public function show(Truck $truck)
     {
-
+        $currentExpenses = $truck->truckExpenses()->where('valid_till', '>', now())->get();
+        $oldExpenses = $truck->truckExpenses()->where('valid_till', '<', now())->get();
         return view("fleetomata.trucks.show")->with([
-            'truck' => $truck->load('type', 'trips.orders'),
+            'truck' => $truck->load('type', 'trips.orders','truckExpenses'),
+            'currentExpenses' => $currentExpenses,
+            'oldExpenses' => $oldExpenses,
+
         ]);
     }
 

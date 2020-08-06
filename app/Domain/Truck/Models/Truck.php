@@ -3,6 +3,7 @@
 namespace App\Domain\Truck\Models;
 
 use App\Domain\Trips\Models\Trip;
+use App\Domain\TruckExpenses\Models\TruckExpense;
 use App\Domain\TruckType\Models\TruckType;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,6 +25,11 @@ class Truck extends Model
     {
         return $this->hasOne(TruckType::class, 'id', 'truck_type_id');
     }
+    public function truckExpenses()
+    {
+        return $this->hasMany(TruckExpense::class);
+    }
+
 
     public function ledgers()
     {

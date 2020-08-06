@@ -7,7 +7,7 @@ use App\Classes\Notification;
 use App\Domain\TruckType\Actions\UpdateTruckTypeAction;
 use App\Domain\TruckType\Models\TruckType;
 use App\Domain\TruckType\Requests\CreateTruckTypeRequest;
-use App\Domain\TruckType\Actions\CreateTruckTypeAction;
+use App\Domain\TruckType\Actions\CreateTruckExpenseAction;
 
 use App\Domain\TruckType\Requests\UpdateTruckTypeRequest;
 use App\Http\Controllers\Controller;
@@ -45,7 +45,7 @@ class TruckTypesController extends Controller
      */
     public function store(CreateTruckTypeRequest $request)
     {
-        $createTruckTypeAction = new CreateTruckTypeAction($request->name);
+        $createTruckTypeAction = new CreateTruckExpenseAction($request->name);
         $truck = $createTruckTypeAction->handle();
         Notification::success('TruckType Created successfully!');
         return redirect('/truck-types');
