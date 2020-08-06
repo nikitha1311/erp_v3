@@ -4,6 +4,7 @@ namespace App\Domain\Truck\Models;
 
 use App\Domain\Trips\Models\Trip;
 use App\Domain\TruckExpenses\Models\TruckExpense;
+use App\Domain\TruckLedgers\Models\TruckLedger;
 use App\Domain\TruckType\Models\TruckType;
 use Illuminate\Database\Eloquent\Model;
 

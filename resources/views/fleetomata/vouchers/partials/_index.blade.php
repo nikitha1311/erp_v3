@@ -18,7 +18,7 @@
                                        placeholder="When"
                                        value="{{ old('when') }}">
                                 @if($errors->has('when'))
-                                    <span class="m-form__help twtext-red">{{ $errors->first('when') }}</span>
+                                    <span class="text-danger">{{ $errors->first('when') }}</span>
                                 @endif
                             </div>
                         </td>
@@ -31,7 +31,7 @@
                                     @endforeach
                                 </select>
                                 @if($errors->has('type'))
-                                    <span class="m-form__help twtext-red">{{ $errors->first('type') }}</span>
+                                    <span class="text-danger">{{ $errors->first('type') }}</span>
                                 @endif
                             </div>
                         </td>
@@ -42,7 +42,7 @@
                                        placeholder="Amount"
                                        value="{{ old('amount') }}" autocomplete="off">
                                 @if($errors->has('amount'))
-                                    <span class="m-form__help twtext-red">{{ $errors->first('amount') }}</span>
+                                    <span class="text-danger">{{ $errors->first('amount') }}</span>
                                 @endif
                             </div>
                         </td>
@@ -53,21 +53,21 @@
                                        placeholder="Remarks"
                                        value="{{ old('remarks') }}" autocomplete="off">
                                 @if($errors->has('remarks'))
-                                    <span class="m-form__help twtext-red">{{ $errors->first('remarks') }}</span>
+                                    <span class=text-danger">{{ $errors->first('remarks') }}</span>
                                 @endif
                             </div>
                         </td>
                         <td style="vertical-align: middle">
-                            <div class="m-form__actions">
+                            <div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <button type="reset" class="btn btn-default">Clear</button>
                             </div>
                         </td>
                     </tr>
-    
+
                 </table>
             </form>
-            <hr>
+
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -93,7 +93,7 @@
                                 @else
                                     <i class="text-danger fa fa-times"></i>
                                 @endif
-    
+
                             </td>
                             <td>{{ $ledger->when->toDayDateTimeString() }}</td>
                             <td>{{ $ledger->type }}</td>
@@ -101,7 +101,7 @@
                             <td>{{ $ledger->remarks }}</td>
                             <td>
                                 {{ $ledger->createdBy->name }}<br>
-                                <span class="twtext-sm">{{ $ledger->created_at->toDayDateTimeString() }}</span>
+                                <span>{{ $ledger->created_at->toDayDateTimeString() }}</span>
                             </td>
                             {{-- @role('admin') --}}
                             <td>
@@ -120,11 +120,11 @@
                     </tbody>
                     <tfoot>
                     <tr>
-                        <th class="twtext-center" colspan="3">Total</th>
-                        <th class="twtext-center" colspan="1">
+                        <th class="text-center" colspan="3">Total</th>
+                        <th class="text-center" colspan="1">
                             <i class="fa fa-inr"></i> {{ numberToCurrency($trip->ledgers->sum('amount')) }}
                         </th>
-                        <th class="twtext-center" colspan="2">
+                        <th class="text-center" colspan="2">
                             {{ getIndianCurrency($trip->ledgers->sum('amount')) }}
                         </th>
                     </tr>

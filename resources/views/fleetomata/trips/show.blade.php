@@ -16,16 +16,16 @@
                     <th>When</th>
                     <td>
                         @if(!$trip->when)
-                            <a href="#"
-                               class="trip-editable"
-                               data-type="datetime"
-                               data-pk="{{ $trip->id }}"
-                               data-name="when"
-                               data-url="{{ url("fleetomata/trips/{$trip->id}") }}"
-                               data-title="Update Trip Date">
-                                Not Updated
-                            </a>
-                        @else
+                                <a href="#"
+                                   class="trip-editable"
+                                   data-type="datetime"
+                                   data-pk="{{ $trip->id }}"
+                                   data-name="when"
+                                   data-url="{{ url("fleetomata/trips/{$trip->id}") }}"
+                                   data-title="Update Trip Date">
+                                    Not Updated
+                                </a>
+                            @else
                             @role('admin')
                             <a href="#"
                                class="trip-editable"
@@ -53,7 +53,7 @@
                                data-title="Update Accounting Date">
                                 Not Updated
                             </a>
-                        @else
+                            @else
                             @role('admin')
                             <a href="#"
                                class="trip-editable"
@@ -155,6 +155,10 @@
         'truck' => $trip->truck,
         'trip' => $trip
     ])
+    @include('fleetomata.trips.partials._income',[
+       'orders' => $trip->orders
+   ])
+
 @endsection
 
 @section('scripts')

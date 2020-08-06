@@ -7,6 +7,7 @@ use App\Domain\Truck\Models\Truck;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CreatedBy;
 use App\Traits\HasTruckLedgers;
+
 class Trip extends Model
 {
     use CreatedBy,HasTruckLedgers;
@@ -51,7 +52,18 @@ class Trip extends Model
             'billing' => $this->orders()->sum('hire'),
         ]);
     }
-    
+    public function updateCollection()
+    {
+        return $this->update([
+            'collection' => $this->billing - ($this->orders()->sum('outstanding'))
+        ]);
+    }
+    public function outstanding()
+    {
+        return $this->billing - $this->collection;
+    }
+
+
     public function orders()
     {
         return $this->hasMany(Order::class);
@@ -64,5 +76,7 @@ class Trip extends Model
     {
         return $this->orders->sum('kms') - $this->orders->where('type', 1)->sum('kms');
     }
+
+
 
 }
