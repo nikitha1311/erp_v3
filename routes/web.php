@@ -54,3 +54,5 @@ Route::DELETE('/fleetomata/trucks/{truck}/truck-expenses/{truck_expense}','\\App
 Route::post('fleetomata/trucks/{truck}/truck-expenses/{truck_expense}','\\App\\Http\\Controllers\\Fleetomata\\TruckExpenses\\TruckExpensesController@approve');
 
 Route::get('select2/vendors','Select2Controller@vendors');
+
+Route::resource('/fleetomata/trips/{trip}/expenses','\\App\\Http\\Controllers\\Fleetomata\\Trips\\TripsExpensesController');

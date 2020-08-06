@@ -4,6 +4,7 @@
                 Expenses List
             </h5>
         </div>
+
         <div class="panel-body">
             <form action="{{ url("fleetomata/trips/{$trip->id}/expenses") }}" method="POST">
                 @csrf
@@ -102,7 +103,7 @@
                                 {{ $ledger->createdBy->name }}<br>
                                 <span class="twtext-sm">{{ $ledger->created_at->toDayDateTimeString() }}</span>
                             </td>
-                            @role('admin')
+                            {{-- @role('admin') --}}
                             <td>
                                 <form action="{{ url("fleetomata/trips/{$trip->id}/expenses/{$ledger->id}") }}"
                                       method="POST">
@@ -113,7 +114,7 @@
                                     </button>
                                 </form>
                             </td>
-                            @endrole
+                            {{-- @endrole --}}
                         </tr>
                     @endforeach
                     </tbody>
