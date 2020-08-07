@@ -23,13 +23,15 @@ class Vendor extends Model
     {
         return $this->hasMany(Order::class,'vendor_id','id');
     }
-    public function income()
-    {
-        return $this->ledgers()->where('ledgerable_type','App\Models\Fleetomata\Order');
-    }
+
     public function ledgers()
     {
         return $this->hasMany(VendorLedger::class);
+    }
+
+    public function income()
+    {
+        return $this->ledgers()->where('ledgerable_type','App\Domain\Orders\Models\Order');
     }
 
 }

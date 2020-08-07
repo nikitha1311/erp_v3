@@ -96,32 +96,34 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($orders->pluck('income')->collapse() as $income)
-                <tr>
-                    <td>{{ $income->id() }}</td>
-                    <td>{{ $income->vendor }}</td>
-                    <td>{{ $income->date->format('d-m-Y') }}</td>
-                    <td>{{ numberToCurrency($income->amount) }}</td>
-                    <td>{{ $income->payment_mode }}</td>
-                    <td>{{ $income->payment_towards }}</td>
-                    <td>
-                        <form action="{{ url("fleetomata/trips/{$trip->id}/incomes/{$income->id}") }}" method="POST">
-                            @csrf
-                            {!! method_field('DELETE') !!}
-                            <button class="btn btn-sm btn-danger">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
+            @if ($orders->pluck('income'))
+                @foreach($orders->pluck('income')->collapse() as $income )
+                    <tr>
+                        <td>{{ $income->id() }}</td>
+                        <td>{{ optional($income->vendor)->name }}</td>
+                        <td>{{ $income->date->format('d-m-Y') }}</td>
+                        <td>{{ numberToCurrency($income->amount) }}</td>
+                        <td>{{ $income->payment_mode }}</td>
+                        <td>{{ $income->payment_towards }}</td>
+                        <td>
+                            <form action="{{ url("fleetomata/trips/{$trip->id}/incomes/{$income->id}") }}" method="POST">
+                                @csrf
+                                {!! method_field('DELETE') !!}
+                                <button class="btn btn-sm btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            @endif
             </tbody>
             <tfoot>
             <tr>
                 <th>Total</th>
                 <th colspan="6" class="twtext-center">
-                    {{ numberToCurrency($orders->pluck('income')->collapse()->sum('amount')) }} -
-                    {{ getIndianCurrency($orders->pluck('income')->collapse()->sum('amount')) }}
+                    {{-- {{ numberToCurrency($orders->pluck('income')->collapse()->sum('amount')) }} -
+                    {{ getIndianCurrency($orders->pluck('income')->collapse()->sum('amount')) }} --}}
                 </th>
             </tr>
             </tfoot>

@@ -28,6 +28,12 @@ class VendorLedger extends Model
     {
         return $this->belongsTo(Vendor::class, 'vendor_id');
     }
+
+    public function loadingHireAgreement()
+    {
+        return $this->hasOne(LoadingHireAgreement::class, 'id', 'ledgerable_id')->withTrashed();
+    }
+
     public function type()
     {
         return $this->payment_type == 0 ? 'Paid' : 'Received';

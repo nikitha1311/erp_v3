@@ -1,8 +1,10 @@
 @extends('layouts.app')
 @section('head')
-    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css"
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css"
     rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.css">
+    {{-- <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"> --}}
+    
 @endsection
 @section('content')
     <div class="panel">
@@ -18,7 +20,7 @@
                         @if(!$trip->when)
                                 <a href="#"
                                    class="trip-editable"
-                                   data-type="datetime"
+                                   data-type="text"
                                    data-pk="{{ $trip->id }}"
                                    data-name="when"
                                    data-url="{{ url("fleetomata/trips/{$trip->id}") }}"
@@ -26,7 +28,7 @@
                                     Not Updated
                                 </a>
                             @else
-                            @role('admin')
+                            {{-- @role('admin')
                             <a href="#"
                                class="trip-editable"
                                data-type="datetime"
@@ -36,9 +38,9 @@
                                data-title="Update Trip Date">
                                 {{ $trip->when->toDayDateTimeString() }}
                             </a>
-                            @else
-                                {{ $trip->when->toDayDateTimeString() }}
-                                @endrole
+                            @else --}}
+                                {{ $trip->when->toDayDateTimeString() }} 
+                                {{-- @endrole --}}
                             @endif
                     </td>
                     <th>Accounting Date</th>
@@ -46,7 +48,7 @@
                         @if(!$trip->accounting_date)
                             <a href="#"
                                class="trip-editable"
-                               data-type="datetime"
+                               data-type="text"
                                data-pk="{{ $trip->id }}"
                                data-name="accounting_date"
                                data-url="{{ url("fleetomata/trips/{$trip->id}") }}"
@@ -54,7 +56,7 @@
                                 Not Updated
                             </a>
                             @else
-                            @role('admin')
+                            {{-- @role('admin')
                             <a href="#"
                                class="trip-editable"
                                data-type="datetime"
@@ -64,9 +66,9 @@
                                data-title="Update Accounting Date">
                                 {{ $trip->accounting_date->toDayDateTimeString() }}
                             </a>
-                            @else
-                                {{ $trip->accounting_date->toDayDateTimeString() }}
-                                @endrole
+                            @else --}}
+                                 {{$trip->accounting_date->toDayDateTimeString()}} 
+                                {{-- @endrole --}}
                             @endif
                     </td>
                     <th>Completed Date</th>
@@ -74,7 +76,7 @@
                         @if(!$trip->completed_at)
                             <a href="#"
                                class="trip-editable"
-                               data-type="datetime"
+                               data-type="text"
                                data-pk="{{ $trip->id }}"
                                data-name="completed_at"
                                data-url="{{ url("fleetomata/trips/{$trip->id}") }}"
@@ -82,20 +84,10 @@
                                 Not Updated
                             </a>
                         @else
-                            @role('admin')
-                            <a href="#"
-                               class="trip-editable"
-                               data-type="datetime"
-                               data-pk="{{ $trip->id }}"
-                               data-name="accounting_date"
-                               data-url="{{ url("fleetomata/trips/{$trip->id}") }}"
-                               data-title="Update Accounting Date">
-                                {{ $trip->completed_at->toDayDateTimeString() }}
-                            </a>
-                            @else
-                                {{ $trip->completed_at->toDayDateTimeString() }}
-                                @endrole
-                            @endif
+                        
+                            {{ $trip->completed_at->toDayDateTimeString() }}
+                            {{-- @endrole --}}
+                        @endif
                     </td>
                 </tr>
                 <tr>
@@ -157,11 +149,14 @@
     ])
     @include('fleetomata.trips.partials._income',[
        'orders' => $trip->orders
-   ])
+    ])
 
 @endsection
 
 @section('scripts')
+    {{-- <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script> 
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.js"></script>
     <script>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Fleetomata\Orders;
 
 use App\Classes\Notification;
+use App\Domain\Orders\Actions\CreateOrderAction;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Domain\Trips\Models\Trip;
@@ -27,32 +28,19 @@ class OrdersController extends Controller
     public function store(Trip $trip,Request $request)
     {
         if (!$trip->isActive()) {
-            return back()->withNotification([
-                'type' => 'error',
-                'msg' => 'Trip isnt active'
-            ]);
+            Notification::error('Trip isnt active');
+            return back();
         }
+       
         $params = $this->getBudgetedExpenses($trip->truck->group, $request->weight, $request->kms, $request->type);
-        $trip->orders()->create([
-            'from_id' => $request->from_id,
-            'to_id' => $request->to_id,
-            'vendor_id' => $request->vendor_id,
-            'hire' => $request->hire,
-            'outstanding' => $request->hire,
-            'kms' => $request->kms,
-            'loading_charges' => $request->loading_charges,
-            'unloading_charges' => $request->unloading_charges,
-            'type' => $request->type,
-            'mileage' => $params['mileage'],
-            'diesel_liters' => $params['diesel_liters'],
-            'enroute' => $params['enroute'],
-            'weight' => $request->weight,
-            'material' => $request->material,
-            'remarks' => $request->remarks,
-            'created_by' => auth()->user()->id,
-        ]);
+
+        $createOrderAction = new CreateOrderAction($request->from_id,$request->to_id,$request->vendor_id,$request->hire,
+        $request->kms,$request->loading_charges,$request->unloading_charges,$request->type,$params['mileage'],
+        $params['diesel_liters'],$params['enroute'],$request->weight,$request->material,$request->remarks);
+
+        $order = $createOrderAction->handle($trip);
         $trip->updateBilling();
-        Vendor::findOrFail($request->vendor_id)->syncOutstanding();
+        // Vendor::findOrFail($request->vendor_id)->syncOutstanding();
 
         Notification::success('Order Created Successfully');
         return redirect("/fleetomata/trips/{$trip->id}");       

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Traits\CreatedBy;
 use App\Traits\HasApprovals;
 
+
 class TruckLedger extends Model
 {
     use CreatedBy, HasApprovals;
