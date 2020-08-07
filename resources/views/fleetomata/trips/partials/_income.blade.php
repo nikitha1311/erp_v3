@@ -99,7 +99,7 @@
             @foreach($orders->pluck('income')->collapse() as $income)
                 <tr>
                     <td>{{ $income->id() }}</td>
-                    <td>{{ $income->vendor }}</td>
+                    <td>{{ optional($income->vendor)->name }}</td>
                     <td>{{ $income->date->format('d-m-Y') }}</td>
                     <td>{{ numberToCurrency($income->amount) }}</td>
                     <td>{{ $income->payment_mode }}</td>

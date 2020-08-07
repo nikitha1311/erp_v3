@@ -172,7 +172,7 @@
                                         @if(!$order->loading_reported)
                                             <a href="#"
                                                class="trip-editable"
-                                               data-type="datetime"
+                                               data-type="text"
                                                data-pk="{{ $order->id }}"
                                                data-name="loading_reported"
                                                data-url="{{ url("fleetomata/trips/{$trip->id}/orders/{$order->id}") }}"
@@ -190,7 +190,7 @@
                                         @if(!$order->loading_released)
                                             <a href="#"
                                                class="trip-editable"
-                                               data-type="datetime"
+                                               data-type="text"
                                                data-pk="{{ $order->id }}"
                                                data-name="loading_released"
                                                data-url="{{ url("fleetomata/trips/{$trip->id}/orders/{$order->id}") }}"

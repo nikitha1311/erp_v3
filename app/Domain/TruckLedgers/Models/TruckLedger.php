@@ -7,8 +7,7 @@ use App\Domain\Truck\Models\Truck;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CreatedBy;
 use App\Traits\HasApprovals;
-use App\Domain\Trips\Models\Trip;
-use App\Domain\Truck\Models\Truck;
+
 
 class TruckLedger extends Model
 {

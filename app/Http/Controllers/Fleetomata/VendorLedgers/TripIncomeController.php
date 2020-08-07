@@ -7,6 +7,10 @@ use App\Domain\Trips\Models\Trip;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Classes\Notification;
+use App\Domain\VendorLedgers\Actions\CreateVendorLedgerAction;
+use App\Domain\VendorLedgers\Models\VendorLedger;
+use App\Domain\VendorLedgers\Requests\CreateVendorLedgerRequest;
+use Illuminate\Support\Facades\DB;
 
 class TripIncomeController extends Controller
 {
@@ -23,50 +27,28 @@ class TripIncomeController extends Controller
     }
 
 
-    public function store(Trip $trip, Request $request)
+    public function store(CreateVendorLedgerRequest $request,Trip $trip)
     {
         $order = Order::findOrFail($request->ledgerable_id);
-        if (!$trip->orders()->find($order->id)->exists())
-            return redirect()->back()->withNotification([
-                'type' => 'error',
-                'msg' => 'Order not present in trip'
-            ]);
-//        if ($order->outstanding < $request->amount)
-//            return redirect()->back()->withNotification([
-//                'type' => 'error',
-//                'msg' => 'Order outstanding less than amount'
-//            ]);
-        $this->createIncome($request, $order);
-//        $this->updateBalances($order, $request);
-
-        return redirect()->back()->withNotification([
-            'type' => 'success',
-            'msg' => 'Income noted'
-        ]);
+        if (!$trip->orders()->find($order->id)->exists()){
+            Notification::error('Order not present in trip!');
+            return redirect()->back();
+        }
+        $createVendorLedgerAction = new CreateVendorLedgerAction($request->ledgerable_id,$request->amount,$request->payment_mode,
+                $request->payment_towards,$request->date,$request->bank_account_id,$request->remarks);
+        $vendor_ledger = $createVendorLedgerAction->handle($order);
+        $this->updateBalances($order, $request);
+        Notification::success('Income noted successfully!');
+        return redirect()->back();
     }
 
-    private function createIncome(Request $request, $order)
-    {
-        return $order->income()->create([
-            'ledgerable_id' => $request->ledgerable_id,
-            'ledgerable_type' => get_class($order),
-            'amount' => $request->amount,
-            'payment_type' => 1,
-            'payment_mode' => $request->payment_mode,
-            'payment_towards' => $request->payment_towards,
-            'date' => formatDMY($request->date),
-            'bank_account_id' => $request->bank_account_id,
-            'remarks' => $request->remarks,
-            'created_by' => auth()->id()
-        ]);
-    }
-
-//    private function updateBalances($order, $request)
-//    {
-//        $order->decrement('outstanding', $request->amount);
-//        $order->vendor->syncOutstanding();
-//        $order->trip->updateCollection();
-//    }
+  
+   private function updateBalances($order, $request)
+   {
+       $order->decrement('outstanding', $request->amount);
+       $order->vendor->syncOutstanding();
+       $order->trip->updateCollection();
+   }
 
 
     public function show($id)
@@ -86,8 +68,16 @@ class TripIncomeController extends Controller
     }
 
 
-    public function destroy($id)
-    {
-        //
+    public function destroy(Trip $trip, VendorLedger $income, Request $request)
+    {   
+        DB::transaction(function () use ($trip, $income) {
+            $order = Order::findOrFail($income->ledgerable_id);
+            $income->delete();
+            $order->updateOutstanding();
+            $order->trip->updateCollection();
+            $order->vendor->syncOutstanding();
+        });
+        Notification::success('Deleted note successfully!');
+        return redirect()->back();
     }
 }
