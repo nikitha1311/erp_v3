@@ -137,9 +137,9 @@
             </div> --}}
         </div>
     </div>
-    {{-- @include('fleetomata.trips.partials._orders',[
+    @include('fleetomata.trips.partials._orders',[
         'orders' => $trip->orders
-    ]) --}}
+    ])
 
     @include('fleetomata.trips.partials._createOrder')
 
@@ -149,7 +149,7 @@
     ])
     @include('fleetomata.trips.partials._income',[
        'orders' => $trip->orders
-   ])
+    ])
 
 @endsection
 
