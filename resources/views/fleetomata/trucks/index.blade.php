@@ -50,7 +50,7 @@
                             <form action="{{ route('trucks.destroy',$truck->id) }}" method='POST'>
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="fa fa-trash btn btn-danger"></button>
+                                <button  class="fa fa-trash btn btn-danger" id='check'></button>
                             </form>
                         </td>
                     </tr>
@@ -70,6 +70,22 @@
     <script type="text/javascript">
         $(document).ready( function () {
             $('#truckTable').DataTable();
+            $('#check').click(function(){
+                swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this imaginary file!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                    if (willDelete) {
+                        $('#check').submit();
+                    } else {
+                        swal("Your imaginary file is safe!");
+                    }
+                });
+            })
         });
     </script>
 @endsection
