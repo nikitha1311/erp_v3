@@ -18,7 +18,7 @@
                                    placeholder="Date" autocomplete="off"
                                    value="{{ old('date') }}">
                             @if($errors->has('date'))
-                                <span class="m-form__help twtext-red">{{ $errors->first('date') }}</span>
+                                <span class="text-danger">{{ $errors->first('date') }}</span>
                             @endif
                         </div>
                     </td>
@@ -31,23 +31,23 @@
                                 @endforeach
                             </select>
                             @if($errors->has('ledgerable_id'))
-                                <span class="m-form__help twtext-red">{{ $errors->first('ledgerable_id') }}</span>
+                                <span class="text-danger">{{ $errors->first('ledgerable_id') }}</span>
                             @endif
                         </div>
                     </td>
                     <td>
-                        <div class="form-group m-form__group">
+                        <div>
                             <label for="amount">Amount</label>
                             <input required type="number" class="form-control m-input" id="amount" name="amount"
                                    placeholder="Amount" autocomplete="off"
                                    value="{{ old('amount') }}">
                             @if($errors->has('amount'))
-                                <span class="m-form__help twtext-red">{{ $errors->first('amount') }}</span>
+                                <span class="text-danger">{{ $errors->first('amount') }}</span>
                             @endif
                         </div>
                     </td>
                     <td>
-                        <div class="form-group m-form__group">
+                        <div>
                             <label for="payment_mode">Mode</label>
                             <select name="payment_mode" id="mode" class="form-control">
                                 <option value="Cash">Cash</option>
@@ -56,12 +56,12 @@
                                 <option value="Adjustments">Adjustments</option>
                             </select>
                             @if($errors->has('payment_mode'))
-                                <span class="m-form__help twtext-red">{{ $errors->first('payment_mode') }}</span>
+                                <span class="text-danger">{{ $errors->first('payment_mode') }}</span>
                             @endif
                         </div>
                     </td>
                     <td>
-                        <div class="form-group m-form__group">
+                        <div>
                             <label for="payment_towards">Towards</label>
                             <select name="payment_towards" id="payment_towards" class="form-control">
                                 @foreach(config('constants.paymentTowards') as $payment)
@@ -69,7 +69,7 @@
                                 @endforeach
                             </select>
                             @if($errors->has('payment_towards'))
-                                <span class="m-form__help twtext-red">{{ $errors->first('payment_towards') }}</span>
+                                <span class="text-danger">{{ $errors->first('payment_towards') }}</span>
                             @endif
                         </div>
                     </td>
