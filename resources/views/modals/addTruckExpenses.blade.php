@@ -7,7 +7,7 @@
         {!! csrf_field() !!}
         <div>
             <label for="expense_date">Expense Date</label>
-            <input required type="text" class="form-control date" id="expense_date" name="expense_date" value="{{ old('expense_date') }}">
+            <input required type="text" class="form-control dmy" id="expense_date" name="expense_date" value="{{ old('expense_date') }}">
             @if($errors->has('expense_date'))
                 <span class="text-danger">{{ $errors->first('expense_date') }}</span>
             @endif
@@ -25,7 +25,7 @@
         </div>
         <div>
             <label for="type_description">Expense Description</label>
-            <input required type="text" class="form-control" id="type_description" name="type_description"
+            <input required type="text" class="form-control" id="type_description" name="type_description" autocomplete="off"
                 value="{{ old('type_description',$truck->type_description) }}">
             @if($errors->has('type_description'))
                 <span class="text-danger">{{ $errors->first('type_description') }}</span>
@@ -33,14 +33,14 @@
         </div>
         <div>
             <label for="amount">Amount</label>
-            <input required type="text" class="form-control" id="amount" name="amount"  value="{{ old('amount') }}">
+            <input required type="text" class="form-control" id="amount" name="amount" autocomplete="off" value="{{ old('amount') }}">
             @if($errors->has('amount'))
                 <span class="text-danger">{{ $errors->first('amount') }}</span>
             @endif
         </div>
         <div>
             <label for="valid_till">Valid Till</label>
-            <input required type="text" class="form-control date" id="valid_till" name="valid_till" value="{{ old('valid_till') }}">
+            <input required type="text" class="form-control dmy" id="valid_till" name="valid_till" value="{{ old('valid_till') }}">
             @if($errors->has('valid_till'))
                 <span class="text-danger">{{ $errors->first('valid_till') }}</span>
             @endif
@@ -57,14 +57,6 @@
 @section('scripts')
     <script>
         $(function () {
-            $('.date').daterangepicker({
-                singleDatePicker: true,
-                timePicker: false,
-                locale: {
-                    format: 'DD-MM-YYYY'
-                },
-                maxDate: 0,
-            });
             $('.select2').select2();
         })
     </script>

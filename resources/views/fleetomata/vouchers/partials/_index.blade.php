@@ -69,7 +69,7 @@
             </form>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped" id="truck_ledgers">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -134,9 +134,12 @@
         </div>
     </div>
 
-@section('scripts')
-    @parent
-    <script>
-        $('[data-toggle="tooltip"]').tooltip();
-    </script>
-@append
+    @section('scripts')
+        <script type="text/javascript">
+            $(document).ready( function () {
+                $('#truck_ledgers').DataTable();
+                $('[data-toggle="tooltip"]').tooltip();
+
+            });
+        </script>
+    @endsection

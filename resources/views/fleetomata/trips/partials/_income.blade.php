@@ -83,19 +83,20 @@
             </table>
         </form>
         <hr>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Vendor</th>
-                <th>Date</th>
-                <th>Amount</th>
-                <th>Mode</th>
-                <th>Towards</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
+        <div class="table-responsive">
+            <table class="table table-striped" id="vendor_ledgers">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Vendor</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Mode</th>
+                    <th>Towards</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
                 @foreach($orders->pluck('income')->collapse() as $income )
                     <tr>
                         <td>{{ $income->id() }}</td>
@@ -115,22 +116,30 @@
                         </td>
                     </tr>
                 @endforeach
-            </tbody>
-            <tfoot>
-            <tr>
-                <th>Total</th>
-                <th colspan="6" class="twtext-center">
-                    {{ numberToCurrency($orders->pluck('income')->collapse()->sum('amount')) }} -
-                    {{ getIndianCurrency($orders->pluck('income')->collapse()->sum('amount')) }}
-                </th>
-            </tr>
-            </tfoot>
-        </table>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>Total</th>
+                    <th colspan="6" class="twtext-center">
+                        {{ numberToCurrency($orders->pluck('income')->collapse()->sum('amount')) }} -
+                        {{ getIndianCurrency($orders->pluck('income')->collapse()->sum('amount')) }}
+                    </th>
+                </tr>
+                </tfoot>
+            </table>
+
+        </div>
 
     </div>
     <div class="panel-footer">
 
     </div>
 </div>
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#vendor_ledgers').DataTable();
+    });
+</script>
 
-
+@endsection

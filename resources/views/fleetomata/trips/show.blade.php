@@ -37,7 +37,7 @@
                                 {{ $trip->when->toDayDateTimeString() }}
                             </a>
                             @else --}}
-                                {{ $trip->when->toDayDateTimeString() }} 
+                                {{ $trip->when->toDayDateTimeString() }}
                                 {{-- @endrole --}}
                             @endif
                     </td>
@@ -65,7 +65,7 @@
                                 {{ $trip->accounting_date->toDayDateTimeString() }}
                             </a>
                             @else --}}
-                                 {{$trip->accounting_date->toDayDateTimeString()}} 
+                                 {{$trip->accounting_date->toDayDateTimeString()}}
                                 {{-- @endrole --}}
                             @endif
                     </td>
@@ -82,7 +82,7 @@
                                 Not Updated
                             </a>
                         @else
-                        
+
                             {{ $trip->completed_at->toDayDateTimeString() }}
                             {{-- @endrole --}}
                         @endif
@@ -155,6 +155,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.js"></script>
     <script>
+
         // $.fn.editable.defaults.ajaxOptions = {type: "PATCH"};
         // $('.trip-editable').editable();
         // $('.modal select').css('width', '100%');
@@ -181,9 +182,10 @@
         //         }
         //     }
         // });
-    
+
 
         $(document).ready(function() {
+
             $('#from_id, #to_id').select2();
             $('#vendor_id').select2({
                 minimumInputLength: 3,
