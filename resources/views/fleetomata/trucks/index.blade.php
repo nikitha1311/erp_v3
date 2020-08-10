@@ -47,10 +47,10 @@
                         </td>
                         <td>{{ optional($truck->last_seen)->diffForHumans() }}</td>
                         <td>
-                            <form action="{{ route('trucks.destroy',$truck->id) }}" method='POST' id="delete_form">
+                            <form action="{{ route('trucks.destroy',$truck->id) }}" method='POST' class="delete_form">
                                 @csrf
                                 @method('DELETE')
-                                <button  type="button" class="fa fa-trash btn btn-danger" id='delete_btn'></button>
+                                <button  type="button" class="fa fa-trash btn btn-danger delete_btn"></button>
                             </form>
                         </td>
                     </tr>
@@ -70,20 +70,6 @@
     <script type="text/javascript">
         $(document).ready( function () {
             $('#truckTable').DataTable();
-            $('#delete_btn').click(function(){
-                swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this data!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                    })
-                    .then((willDelete) => {
-                    if (willDelete) {
-                        $('#delete_form').submit();
-                    }
-                });
-            })
         });
     </script>
 @endsection

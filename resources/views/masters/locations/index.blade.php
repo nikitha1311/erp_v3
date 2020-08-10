@@ -69,7 +69,7 @@
                         <th>District</th>
                         <th>State</th>
                         <th>Pincode</th>
-                        <th></th>
+                        <th>Actions</th>
 
                     </tr>
                     </thead>
@@ -97,14 +97,11 @@
                                 {{ $location->postal_code }}
                             </td>
                             <td>
-                                <form id="locationDeleteForm{{$location->id}}" action="{{route('locations.destroy', $location->id )}}" method="post" hidden>
+                                <form action="{{route('locations.destroy', $location->id )}}" method="post" class="delete_form">
                                     @csrf
                                     @method('DELETE')
+                                    <button type="button" class="fa fa-trash btn btn-danger delete_btn"></button>
                                 </form>
-                                <a  href="#" onclick="$('#locationDeleteForm{{$location->id}}').submit()">
-                                    <i class="fa fa-trash ml-4 justify-content-between text-danger"
-                                       aria-hidden="true"></i>
-                                </a>
                             </td>
                         </tr>
                     @endforeach

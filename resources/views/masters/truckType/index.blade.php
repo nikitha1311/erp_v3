@@ -83,31 +83,30 @@
                             <thead>
                                 <tr>
                                     <th>Trucks</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                     @foreach($trucks as $truck )
                                         <tr>
         
-                                            <td class="d-flex justify-content-between">
+                                            <td>
                                                 <div>
                                                     {{ $truck->name }}
         
                                                 </div>
-                                                <div>
-                                                    <a  href="{{route('truck-types.edit',$truck->id)}}">
-                                                        <i class="fa fa-edit mr-2"></i>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex justify-content-between">
+                                                    <a class="fa fa-edit btn btn-primary " 
+                                                        href="{{route('truck-types.edit',$truck->id)}}">
                                                     </a>
-                                                    <form id="truckDeleteForm{{$truck->id}}" action="{{route('truck-types.destroy', $truck->id )}}" method="post" hidden>
+                                                    <form action="{{route('truck-types.destroy', $truck->id )}}" method="post" class="delete_form">
                                                         @csrf
                                                         @method('DELETE')
+                                                        <button type="button" class="fa fa-trash btn btn-danger delete_btn"></button>
                                                     </form>
-                                                    <a href="#" onclick="$('#truckDeleteForm{{$truck->id}}').submit()">
-                                                        <i class="fa fa-trash ml-4 justify-content-between text-danger"
-                                                           aria-hidden="true"></i>
-                                                    </a>
                                                 </div>
-        
                                             </td>
         
                                         </tr>

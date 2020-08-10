@@ -58,10 +58,10 @@
                                         {{$billing->createdBy->name}}
                                     </td>
                                     <td>
-                                        <form action="{{ route('billing-rates.destroy',[$billing->route_id,$billing->id]) }}" method='POST'>
+                                        <form action="{{ route('billing-rates.destroy',[$billing->route_id,$billing->id]) }}" method='POST' class="delete_form">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="fa fa-trash btn btn-danger"></button>
+                                            <button type="button" class="fa fa-trash btn btn-danger delete_btn"></button>
                                         </form>
                                     </td>
                                 </tr>
