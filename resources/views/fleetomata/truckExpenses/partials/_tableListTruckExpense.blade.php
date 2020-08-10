@@ -1,5 +1,6 @@
+
 <div>
-    <table class="table table-bordered dataTable">
+    <table class="table table-bordered dataTable expenses">
         <thead>
         <tr>
             <th>ID</th>
@@ -74,3 +75,10 @@
         </tbody>
     </table>
 </div>
+@section('scripts')
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('.expenses').DataTable();
+        });
+    </script>
+@endsection

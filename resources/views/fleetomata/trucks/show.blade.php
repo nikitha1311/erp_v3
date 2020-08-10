@@ -38,7 +38,9 @@
         </div>
     </div>
     <div class="panel-body">
-        <table class="table table-bordered" id="truck_trip_table">
+        <div class="table-responsive">
+
+        <table class="table table-bordered" id="trips">
             <thead>
             <tr>
                 <th>ID</th>
@@ -46,7 +48,7 @@
                 <th>Details</th>
                 <th>Billed</th>
                 <th>Collection</th>
-    {{--                <th>Expense</th>--}}
+                <th>Expense</th>
                 <th>Trip Days</th>
                 <th></th>
             </tr>
@@ -64,7 +66,7 @@
                     <td>{{ $trip->info() }}</td>
                     <td>{{ numberToCurrency($trip->billing) }}</td>
                     <td>{{ numberToCurrency($trip->collection) }}</td>
-    {{--                    <td>{{ numberToCurrency($trip->ledgers()->sum('amount')) }}</td>--}}
+                    <td>{{ numberToCurrency($trip->ledgers()->sum('amount')) }}</td>
                     <td>{{ $trip->days() }}</td>
                     <td>
                         <a class="btn btn-sm btn-primary" href="{{ url("fleetomata/trips/{$trip->id}") }}">
@@ -75,11 +77,10 @@
             @endforeach
             </tbody>
         </table>
+        </div>
 
     </div>
-    <div class="panel-footer">
 
-    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-header">
@@ -99,34 +100,31 @@
         </div>
     </div>
     <div class="panel-body">
-        <div class="card">
-            <div class="card-header">Active Expenses</div>
-            <div class="card-body">
+        <div class="panel">
+            <div class="panel-header">Active Expenses</div>
+            <div class="panel-body">
                 @include('fleetomata.truckExpenses.partials._tableListTruckExpense',['expenses' => $currentExpenses])
             </div>
         </div>
         <br>
-        <div class="card">
-            <div class="card-header">Old Expenses</div>
-            <div class="card-body">
+        <div class="panel">
+            <div class="panel-header">Old Expenses</div>
+            <div class="panel-body">
                 @include('fleetomata.truckExpenses.partials._tableListTruckExpense',['expenses' => $oldExpenses])
             </div>
         </div>
         @include('modals.addTruckExpenses')
 
     </div>
-    <div class="panel-footer">
 
-    </div>
 </div>
 
 
 @endsection
-
 @section('scripts')
     <script type="text/javascript">
         $(document).ready( function () {
-            $('#truck_trip_table').DataTable();
+            $('#trips').DataTable();
         });
     </script>
 @endsection

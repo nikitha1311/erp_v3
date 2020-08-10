@@ -2,10 +2,14 @@
 
 namespace App\Domain\VendorLedgers\Models;
 
+use App\Domain\LHAs\Models\LoadingHireAgreement;
 use App\Domain\Vendors\Models\Vendor;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CreatedBy;
 use App\Traits\HasApprovals;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use OwenIt\Auditing\Auditable;
+
 
 class VendorLedger extends Model
 {
