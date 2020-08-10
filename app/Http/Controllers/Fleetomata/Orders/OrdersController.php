@@ -40,7 +40,7 @@ class OrdersController extends Controller
 
         $order = $createOrderAction->handle($trip);
         $trip->updateBilling();
-        // Vendor::findOrFail($request->vendor_id)->syncOutstanding();
+        Vendor::findOrFail($request->vendor_id)->syncOutstanding();
 
         Notification::success('Order Created Successfully');
         return redirect("/fleetomata/trips/{$trip->id}");       
