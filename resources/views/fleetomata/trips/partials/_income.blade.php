@@ -14,7 +14,7 @@
                     <td>
                         <div>
                             <label for="date">Date</label>
-                            <input required type="text" class="form-control m-input" id="paymentDate" name="date"
+                            <input required type="text" class="form-control dmy" id="paymentDate" name="date"
                                    placeholder="Date" autocomplete="off"
                                    value="{{ old('date') }}">
                             @if($errors->has('date'))
@@ -96,7 +96,6 @@
             </tr>
             </thead>
             <tbody>
-            @if ($orders->pluck('income'))
                 @foreach($orders->pluck('income')->collapse() as $income )
                     <tr>
                         <td>{{ $income->id() }}</td>
@@ -116,14 +115,13 @@
                         </td>
                     </tr>
                 @endforeach
-            @endif
             </tbody>
             <tfoot>
             <tr>
                 <th>Total</th>
                 <th colspan="6" class="twtext-center">
-                    {{-- {{ numberToCurrency($orders->pluck('income')->collapse()->sum('amount')) }} -
-                    {{ getIndianCurrency($orders->pluck('income')->collapse()->sum('amount')) }} --}}
+                    {{ numberToCurrency($orders->pluck('income')->collapse()->sum('amount')) }} -
+                    {{ getIndianCurrency($orders->pluck('income')->collapse()->sum('amount')) }}
                 </th>
             </tr>
             </tfoot>
@@ -135,29 +133,4 @@
     </div>
 </div>
 
-{{--<div class="m-portlet m-portlet--mobile ">--}}
-{{--    <div class="m-portlet__head">--}}
-{{--        <div class="m-portlet__head-caption">--}}
-{{--            <div class="m-portlet__head-title">--}}
-{{--                <h3 class="m-portlet__head-text">--}}
-{{--                    --}}
-{{--                </h3>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--    <div class="m-portlet__body table-responsive">--}}
-{{--        <hr>--}}
-{{--    </div>--}}
-{{--</div>--}}
 
-@section('scripts')
-    @parent
-    <script>
-        $('#paymentDate').daterangepicker({
-            singleDatePicker: true,
-            locale: {
-                format: 'DD-MM-YYYY'
-            }
-        });
-    </script>
-@append
