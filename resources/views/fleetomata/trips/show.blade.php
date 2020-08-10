@@ -3,8 +3,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css"
     rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.css">
-    {{-- <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"> --}}
-    
 @endsection
 @section('content')
     <div class="panel">
@@ -117,7 +115,7 @@
                 </div>
             </div>
             <hr>
-            {{-- <div class="row twtext-center twborder-grey-lighter twpb-4">
+            <div class="row twtext-center twborder-grey-lighter twpb-4">
                 <div class="col-md-3">
                     <h3>Diesel</h3>
                     <h4>{{ numberToCurrency($trip->ledgers->where('type','Diesel')->sum('amount')) }}</h4>
@@ -134,7 +132,7 @@
                     <h3>Total</h3>
                     <h4>{{ numberToCurrency($trip->ledgers->sum('amount')) }}</h4>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </div>
     @include('fleetomata.trips.partials._orders',[
@@ -154,38 +152,63 @@
 @endsection
 
 @section('scripts')
-    {{-- <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script> 
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.js"></script>
     <script>
-        $.fn.editable.defaults.ajaxOptions = {type: "PATCH"};
-        $('.trip-editable').editable();
-        $('.modal select').css('width', '100%');
-        $('#from_id, #to_id').select2();
-        $('#vendor_id').select2({
-            minimumInputLength: 3,
-            ajax: {
-                url: '/select2/vendors',
-                data: function (params) {
-                    var query = {
-                        q: params.term,
-                    }
-                    return query;
-                },
-                processResults: function (data) {
-                    return {
-                        results: $.map(data, function (item) {
-                            return {
-                                text: item.name + " - " + item.phone,
-                                id: item.id,
-                            }
-                        })
+        // $.fn.editable.defaults.ajaxOptions = {type: "PATCH"};
+        // $('.trip-editable').editable();
+        // $('.modal select').css('width', '100%');
+        // $('#from_id, #to_id').select2();
+        // $('#vendor_id').select2({
+        //     minimumInputLength: 3,
+        //     ajax: {
+        //         url: '/select2/vendors',
+        //         data: function (params) {
+        //             var query = {
+        //                 q: params.term,
+        //             }
+        //             return query;
+        //         },
+        //         processResults: function (data) {
+        //             return {
+        //                 results: $.map(data, function (item) {
+        //                     return {
+        //                         text: item.name + " - " + item.phone,
+        //                         id: item.id,
+        //                     }
+        //                 })
+        //             }
+        //         }
+        //     }
+        // });
+    
+
+        $(document).ready(function() {
+            $('#from_id, #to_id').select2();
+            $('#vendor_id').select2({
+                minimumInputLength: 3,
+                ajax: {
+                    url: '/select2/vendors',
+                    data: function (params) {
+                        var query = {
+                            q: params.term,
+                        }
+                        return query;
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (item) {
+                                return {
+                                    text: item.name + " - " + item.phone,
+                                    id: item.id,
+                                }
+                            })
+                        }
                     }
                 }
-            }
+            });
         });
     </script>
+
 
 @endsection

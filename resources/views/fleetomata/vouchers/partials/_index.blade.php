@@ -14,7 +14,7 @@
                         <td>
                             <div class="form-group m-form__group">
                                 <label for="when">When</label>
-                                <input required type="text" class="form-control m-input" id="when" name="when"
+                                <input required type="text" class="form-control dmy" id="when" name="when"
                                        placeholder="When"
                                        value="{{ old('when') }}">
                                 @if($errors->has('when'))
@@ -138,11 +138,5 @@
     @parent
     <script>
         $('[data-toggle="tooltip"]').tooltip();
-        $('#when').daterangepicker({
-            singleDatePicker: true,
-            locale: {
-                format: 'DD-MM-YYYY'
-            }
-        });
     </script>
 @append
