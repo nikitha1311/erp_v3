@@ -29,6 +29,12 @@ class Transaction extends Model implements AuditableContract
     {
         return "TRN#{$this->id}";
     }
+    public function invoiceStatus()
+    {
+        return $this->invoice ?
+            new HtmlString("<a target='_blank' href='" . url("invoices/{$this->invoice_id}") . "'>{$this->invoice->id()} - {$this->invoice->number}</a>") :
+            'Not added to Invoice';
+    }
 
     public function isEditable()
     {

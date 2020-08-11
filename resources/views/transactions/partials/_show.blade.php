@@ -21,18 +21,18 @@
                         </li>
                     @endif
                     <li class="d-flex justify-content-between">
-                        <form action="{{ url("transactions/{$transaction->id}") }}" method="post">
+                        <form action="{{route('transactions.destroy', $transaction->id )}}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-{{--                            <button class="btn-sm btn btn-danger">--}}
-{{--                                @if($transaction->trashed())--}}
-{{--                                    <i class="fa fa-rotate-left"></i>--}}
-{{--                                    <span>Restore</span>--}}
-{{--                                @else--}}
-{{--                                    <i class="fa fa-trash"></i>--}}
-{{--                                    <span>Delete</span>--}}
-{{--                                @endif--}}
-{{--                            </button>--}}
+                            <button class="btn-sm btn btn-danger">
+                                @if($transaction->trashed())
+                                    <i class="fa fa-rotate-left"></i>
+                                    <span>Restore</span>
+                                @else
+                                    <i class="fa fa-trash"></i>
+                                    <span>Delete</span>
+                                @endif
+                            </button>
                         </form>
                     </li>
                 @endif
@@ -109,7 +109,7 @@
                             Invoice Status
                         </th>
                         <td>
-{{--                            {{ $transaction->invoiceStatus() }}--}}
+                            {{ $transaction->invoiceStatus() }}
                         </td>
                     </tr>
                 </table>
@@ -250,6 +250,21 @@
             </div>
         </div>
 
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-6">
+                <p><b>Created By : </b> {{ $transaction->createdBy->name}}</p>
+                <p><b>Created at : </b> {{ $transaction->created_at->toDayDateTimeString() }}</p>
+            </div>
+            <div class="col-md-6">
+                @if($transaction->isApproved())
+                    <p><b>Approved By : </b> {{ $transaction->approvalStatus()->approvedBy->name }}</p>
+                    <p><b>Approved at : </b> {{ $transaction->approvalStatus()->created_at->toDayDateTimeString() }}
+                    </p>
+                @endif
+            </div>
+        </div>
     </div>
 
 </div>
