@@ -69,8 +69,22 @@ class TransactionsController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Transaction $transaction)
     {
-
+        $notification = [];
+        if ($transaction->trashed()) {
+            $transaction->restore();
+            if ($transaction->isApproved())
+                $transaction->disapprove();
+            $notification['type'] = 'success';
+            $notification['msg'] = 'Transaction Restored Successfully';
+        } else {
+            $transaction->delete();
+            $transaction->loadingHireAgreements()->sync([]);
+            $transaction->goodsConsignmentNotes()->sync([]);
+            $notification['type'] = 'success';
+            $notification['msg'] = 'Transaction deleted Successfully';
+        }
+        return back()->with(['notification' => $notification]);
     }
 }

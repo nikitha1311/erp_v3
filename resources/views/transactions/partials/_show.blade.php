@@ -24,15 +24,15 @@
                         <form action="{{ url("transactions/{$transaction->id}") }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-{{--                            <button class="btn-sm btn btn-danger">--}}
-{{--                                @if($transaction->trashed())--}}
-{{--                                    <i class="fa fa-rotate-left"></i>--}}
-{{--                                    <span>Restore</span>--}}
-{{--                                @else--}}
-{{--                                    <i class="fa fa-trash"></i>--}}
-{{--                                    <span>Delete</span>--}}
-{{--                                @endif--}}
-{{--                            </button>--}}
+                            <button class="btn-sm btn btn-danger">
+                                @if($transaction->trashed())
+                                    <i class="fa fa-rotate-left"></i>
+                                    <span>Restore</span>
+                                @else
+                                    <i class="fa fa-trash"></i>
+                                    <span>Delete</span>
+                                @endif
+                            </button>
                         </form>
                     </li>
                 @endif
