@@ -61,9 +61,7 @@
         </div>
 
     </div>
-    <div class="panel-footer">
 
-    </div>
 </div>
 @endsection
 @section('scripts')

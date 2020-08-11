@@ -30,6 +30,8 @@ Route::resource('/vendors','\\App\\Http\\Controllers\\Masters\\Vendors\\VendorsC
 Route::resource('/locations','\\App\\Http\\Controllers\\Masters\\Locations\\LocationsController');
 
 Route::resource('/transactions','\\App\\Http\\Controllers\\Transactions\\TransactionsController');
+Route::post('transactions/{transaction}/approvals', '\\App\\Http\\Controllers\\Transactions\\TransactionsApprovalController@store');
+
 Route::resource('loading-hire-agreements','\\App\\Http\\Controllers\\Transactions\\LHA\\LoadingHireAgreementsController');
 Route::resource('loading-hire-agreements/{loading_hire_agreement}/approvals', '\\App\\Http\\Controllers\\Transactions\\LHA\\LHAsApprovalController');
 Route::PATCH('loading-hire-agreements/{loading_hire_agreement}/timestamps', '\\App\\Http\\Controllers\\Transactions\\LHA\\LHATimestampsController@store');

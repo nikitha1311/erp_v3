@@ -62,8 +62,11 @@ class LoadingHireAgreementsController extends Controller
 
     public function edit(LoadingHireAgreement $loading_hire_agreement)
     {
+        $audits = $loading_hire_agreement->audits;
         return view('transactions.lha.edit')->with([
             'lha' => $loading_hire_agreement,
+            'audits' =>$audits,
+
             'vendors' => Vendor::all()
         ]);
     }
@@ -85,7 +88,7 @@ class LoadingHireAgreementsController extends Controller
         }
         Notification::success('LHA updated successfully!');
         return redirect()->back();
- 
+
     }
 
 

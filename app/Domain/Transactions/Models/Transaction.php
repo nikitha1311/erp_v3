@@ -12,11 +12,14 @@ use App\Domain\LHAs\Models\LoadingHireAgreement;
 use App\Domain\GCs\Models\GoodsConsignmentNote;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
 
-class Transaction extends Model
+
+class Transaction extends Model implements AuditableContract
 {
-    use SoftDeletes,HasApprovals,CreatedBy;
+    use SoftDeletes,HasApprovals,CreatedBy,Auditable;
 
     protected $guarded = ['id'];
 

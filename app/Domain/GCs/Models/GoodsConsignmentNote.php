@@ -10,12 +10,15 @@ use App\Domain\Branches\Models\Branch;
 use App\Traits\HasApprovals;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
 
 
-class GoodsConsignmentNote extends Model
+
+class GoodsConsignmentNote extends Model implements AuditableContract
 {
-    use SoftDeletes,HasApprovals;
+    use SoftDeletes,HasApprovals,Auditable;
 
     protected $guarded = ['id'];
 

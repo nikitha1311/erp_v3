@@ -16,8 +16,12 @@ class TrucksController extends Controller
 
     public function index()
     {
+
         $truck=Truck::all();
-        return view('fleetomata.trucks.index')->with(['trucks'=>$truck]);
+        return view('fleetomata.trucks.index')->with([
+            'trucks'=>$truck,
+
+        ]);
     }
 
 
@@ -41,12 +45,15 @@ class TrucksController extends Controller
 
     public function show(Truck $truck)
     {
+        $audits = $truck->audits;
+
         $currentExpenses = $truck->truckExpenses()->where('valid_till', '>', now())->get();
         $oldExpenses = $truck->truckExpenses()->where('valid_till', '<', now())->get();
         return view("fleetomata.trucks.show")->with([
             'truck' => $truck->load('type', 'trips.orders','truckExpenses'),
             'currentExpenses' => $currentExpenses,
             'oldExpenses' => $oldExpenses,
+            'audits' =>$audits
 
         ]);
     }

@@ -16,13 +16,21 @@
                 {!! method_field('PATCH') !!}
                 <div>
                     @include('transactions.lha.partials._create',['lha' => $lha])
+
+
                 </div>
                 <div class="panel-footer">
                     @include('components._formButtons', ['primaryText' => 'Update'])
+
                 </div>
+
             </form>
 
         </div>
+
+    </div>
+    <div>
+        @include('components._audits')
 
     </div>
 

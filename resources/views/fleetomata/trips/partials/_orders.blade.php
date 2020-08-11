@@ -271,3 +271,7 @@
         @endif
     </div>
 </div>
+<div>
+    @include('components._audits')
+
+</div>

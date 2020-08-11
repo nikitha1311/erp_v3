@@ -6,7 +6,7 @@
     <div class="panel panel-default">
         <div class="panel-header">
             <h5>
-                Edit GC   
+                Edit GC
             </h5>
         </div>
         <div class="panel-body">
@@ -21,6 +21,10 @@
                 </div>
             </form>
         </div>
+
+    </div>
+    <div>
+        @include('components._audits')
 
     </div>
 

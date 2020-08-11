@@ -23,10 +23,10 @@ class UpdateVendorRequest extends FormRequest
      */
     public function rules()
     {
-        // dd($this->vendor);
+//        dd($this->vendor);
         return [
             'name' => 'required',
-            'phone' => 'numeric|digits:10',
+            'phone' => 'numeric|unique:vendors,phone,'.$this->vendor->id,
             'company_name' => 'required',
             'address' => 'required',
         ];

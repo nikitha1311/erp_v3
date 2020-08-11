@@ -61,9 +61,12 @@ class GoodsConsignmentNotesController extends Controller
 
     public function edit(GoodsConsignmentNote $goods_consignment_note)
     {
+        $audits = $goods_consignment_note->audits;
+
         return view('transactions.gc.edit')
             ->with([
-                'gc' => $goods_consignment_note
+                'gc' => $goods_consignment_note,
+                'audits' => $audits
                 ]);
     }
 

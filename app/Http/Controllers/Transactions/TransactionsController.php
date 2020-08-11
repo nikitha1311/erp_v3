@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Transactions;
 
+use App\Domain\Customers\Models\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Classes\Notification;
@@ -38,6 +39,7 @@ class TransactionsController extends Controller
     public function show(Transaction $transaction)
     {
 //        dd($transaction->load('loadingHireAgreements.from'));
+
         $transaction = $transaction->load('route.from', 'route.to', 'route.truckType',
             'loadingHireAgreements.from','loadingHireAgreements.to','loadingHireAgreements.truckType',
             'loadingHireAgreements.branch','loadingHireAgreements.createdBy','loadingHireAgreements.vendor',
@@ -45,15 +47,19 @@ class TransactionsController extends Controller
             'goodsConsignmentNotes.approval',
             'approval'
             );
+
         return view('transactions.show')->with([
                 'transaction' => $transaction,
             ]);
     }
 
 
-    public function edit($id)
+    public function edit(Transaction $transaction)
     {
-        //
+        return view('transactions.edit')->with([
+            'transaction' => $transaction,
+            'customers' => Customer::whereHas('liveContracts')->get()
+        ]);
     }
 
 
@@ -65,6 +71,6 @@ class TransactionsController extends Controller
 
     public function destroy($id)
     {
-        //
+
     }
 }

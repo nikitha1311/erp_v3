@@ -48,17 +48,17 @@
                     <span></span>
                 </div>
                 <div class="collapse" id="{{ $lha->number }}_body" role="tabpanel">
-                    <div>       
+                    <div>
                         @include('transactions.lha.partials._lha')
+
+
                     </div>
                 </div>
             </div>
 
         @endforeach
     </div>
-    <div class="panel-footer">
 
-    </div>
 </div>
 
 {{--@include('modals.attachLHAtoTransaction')--}}

@@ -25,14 +25,14 @@
     @endif
 </div>
 
-{{-- <div class="form-group">
-   <label for="current_outstanding">Outstanding</label>
-   <input type="text" min="0000000000" class="form-control" id="current_outstanding" name="current_outstanding"
-          placeholder="Current outstanding" value="{{ old('current_outstanding', $vendor->current_outstanding) }}" @if($disabled) disabled @endif>
+<div class="form-group">
+    <label for="current_outstanding">Outstanding</label>
+    <input type="text" min="0000000000" class="form-control" id="current_outstanding" name="current_outstanding"
+           placeholder="Current outstanding" value="{{ old('current_outstanding', $vendor->current_outstanding) }}" @if($disabled) disabled @endif>
 @if($errors->has('current_outstanding'))
-       <span class="text-danger">{{ $errors->first('current_outstanding') }}</span>
-   @endif
-</div> --}}
+        <span class="text-danger">{{ $errors->first('current_outstanding') }}</span>
+    @endif
+</div>
 <div class="form-group">
     <label for="address">Address</label>
     <input type="text" min="0000000000" class="form-control" id="address" name="address"

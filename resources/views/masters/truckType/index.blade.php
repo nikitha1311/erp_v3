@@ -42,10 +42,10 @@
                         @csrf
                         <div class="form-group m-form__group">
                             <label for="name">Name</label>
-                            <input required type="text" class="form-control m-input" id="name" name="name"
+                            <input required type="text" class="form-control m-input" id="name" name="name" autocomplete="off"
                                    placeholder="Name">
                             @if($errors->has('name'))
-                                <span class="m-form__help text-red">{{ $errors->first('name') }}</span>
+                                <span class="text-danger">{{ $errors->first('name') }}</span>
                             @endif
                         </div>
 
@@ -89,16 +89,17 @@
                             <tbody>
                                     @foreach($trucks as $truck )
                                         <tr>
-        
+{{--                                            <td class="d-flex justify-content-between">--}}
+
                                             <td>
                                                 <div>
                                                     {{ $truck->name }}
-        
+
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-between">
-                                                    <a class="fa fa-edit btn btn-primary " 
+                                                    <a class="fa fa-edit btn btn-primary "
                                                         href="{{route('truck-types.edit',$truck->id)}}">
                                                     </a>
                                                     <form action="{{route('truck-types.destroy', $truck->id )}}" method="post" class="delete_form">
@@ -107,8 +108,9 @@
                                                         <button type="button" class="fa fa-trash btn btn-danger delete_btn"></button>
                                                     </form>
                                                 </div>
+
                                             </td>
-        
+
                                         </tr>
                                     @endforeach
                             </tbody>
