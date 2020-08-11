@@ -263,6 +263,9 @@
                             </table>
                         </div>
                     </div>
+                    @include('components._audits',[
+                        'audits' => $order->audits
+                    ])
                 </div>
             @endforeach
         </div>
@@ -272,6 +275,6 @@
     </div>
 </div>
 <div>
-    @include('components._audits')
+    
 
 </div>

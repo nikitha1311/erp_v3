@@ -140,7 +140,7 @@
 
     </div>
     @include('fleetomata.trips.partials._orders',[
-        'orders' => $trip->orders
+        'orders' => $trip->orders,
     ])
 
     @include('fleetomata.trips.partials._createOrder')
