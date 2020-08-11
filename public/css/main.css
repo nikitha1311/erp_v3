@@ -794,6 +794,14 @@ body {
   width: 100% !important;
 }
 
+.audit .audit-li {
+  list-style: none;
+}
+
+.audit .audit-li .single-audit li {
+  list-style: none;
+}
+
 .noty_layout_mixin,
 #noty_layout__centerRight,
 #noty_layout__centerLeft,

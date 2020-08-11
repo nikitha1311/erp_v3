@@ -1,15 +1,16 @@
-<ul>
+<ul class="audit">
     @forelse ($audits as $audit)
-    <li>
+    <li class="audit-li">
         @lang('article.updated.metadata', $audit->getMetadata())
-
         @foreach ($audit->getModified() as $attribute => $modified)
-        <ul>
-            <li>@lang('branch.'.$audit->event.','.$attribute)</li>
+        <ul class="single-audit">
+            <li>@lang($attribute.' has been '.$audit->event.' from <strong> :old </strong> '.'to <strong>:new</strong> ', $modified)</li>
         </ul>
         @endforeach
     </li>
     @empty
-    <p>@lang('article.unavailable_audits')</p>
+    <p>
+        @lang('article.unavailable_audits')
+    </p>
     @endforelse
 </ul>
