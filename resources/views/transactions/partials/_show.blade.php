@@ -13,10 +13,10 @@
                         <li class="d-flex">
                             <a href="{{ url("transactions/{$transaction->id}/edit") }}"
                                >
-{{--                                <button class="btn btn-primary">--}}
-{{--                                    <i class="fa fa-edit"></i>--}}
-{{--                                    <span>Edit</span>--}}
-{{--                                </button>--}}
+                                <button class="btn btn-primary">
+                                    <i class="fa fa-edit"></i>
+                                    <span>Edit</span>
+                                </button>
                             </a>
                         </li>
                     @endif
@@ -24,15 +24,15 @@
                         <form action="{{ url("transactions/{$transaction->id}") }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-                            <button class="btn-sm btn btn-danger">
-                                @if($transaction->trashed())
-                                    <i class="fa fa-rotate-left"></i>
-                                    <span>Restore</span>
-                                @else
-                                    <i class="fa fa-trash"></i>
-                                    <span>Delete</span>
-                                @endif
-                            </button>
+{{--                            <button class="btn-sm btn btn-danger">--}}
+{{--                                @if($transaction->trashed())--}}
+{{--                                    <i class="fa fa-rotate-left"></i>--}}
+{{--                                    <span>Restore</span>--}}
+{{--                                @else--}}
+{{--                                    <i class="fa fa-trash"></i>--}}
+{{--                                    <span>Delete</span>--}}
+{{--                                @endif--}}
+{{--                            </button>--}}
                         </form>
                     </li>
                 @endif
@@ -53,7 +53,7 @@
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class="col col-lg-6 twflex twflex-col twjustify-around">
+            <div class="col col-lg-6">
                 <table class="table table-bordered">
                     <tr>
                         <th>Customer</th>
@@ -253,3 +253,7 @@
     </div>
 
 </div>
+{{--<div>--}}
+{{--    @include('components._audits')--}}
+
+{{--</div>--}}

@@ -1,20 +1,20 @@
 <div>
     <div class="row">
         <div class="col col-lg-4">
-            <div class="form-group m-form__group">
+            <div>
                 <label for="date">Date</label>
                 <input required type="text" class="form-control m-input" id="date" name="date"
                        placeholder="Date"
                        value="{{ $transaction->date ? $transaction->date->format('d-m-Y') : ''}}">
                 @if($errors->has('date'))
-                    <span class="m-form__help twtext-red">{{ $errors->first('date') }}</span>
+                    <span class="text-danger">{{ $errors->first('date') }}</span>
                 @endif
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col col-lg-4">
-            <div class="form-group m-form__group">
+            <div>
                 <label for="customer_id">Customer</label>
                 <select name="customer_id" id="customer_id" class="form-control">
                     <option value="">Select the Customer</option>
@@ -24,12 +24,12 @@
                     @endforeach
                 </select>
                 @if($errors->has('customer_id'))
-                    <span class="m-form__help twtext-red">{{ $errors->first('customer_id') }}</span>
+                    <span class="text-danger">{{ $errors->first('customer_id') }}</span>
                 @endif
             </div>
         </div>
         <div class="col col-lg-8">
-            <div class="form-group m-form__group">
+            <div>
                 <label for="route_id">Route</label>
                 <select name="route_id" id="route_id" class="form-control" @if(!$transaction->route_id) disabled
                         @endif required>
@@ -40,7 +40,7 @@
                     @endif
                 </select>
                 @if($errors->has('route_id'))
-                    <span class="m-form__help twtext-red">{{ $errors->first('route_id') }}</span>
+                    <span class="text-danger">{{ $errors->first('route_id') }}</span>
                 @endif
             </div>
         </div>
@@ -50,6 +50,7 @@
 @section('scripts')
     <script>
         $('#customer_id').select2();
+        // $('').select2();
 
         $('#date').daterangepicker({
             singleDatePicker: true,
@@ -80,23 +81,23 @@
                     });
                 }
             });
-            // $('#route_id').select2({
-            //     ajax: {
-            //         url: '/select2/routes',
-            //         data: function (params) {
-            //             var query = {
-            //                 q: params.term,
-            //                 customer_id: customer_id,
-            //             }
-            //             return query;
-            //         },
-            //         processResults: function (data) {
-            //             return {
-            //                 results:
-            //             }
-            //         }
-            //     }
-            // });
+            $('#route_id').select2({
+                ajax: {
+                    url: '/select2/routes',
+                    data: function (params) {
+                        var query = {
+                            q: params.term,
+                            customer_id: customer_id,
+                        }
+                        return query;
+                    },
+                    processResults: function (data) {
+                        return {
+                            results:data,
+                        }
+                    }
+                }
+            });
         });
     </script>
-@endsection
+@append
