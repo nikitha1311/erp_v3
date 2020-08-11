@@ -70,6 +70,14 @@ class Transaction extends Model implements AuditableContract
         }
         return false;
     }
+    public function updateTotal()
+    {
+        $billing = optional($this->billingRate)->rate;
+        $this->update([
+            'total' => $billing + $this->manual_freight + $this->loading + $this->unloading + $this->handling + $this->detention + $this->others,
+        ]);
+        return $this;
+    }
 
     public function defaultLHA()
     {
