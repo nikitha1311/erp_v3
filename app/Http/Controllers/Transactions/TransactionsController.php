@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Transactions;
 
+use App\Domain\Customers\Models\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Classes\Notification;
@@ -51,9 +52,12 @@ class TransactionsController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit(Transaction $transaction)
     {
-        //
+        return view('transactions.edit')->with([
+            'transaction' => $transaction,
+            'customers' => Customer::whereHas('liveContracts')->get()
+        ]);
     }
 
 
@@ -65,6 +69,6 @@ class TransactionsController extends Controller
 
     public function destroy($id)
     {
-        //
+
     }
 }

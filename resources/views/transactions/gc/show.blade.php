@@ -52,10 +52,10 @@
                                     @endif
                                 </li>
                                 <li class="d-flex">
-                                    <form action="{{ url("goods-consignment-notes/{$gc->id}") }}" method="post">
+                                    <form action="{{ url("goods-consignment-notes/{$gc->id}") }}" method="post" class="delete_form">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
-                                        <button class="btn btn-sm btn-danger">
+                                        <button type="button" class="btn btn-sm btn-danger delete_btn">
                                             @if($gc->trashed())
                                                 <i class="fa fa-rotate-left"></i>
                                                 <span>Restore</span>
@@ -129,7 +129,7 @@
                                         <td>{{ $gc->gst_number ?? '-' }}</td>
                                     </tr>
                                     <tr>
-                                        <th class="twtext-center" colspan="2">Description of Materials</th>
+                                        <th colspan="2">Description of Materials</th>
                                     </tr>
                                     @forelse(json_decode($gc->desc,true) ?? collect() as $row)
                                         <tr>
@@ -149,6 +149,7 @@
                             </div>
                         </div>
                         <hr>
+
                         <div class="row">
                             <div class="col-md-4">
                                 <p>
@@ -186,9 +187,5 @@
             @endforeach
         </div>
     </div>
-    <div class="panel-footer">
-
-    </div>
-</div>
 
 

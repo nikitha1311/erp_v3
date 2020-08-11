@@ -23,10 +23,12 @@
                 </main>
             </div>
         </div>
+
         <script src="{{asset('js/app.js')}}"></script>
         <script src="{{asset('js/main.js')}}"></script>
         <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
         <script>
             @if(session()->has('notification'))
             new Noty({

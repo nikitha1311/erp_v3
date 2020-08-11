@@ -2,6 +2,7 @@
 
 namespace App\Domain\LHAs\Models;
 
+use App\BaseModel;
 use App\Domain\Vendors\Models\Vendor;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
@@ -13,10 +14,13 @@ use App\Domain\Locations\Models\Location;
 use App\Domain\TruckType\Models\TruckType;
 use App\Domain\Branches\Models\Branch;
 use App\Domain\Transactions\Models\Transaction;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class LoadingHireAgreement extends Model
+
+class LoadingHireAgreement extends BaseModel implements AuditableContract
 {
-    use SoftDeletes,HasApprovals;
+    use SoftDeletes,HasApprovals,Auditable;
 
     protected $guarded = ['id'];
 

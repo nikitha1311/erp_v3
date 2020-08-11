@@ -2,6 +2,7 @@
 
 namespace App\Domain\Transactions\Models;
 
+use App\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CreatedBy;
 use App\Traits\HasApprovals;
@@ -12,11 +13,14 @@ use App\Domain\LHAs\Models\LoadingHireAgreement;
 use App\Domain\GCs\Models\GoodsConsignmentNote;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
 
-class Transaction extends Model
+
+class Transaction extends BaseModel implements AuditableContract
 {
-    use SoftDeletes,HasApprovals,CreatedBy;
+    use SoftDeletes,HasApprovals,CreatedBy,Auditable;
 
     protected $guarded = ['id'];
 
