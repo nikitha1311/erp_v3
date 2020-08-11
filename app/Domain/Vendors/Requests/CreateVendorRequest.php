@@ -27,7 +27,7 @@ class CreateVendorRequest extends FormRequest
             'name' => 'required',
             'phone' => 'numeric|unique:vendors,phone',
             'company_name' => 'required',
-            'address' => 'required'
+            'address' => 'required',
         ];
     }
 }

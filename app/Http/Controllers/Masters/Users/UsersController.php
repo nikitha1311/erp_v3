@@ -45,11 +45,13 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
+        $audits = $user->audits;
         $branches = Branch::all();
         return view('masters.users.show')
             ->with([
                 'user' => $user,
-                'branches' => $branches
+                'branches' => $branches,
+                'audits' => $audits
             ]);
     }
 

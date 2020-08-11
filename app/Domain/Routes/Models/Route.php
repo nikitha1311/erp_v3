@@ -7,10 +7,12 @@ use App\Domain\TruckType\Models\TruckType;
 use App\Traits\CreatedBy;
 use App\Domain\BillingRates\Models\BillingRate;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class Route extends Model
+class Route extends Model implements AuditableContract
 {
-    use CreatedBy;
+    use CreatedBy,Auditable;
 
     protected $table = 'routes';
 

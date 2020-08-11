@@ -5,10 +5,12 @@ use App\Domain\VendorLedgers\Models\VendorLedger;
 use App\Traits\CreatedBy;
 use App\Domain\Orders\Models\Order;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class Vendor extends Model
+class Vendor extends Model implements AuditableContract
 {
-    use CreatedBy;
+    use CreatedBy,Auditable;
 
     protected $guarded = ['id'];
 
