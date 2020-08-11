@@ -7,9 +7,14 @@ use App\Domain\TruckExpenses\Models\TruckExpense;
 use App\Domain\TruckLedgers\Models\TruckLedger;
 use App\Domain\TruckType\Models\TruckType;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class Truck extends Model
+
+class Truck extends Model implements AuditableContract
 {
+    use Auditable;
+
     protected $guarded=['id'];
 
     protected $dates = ['last_seen'];

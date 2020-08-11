@@ -17,6 +17,10 @@
         </div>
     </div>
 </div>
+<div>
+    @include('components._audits')
+
+</div>
 <div class="panel panel-default">
     <div class="panel-header">
         <h5>

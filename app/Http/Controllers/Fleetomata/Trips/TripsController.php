@@ -28,8 +28,11 @@ class TripsController extends Controller
     public function show(Trip $trip)
     {
 //        dd($trip->ledgers);
+        $audits = $trip->audits;
+
         return view("fleetomata.trips.show")->with([
-            'trip' => $trip->load('truck','ledgers.createdBy','orders.vendor','ledgers.approval.approvedBy')
+            'trip' => $trip->load('truck','ledgers.createdBy','orders.vendor','ledgers.approval.approvedBy'),
+            'audits'=>$audits
         ]);
     }
     public function store(CreateTripRequest $request)

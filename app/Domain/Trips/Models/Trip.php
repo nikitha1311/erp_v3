@@ -7,10 +7,12 @@ use App\Domain\Truck\Models\Truck;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CreatedBy;
 use App\Traits\HasTruckLedgers;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class Trip extends Model
+class Trip extends Model implements AuditableContract
 {
-    use CreatedBy,HasTruckLedgers;
+    use CreatedBy,HasTruckLedgers,Auditable;
 
     protected $guarded = ['id'];
 

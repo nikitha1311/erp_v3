@@ -135,6 +135,10 @@
             </div>
         </div>
     </div>
+    <div>
+        @include('components._audits')
+
+    </div>
     @include('fleetomata.trips.partials._orders',[
         'orders' => $trip->orders
     ])
