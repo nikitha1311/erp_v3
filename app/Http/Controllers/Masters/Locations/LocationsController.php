@@ -58,9 +58,11 @@ class LocationsController extends Controller
      */
     public function show(Location $location)
     {
+        $audits = $location->audits;
         return view('masters.locations.show')
             ->with([
                 'locations' => $location,
+                'audits' => $audits
             ]);
     }
 

@@ -60,9 +60,11 @@ class TruckTypesController extends Controller
      */
     public function show(TruckType $truckType)
     {
+        $audits = $truckType->audits;
         return view('masters.truckType.show')
             ->with([
                 'trucks' => $truckType,
+                'audits' => $audits
             ]);
     }
 

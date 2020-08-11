@@ -52,11 +52,13 @@ class RouteBillingRatesController extends Controller
     public function show(Customer $customer, Contract $contract, Route $route, BillingRate $billing_rate)
     {
         // dd($billing_rate->wef->format('d-m-Y'));
+        $audits = $billing_rate->audits;
         return view('masters.billingRates.show')->with([
             'route' => $route,
             'billingrate' => $billing_rate,
             'customer' => $customer,
             'contract' => $contract,
+            'audits' => $audits
         ]);
     }
 

@@ -36,6 +36,8 @@
                                    id="created_by" placeholder="Created By" disabled>
                         </div>
                     </form>
+
+                    @include('components._audits')
                 </div>
             </div>
         </div>

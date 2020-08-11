@@ -23,6 +23,7 @@
                 </div>
                 <div class="panel-body">
                     @include('masters.vendors.partials._form',['vendor' => $vendors, 'disabled' => true])
+                    @include('components._audits')
                 </div>
             </div>
         </div>

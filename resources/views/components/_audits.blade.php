@@ -1,5 +1,5 @@
 <ul class="audit">
-    @forelse ($audits as $audit)
+    @forelse ($audits  as $audit)
     <li class="audit-li">
         @lang('article.updated.metadata', $audit->getMetadata())
         @foreach ($audit->getModified() as $attribute => $modified)

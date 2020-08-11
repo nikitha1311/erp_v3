@@ -25,9 +25,9 @@ class CreateVendorRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'phone' => 'numeric|unique:vendors,phone|digits:10',
+            'phone' => 'numeric|digits:10',
             'company_name' => 'required',
-            'address' => 'required'
+            'address' => 'required',
         ];
     }
 }

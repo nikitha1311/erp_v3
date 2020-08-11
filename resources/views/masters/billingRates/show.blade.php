@@ -29,6 +29,7 @@
                         'billing_rate' => $billingrate,
                         'disabled' => true
                     ])     
+                    @include('components._audits')
                 </div>
             </div>
         </div>

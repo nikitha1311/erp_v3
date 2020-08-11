@@ -64,10 +64,11 @@ class VendorsController extends Controller
      */
     public function show(Vendor $vendor)
     {
-
+        $audits = $vendor->audits;
         return view('masters.vendors.show')
             ->with([
                 'vendors' => $vendor,
+                'audits' => $audits
             ]);
     }
 
@@ -94,8 +95,7 @@ class VendorsController extends Controller
      */
     public function update(UpdateVendorRequest $request,Vendor $vendor)
     {
-
-        $updateVendorAction = new UpdateVendorAction($request->name, $request->phone, $request->address, $request->company_name,$request->remarks,$request->created_by);
+        $updateVendorAction = new UpdateVendorAction($request->name, $request->phone, $request->address, $request->company_name,$request->remarks);
         $vendor = $updateVendorAction->handle($vendor);
         Notification::success('Vendor Updated successfully!');
         return redirect("vendors/{$vendor->id}");
