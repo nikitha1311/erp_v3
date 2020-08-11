@@ -141,5 +141,4 @@
         $('#vendor_ledgers').DataTable();
     });
 </script>
-
-@endsection
+@append

@@ -134,12 +134,12 @@
         </div>
     </div>
 
-    @section('scripts')
-        <script type="text/javascript">
-            $(document).ready( function () {
-                $('#truck_ledgers').DataTable();
-                $('[data-toggle="tooltip"]').tooltip();
+@section('scripts')
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#truck_ledgers').DataTable();
+            $('[data-toggle="tooltip"]').tooltip();
 
-            });
-        </script>
-    @endsection
+        });
+    </script>
+@append

@@ -186,7 +186,6 @@
 
 
         $(document).ready(function() {
-
             $('#from_id, #to_id').select2();
             $('#vendor_id').select2({
                 minimumInputLength: 3,
@@ -212,6 +211,4 @@
             });
         });
     </script>
-
-
-@endsection
+@append

@@ -127,4 +127,4 @@
             $('#trips').DataTable();
         });
     </script>
-@endsection
+@append
