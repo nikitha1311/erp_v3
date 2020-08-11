@@ -7,13 +7,14 @@ use App\Domain\Vendors\Models\Vendor;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CreatedBy;
 use App\Traits\HasApprovals;
-use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
 
-class VendorLedger extends Model
+
+class VendorLedger extends Model implements AuditableContract
 {
-    use CreatedBy, HasApprovals;
+    use CreatedBy, HasApprovals,Auditable;
 
     protected $guarded=['id'];
     protected $dates = ['date'];
