@@ -2,7 +2,6 @@
 
 namespace App\Domain\GCs\Models;
 
-use App\BaseModel;
 use App\Domain\Transactions\Models\Transaction;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
@@ -17,7 +16,7 @@ use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
 
 
-class GoodsConsignmentNote extends BaseModel implements AuditableContract
+class GoodsConsignmentNote extends Model implements AuditableContract
 {
     use SoftDeletes,HasApprovals,Auditable;
 

@@ -2,7 +2,6 @@
 
 namespace App\Domain\Transactions\Models;
 
-use App\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CreatedBy;
 use App\Traits\HasApprovals;
@@ -18,7 +17,7 @@ use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
 
 
-class Transaction extends BaseModel implements AuditableContract
+class Transaction extends Model implements AuditableContract
 {
     use SoftDeletes,HasApprovals,CreatedBy,Auditable;
 

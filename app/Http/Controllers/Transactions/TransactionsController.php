@@ -39,7 +39,6 @@ class TransactionsController extends Controller
     public function show(Transaction $transaction)
     {
 //        dd($transaction->load('loadingHireAgreements.from'));
-        $audits = $transaction->audits;
 
         $transaction = $transaction->load('route.from', 'route.to', 'route.truckType',
             'loadingHireAgreements.from','loadingHireAgreements.to','loadingHireAgreements.truckType',
@@ -48,9 +47,9 @@ class TransactionsController extends Controller
             'goodsConsignmentNotes.approval',
             'approval'
             );
+
         return view('transactions.show')->with([
                 'transaction' => $transaction,
-                'audits' =>$audits
             ]);
     }
 

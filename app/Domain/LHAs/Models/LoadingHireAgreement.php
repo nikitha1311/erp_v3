@@ -2,7 +2,6 @@
 
 namespace App\Domain\LHAs\Models;
 
-use App\BaseModel;
 use App\Domain\Vendors\Models\Vendor;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
@@ -18,7 +17,7 @@ use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
 
-class LoadingHireAgreement extends BaseModel implements AuditableContract
+class LoadingHireAgreement extends Model implements AuditableContract
 {
     use SoftDeletes,HasApprovals,Auditable;
 

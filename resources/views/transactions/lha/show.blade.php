@@ -50,7 +50,7 @@
                 <div class="collapse" id="{{ $lha->number }}_body" role="tabpanel">
                     <div>
                         @include('transactions.lha.partials._lha')
-                        @include('components._audits')
+
 
                     </div>
                 </div>
