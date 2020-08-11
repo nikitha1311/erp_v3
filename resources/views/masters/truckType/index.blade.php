@@ -42,10 +42,10 @@
                         @csrf
                         <div class="form-group m-form__group">
                             <label for="name">Name</label>
-                            <input required type="text" class="form-control m-input" id="name" name="name"
+                            <input required type="text" class="form-control m-input" id="name" name="name" autocomplete="off"
                                    placeholder="Name">
                             @if($errors->has('name'))
-                                <span class="m-form__help text-red">{{ $errors->first('name') }}</span>
+                                <span class="text-danger">{{ $errors->first('name') }}</span>
                             @endif
                         </div>
 
@@ -88,11 +88,11 @@
                             <tbody>
                                     @foreach($trucks as $truck )
                                         <tr>
-        
+
                                             <td class="d-flex justify-content-between">
                                                 <div>
                                                     {{ $truck->name }}
-        
+
                                                 </div>
                                                 <div>
                                                     <a  href="{{route('truck-types.edit',$truck->id)}}">
@@ -107,9 +107,9 @@
                                                            aria-hidden="true"></i>
                                                     </a>
                                                 </div>
-        
+
                                             </td>
-        
+
                                         </tr>
                                     @endforeach
                             </tbody>
