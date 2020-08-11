@@ -7,11 +7,13 @@ use App\Domain\Truck\Models\Truck;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CreatedBy;
 use App\Traits\HasApprovals;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
 
-class TruckLedger extends Model
+class TruckLedger extends Model implements AuditableContract
 {
-    use CreatedBy, HasApprovals;
+    use CreatedBy, HasApprovals,Auditable;
 
     protected $dates = [
         'when'

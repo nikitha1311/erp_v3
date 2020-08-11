@@ -139,7 +139,6 @@
         $(document).ready( function () {
             $('#truck_ledgers').DataTable();
             $('[data-toggle="tooltip"]').tooltip();
-
         });
     </script>
 @append

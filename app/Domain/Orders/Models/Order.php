@@ -7,10 +7,12 @@ use App\Domain\Vendors\Models\Vendor;
 use App\Traits\CreatedBy;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class Order extends Model
+class Order extends Model implements AuditableContract
 {
-    use CreatedBy;
+    use CreatedBy,Auditable;
 
     protected $guarded = ['id'];
 
