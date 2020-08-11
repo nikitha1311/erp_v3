@@ -236,13 +236,13 @@
                         </tr>
                     </table>
                 @else
-                    <div class="m-alert m-alert--icon m-alert--icon-solid m-alert--outline alert alert-danger fade show"
+                    <div class="alert alert-danger"
                          role="alert">
-                        <div class="m-alert__icon">
+                        <div>
                             <i class="flaticon-exclamation-1"></i>
                             <span></span>
                         </div>
-                        <div class="m-alert__text">
+                        <div>
                             <strong>No Permission.</strong><br> You do not have the permission to view rates.
                         </div>
                     </div>
@@ -251,7 +251,5 @@
         </div>
 
     </div>
-    <div class="panel-footer">
 
-    </div>
 </div>
