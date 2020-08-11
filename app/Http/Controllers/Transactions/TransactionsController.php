@@ -79,44 +79,48 @@ class TransactionsController extends Controller
         $updateTransactionAction = new UpdateTransactionAction($request->route_id, $request->customer_id,
             $request->date, $request->billing_id);
         $transaction = $updateTransactionAction->handle($transaction);
-//        $transaction->update([
-//            'route_id' => $request->route_id,
-//            'customer_id' => $request->customer_id,
-//            'date' => formatDMY($request->date),
-//            'billing_id' => $request->billing_id,
-//            'created_by' => auth()->id()
-////        ]);
-//        $transaction->updateTotal();
-//
         if ($transaction->isApproved())
             $transaction->disapprove();
-
-        return redirect("/transactions/{$transaction->id}")->withNotification([
-            'type' => 'success',
-            'msg' => 'Transaction updated successfully'
-        ]);
+        Notification::success('Transaction Updated successfully!');
+        return redirect("/transactions/{$transaction->id}");
     }
 
 
 
     public function destroy(Transaction $transaction)
     {
+//        dd($transaction);
 //        $notification = [];
         if ($transaction->trashed()) {
             $transaction->restore();
             if ($transaction->isApproved())
-                $transaction->disapprove();
-            Notification::success('Transaction Restore successfully!');
 
+                $transaction->disapprove();
+            Notification::success('Transaction Restored successfully!');
         } else {
             $transaction->delete();
-            $transaction->loadingHireAgreements()->sync([]);
-            $transaction->goodsConsignmentNotes()->sync([]);
-//            $notification['type'] = 'success';
-//            $notification['msg'] = 'Transaction deleted Successfully';
+            Notification::success('LHA Deleted successfully!');
         }
-        Notification::success('Transaction Deleted successfully!');
+        Notification::success('LHA Deleted successfully!');
         return redirect()->back();
+
+//        if ($transaction->trashed()) {
+//                    dd(1);
+//
+//            $transaction->restore();
+//            if ($transaction->isApproved()){
+//                $transaction->disapprove();
+//            }
+//                            Notification::success('Transaction Restore successfully!');
+//
+//        } else {
+//            dd(2);
+//            $transaction->delete();
+//            $transaction->loadingHireAgreements()->sync([]);
+//            $transaction->goodsConsignmentNotes()->sync([]);
+//            Notification::success('Transaction Deleted successfully!');
+//        }
+        return back();
 //        ->with(['notification' => $notification]);
     }
 }
