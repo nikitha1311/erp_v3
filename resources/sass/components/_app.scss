@@ -376,3 +376,14 @@ body{
 .select2{
     width:100% !important;
 }
+
+.audit{
+    .audit-li{
+        list-style: none;
+        .single-audit{
+            li{
+                list-style: none;
+            }
+        }
+    }
+}
