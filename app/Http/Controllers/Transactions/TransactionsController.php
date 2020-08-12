@@ -76,12 +76,13 @@ class TransactionsController extends Controller
         else
             $request->billing_id = $transaction->billing_id;
 
-        $updateTransactionAction = new UpdateTransactionAction($request->route_id, $request->customer_id,
+        $updateTransactionAction = new UpdateTransactionAction($request->customer_id,$request->route_id,
             $request->date, $request->billing_id);
         $transaction = $updateTransactionAction->handle($transaction);
         if ($transaction->isApproved())
             $transaction->disapprove();
         Notification::success('Transaction Updated successfully!');
+
         return redirect("/transactions/{$transaction->id}");
     }
 

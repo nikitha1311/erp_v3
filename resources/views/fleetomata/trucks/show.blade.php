@@ -110,6 +110,7 @@
                 @include('fleetomata.truckExpenses.partials._tableListTruckExpense',['expenses' => $currentExpenses])
             </div>
         </div>
+
         <br>
         <div class="panel">
             <div class="panel-header">Old Expenses</div>
@@ -122,6 +123,7 @@
     </div>
 
 </div>
+
 
 
 @endsection
