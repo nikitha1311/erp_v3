@@ -10,6 +10,7 @@
                     Dashboard
                 </a>
 
+
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#master" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fa fa-asterisk" aria-hidden="true"></i></div>
                     Master
@@ -146,6 +147,12 @@
                         </div>
                     </nav>
                 </div>
+                    <a class='nav-link' href='{{ backpack_url('backup') }}'>
+                        <i class='nav-icon la la-hdd-o'>
+
+                        </i>
+                        Backups
+                    </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">
