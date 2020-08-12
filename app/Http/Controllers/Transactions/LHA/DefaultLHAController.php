@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Transactions\LHA;
 use App\Domain\Transactions\Models\Transaction;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Classes\Notification;
 
 class DefaultLHAController extends Controller
 {
@@ -24,10 +25,8 @@ class DefaultLHAController extends Controller
     public function store(Transaction $transaction, Request $request)
     {
         $transaction->makeDefaultLHA($request->lha_id);
-        return back()->withNotification([
-            'type' => 'success',
-            'msg' => 'Default LHA status updated'
-        ]);
+        Notification::success('Log Updated Successfully');
+        return back();
     }
 
 

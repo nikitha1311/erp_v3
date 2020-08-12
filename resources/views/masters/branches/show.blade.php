@@ -23,6 +23,7 @@
                          'branch' => $branch,
                           'disabled' => true,
                           ])
+                    @include('components._audits')
                 </div>
             </div>
         </div>

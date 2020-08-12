@@ -36,6 +36,8 @@
                                    id="created_by" placeholder="Created By" disabled>
                         </div>
                     </form>
+
+                    @include('components._audits')
                 </div>
             </div>
         </div>
@@ -56,7 +58,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover text-center">
+                        <table class="table table-bordered table-hover text-center" id='route_table'>
                             <thead>
                             <tr>
                                 <th>Route ID</th>
@@ -100,10 +102,10 @@
                                         {{ $route->createdBy->name }}
                                     </td>
                                     <td>
-                                        <form action="{{ route('routes.destroy',[$contract->id,$route->id]) }}" method='POST'>
+                                        <form action="{{ route('routes.destroy',[$contract->id,$route->id]) }}" method='POST' class="delete_form">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="fa fa-trash btn btn-danger"></button>
+                                            <button type="button" class="fa fa-trash btn btn-danger delete_btn"></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -115,4 +117,11 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#route_table').DataTable();
+    });
+</script>
 @endsection

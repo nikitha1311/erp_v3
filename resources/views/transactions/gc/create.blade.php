@@ -6,16 +6,8 @@
     <div class="panel panel-default">
         <div class="panel-header">
             <h5>
-                Create GC     <small></small>
-
+                Create GC
             </h5>
-            <div>
-                <ul>
-                    <li>
-
-                    </li>
-                </ul>
-            </div>
         </div>
 
         <div class="panel-body">
@@ -28,12 +20,10 @@
                         <span class="text-muted">{{ $transaction->created_at->toDayDateTimeString() }}</span>
                     </p>
                 </div>
-                <div class="m-separator m-separator--space m-separator--dashed"></div>
             @endif
                 <form action="{{ url('/goods-consignment-notes') }}" method="post">
                     {!! csrf_field() !!}
-                    <div class="m-portlet__body">
-
+                    <div>
                         <input type="text" name="transaction_id" value="{{ $transaction->id ?? null }}" hidden>
                         @include('transactions.gc.partials._create',['gc'=>new \App\Domain\GCs\Models\GoodsConsignmentNote()])
                     </div>

@@ -20,6 +20,7 @@
                 </div>
                 <div class="panel-body">
                     @include('masters.users.partials._form',['user' => $user, 'disabled' => true])
+                    @include('components._audits')
                 </div>
             </div>
         </div>

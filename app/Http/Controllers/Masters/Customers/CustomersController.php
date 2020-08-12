@@ -41,8 +41,10 @@ class CustomersController extends Controller
 
     public function show(Customer $customer)
     {
+        $audits = $customer->audits;
         return view('masters.customers.show')->with([
             'customer' => $customer->load('contracts.createdBy'),
+            'audits' => $audits
         ]);
     }
 

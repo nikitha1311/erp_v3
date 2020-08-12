@@ -4,6 +4,7 @@
     <div class='row justify-content-center'>
         <div class="col-md-4">
             @include('masters.routes.partials._show')
+            @include('components._audits')
         </div>
         <div class="col-md-8">
             <div class="panel">
@@ -25,7 +26,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover text-center">
+                        <table class="table table-bordered table-hover text-center" id="billing_rate_table">
                             <thead>
                             <tr>
                                 <th>Billing Id</th>
@@ -58,10 +59,10 @@
                                         {{$billing->createdBy->name}}
                                     </td>
                                     <td>
-                                        <form action="{{ route('billing-rates.destroy',[$billing->route_id,$billing->id]) }}" method='POST'>
+                                        <form action="{{ route('billing-rates.destroy',[$billing->route_id,$billing->id]) }}" method='POST' class="delete_form">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="fa fa-trash btn btn-danger"></button>
+                                            <button type="button" class="fa fa-trash btn btn-danger delete_btn"></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -73,4 +74,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#billing_rate_table').DataTable();
+    });
+</script>
 @endsection

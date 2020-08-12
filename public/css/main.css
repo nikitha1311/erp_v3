@@ -786,8 +786,20 @@ body {
   border-right: 0px;
 }
 
-.input-group input {
+.input-group input.left-no-border {
   border-left: 0px;
+}
+
+.select2 {
+  width: 100% !important;
+}
+
+.audit .audit-li {
+  list-style: none;
+}
+
+.audit .audit-li .single-audit li {
+  list-style: none;
 }
 
 .noty_layout_mixin,

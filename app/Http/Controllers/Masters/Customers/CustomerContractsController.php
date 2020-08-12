@@ -23,8 +23,10 @@ class CustomerContractsController extends Controller
      */
     public function index(Customer $customer)
     {
+        $audits = $customer->audits;
         return view('masters.customers.show')->with([
-            'customer' => $customer
+            'customer' => $customer,
+            'audits' => $audits
         ]);
     }
 
@@ -60,9 +62,11 @@ class CustomerContractsController extends Controller
     {
         // dd($contract,$customer);
         // dd( $contract->load('routes'));
+        $audits = $contract->audits;
         return view('masters.contracts.show')->with([
             'customer' => $customer,
             'contract' => $contract->load('routes.from', 'routes.to', 'routes.truckType', 'routes.createdBy'),
+            'audits' => $audits
         ]);
     }
 

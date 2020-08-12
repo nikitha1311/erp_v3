@@ -25,21 +25,11 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div class="form-group">
-                        <label for="rate">Rate</label>
-                        <input type="text" disabled class="form-control" id="rate" value="{{ $billingrate->rate }}"
-                               placeholder="Rate">
-                    </div>
-                    <div class="form-group">
-                        <label for="wef">Wef</label>
-                        <input type="text" disabled class="form-control"
-                               value="{{ $billingrate->wef->format('d-m-Y') }}" id="wef" placeholder="Wef">
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <input type="text" disabled class="form-control" id="description"
-                               value="{{ $billingrate->description }}" placeholder="description">
-                    </div>
+                    @include('masters.billingRates.partials._form',[
+                        'billing_rate' => $billingrate,
+                        'disabled' => true
+                    ])     
+                    @include('components._audits')
                 </div>
             </div>
         </div>
