@@ -49,8 +49,7 @@
                             Auto-Generate
                         </span>
                     </div>
-                    <input type="text"  class="form-control left-no-border" id="number" name="number"
-                    placeholder="Number" autocomplete="off"
+                    <input type="text"  class="form-control left-no-border" id="number" name="number" placeholder="Number" autocomplete="off"
                     value="{{ $lha->number ? $lha->number : old('number') }}"
                     style="text-transform:uppercase">
                 </div>
@@ -124,9 +123,7 @@
                           <i class="fa fa-truck"></i>
                       </span>
                     </div>
-                    <input  required type="text"  class="form-control left-no-border" id="truck_number" name="truck_number"
-                    placeholder="Truck Number"
-                    value="{{ $lha->truck_number }}" style="text-transform:uppercase">
+                    <input  required type="text"  class="form-control left-no-border" id="truck_number" name="truck_number" placeholder="Truck Number" value="{{ $lha->truck_number }}" style="text-transform:uppercase">
                 </div>
                 @if($errors->has('truck_number'))
                     <span class="text-danger">{{ $errors->first('truck_number') }}</span>
@@ -143,9 +140,8 @@
                           <i class="fa fa-inr"></i>
                       </span>
                     </div>
-                    <input  required type="number"   min="0" class="form-control left-no-border" id="hire" name="hire"
-                           placeholder="Hire"
-                           value="{{ $lha->hire }}">
+
+                    <input  required type="number"   min="0" class="form-control left-no-border" id="hire" name="hire" placeholder="Hire" value="{{ $lha->hire }}">
                 </div>
                 @if($errors->has('hire'))
                     <span class="text-danger">{{ $errors->first('hire') }}</span>

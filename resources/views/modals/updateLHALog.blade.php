@@ -30,8 +30,7 @@
                     <i class="fa fa-calendar"></i>
                 </span>
             </div>
-            <input type="text" class="form-control left-no-border date" required id="time" name="time" placeholder="Enter Time"
-                   value="">
+            <input type="text" class="form-control left-no-border date" required id="time" name="time" placeholder="Enter Time" value="">
           </div>
     </div>
     <button class="btn btn-primary">Update</button>
