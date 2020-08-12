@@ -42,10 +42,10 @@
                         @csrf
                         <div class="form-group m-form__group">
                             <label for="name">Name</label>
-                            <input required type="text" class="form-control m-input" id="name" name="name"
+                            <input required type="text" class="form-control m-input" id="name" name="name" autocomplete="off"
                                    placeholder="Name">
                             @if($errors->has('name'))
-                                <span class="m-form__help text-red">{{ $errors->first('name') }}</span>
+                                <span class="text-danger">{{ $errors->first('name') }}</span>
                             @endif
                         </div>
 
@@ -77,37 +77,55 @@
                         </ul>
                     </div>
                 </div>
-                <table class="table table-bordered panel-body">
-                    <tbody>
-                            @foreach($trucks as $truck )
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id='truck_type_table'>
+                            <thead>
                                 <tr>
-
-                                    <td class="d-flex justify-content-between">
-                                        <div>
-                                            {{ $truck->name }}
-
-                                        </div>
-                                        <div>
-                                            <a  href="{{route('truck-types.edit',$truck->id)}}">
-                                                <i class="fa fa-edit mr-2"></i>
-                                            </a>
-                                            <form id="truckDeleteForm{{$truck->id}}" action="{{route('truck-types.destroy', $truck->id )}}" method="post" hidden>
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
-                                            <a href="#" onclick="$('#truckDeleteForm{{$truck->id}}').submit()">
-                                                <i class="fa fa-trash ml-4 justify-content-between text-danger"
-                                                   aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-
-                                    </td>
-
+                                    <th>Trucks</th>
+                                    <th>Actions</th>
                                 </tr>
-                            @endforeach
-                    </tbody>
-                </table>
+                            </thead>
+                            <tbody>
+                                    @foreach($trucks as $truck )
+                                        <tr>
+{{--                                            <td class="d-flex justify-content-between">--}}
+
+                                            <td>
+                                                <div>
+                                                    {{ $truck->name }}
+
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex justify-content-between">
+                                                    <a class="fa fa-edit btn btn-primary "
+                                                        href="{{route('truck-types.edit',$truck->id)}}">
+                                                    </a>
+                                                    <form action="{{route('truck-types.destroy', $truck->id )}}" method="post" class="delete_form">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="button" class="fa fa-trash btn btn-danger delete_btn"></button>
+                                                    </form>
+                                                </div>
+
+                                            </td>
+
+                                        </tr>
+                                    @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#truck_type_table').DataTable();
+    });
+</script>
 @endsection

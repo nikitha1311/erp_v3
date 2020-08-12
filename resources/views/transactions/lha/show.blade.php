@@ -33,33 +33,32 @@
         </div>
     </div>
     <div class="panel-body">
-            @foreach($transaction->loadingHireAgreements as $lha)
-                <div>
-                    <div role="tab" id="{{ $lha->number }}"
-                         data-toggle="collapse" data-target="#{{ $lha->number }}_body" href="#{{ $lha->number }}_body"
-                         aria-expanded="false">
-                        <span class=" @if($lha->isNotApproved()) text-danger @endif">
-                            {{ $lha->number }}
-                            @if($transaction->lha_id == $lha->id)
-                                <i class="fa fa-star"></i>
-                            @endif
-                            <span>{{$lha->type()}}</span>
-                        </span>
-                        <span></span>
-                    </div>
-                    <div class="collapse" id="{{ $lha->number }}_body" role="tabpanel">
-                        <div>
-                            
-                            @include('transactions.lha.partials._lha')
-                        </div>
+        @foreach($transaction->loadingHireAgreements as $lha)
+            <div>
+                <div role="tab" id="{{ $lha->number }}"
+                        data-toggle="collapse" data-target="#{{ $lha->number }}_body" href="#{{ $lha->number }}_body"
+                        aria-expanded="false">
+                    <span class=" @if($lha->isNotApproved()) text-danger @endif">
+                        {{ $lha->number }}
+                        @if($transaction->lha_id == $lha->id)
+                            <i class="fa fa-star"></i>
+                        @endif
+                        <span>{{$lha->type()}}</span>
+                    </span>
+                    <span></span>
+                </div>
+                <div class="collapse" id="{{ $lha->number }}_body" role="tabpanel">
+                    <div>
+                        @include('transactions.lha.partials._lha')
+
+
                     </div>
                 </div>
+            </div>
 
-            @endforeach
+        @endforeach
     </div>
-    <div class="panel-footer">
 
-    </div>
 </div>
 
 {{--@include('modals.attachLHAtoTransaction')--}}

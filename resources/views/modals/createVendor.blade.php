@@ -11,7 +11,6 @@
             <span class="text-muted">{{ $transaction->created_at->toDayDateTimeString() }}</span>
         </p>
     </div>
-    <div class="m-separator m-separator--space m-separator--dashed"></div>
 @endif
 
 <form id="createVendorForm">

@@ -12,16 +12,14 @@ class UpdateVendorAction
     private $address;
     private $company_name;
     private $remarks;
-    private $created_by;
 
-    public function __construct($name, $phone,$address,$company_name, $remarks,$created_by)
+    public function __construct($name, $phone,$address,$company_name, $remarks)
     {
         $this->name = $name;
         $this->phone = $phone;
         $this->address = $address;
         $this->company_name = $company_name;
         $this->remarks = $remarks;
-        $this->created_by = $created_by;
 
     }
 

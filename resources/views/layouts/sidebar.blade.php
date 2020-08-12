@@ -75,6 +75,77 @@
                         </a>
                     </nav>
                 </div>
+
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#fleetomata" aria-expanded="false" aria-controls="collapsePages">
+                    <div class="sb-nav-link-icon"><i class="fa fa-truck"></i></div>
+                    Fleetomata
+                    <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="fleetomata" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                        <a class="nav-link" href="/fleetomata/trucks">
+                            <div class="sb-nav-link-icon"><i class="fa fa-truck mr-2"></i></div>
+                           Truck
+                        </a>
+                        <a class="nav-link" href="#">
+                            <div class="sb-nav-link-icon"><i class="fa fa-user-plus mr-2"></i></div>
+                            Receivables
+                        </a>
+                        <a class="nav-link" href="#">
+                            <div class="sb-nav-link-icon"><i class="fa fa-check-circle mr-2" aria-hidden="true"></i></div>
+                            Expense Approvals
+                        </a>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#driver" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                            <i class="fa fa-id-card mr-2" aria-hidden="true"></i>
+                            Driver
+                            <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="driver" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-id-card mr-2" aria-hidden="true"></i>Driver
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-university mr-2" aria-hidden="true"></i>
+                                    Driver Bank Details
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-book mr-2" aria-hidden="true"></i>
+                                    Driver Documents
+                                </a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#reports" aria-expanded="false" aria-controls="pagesCollapseError">
+                            <i class="fa fa-flag mr-2" aria-hidden="true"></i>
+                            Reports
+                            <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="reports" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-bar-chart mr-2" aria-hidden="true"></i>
+                                    FF Statement
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-pie-chart mr-2" aria-hidden="true"></i>
+                                    Expense Report
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-camera mr-2" aria-hidden="true"></i>
+                                    Snapshot Report
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-inr mr-2" aria-hidden="true"></i>
+                                    Payment Outstanding
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-map-signs mr-2" aria-hidden="true"></i>
+                                    Route Expenses
+                                </a>
+                            </nav>
+                        </div>
+                    </nav>
+                </div>
             </div>
         </div>
         <div class="sb-sidenav-footer">

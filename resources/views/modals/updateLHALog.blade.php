@@ -12,7 +12,6 @@
             <p> <b>LHA Date : </b>{{ $lha->date->format('d-m-Y') }}</p>
             <p><b>LHA Number : </b>{{ $lha->number}}</p>
         </div>
-        <div class="m-separator m-separator--space m-separator--dashed"></div>
     @endif
     <div class="form-group">
         <label>Select Log</label>
@@ -31,8 +30,7 @@
                     <i class="fa fa-calendar"></i>
                 </span>
             </div>
-            <input type="text" class="form-control date left-border" required id="time" name="time" placeholder="Enter Time"
-                   value="">
+            <input type="text" class="form-control left-no-border date" required id="time" name="time" placeholder="Enter Time" value="">
           </div>
     </div>
     <button class="btn btn-primary">Update</button>

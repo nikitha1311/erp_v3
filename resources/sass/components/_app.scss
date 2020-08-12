@@ -368,7 +368,22 @@ body{
         padding: 0.25rem 0.75rem;
         border-right: 0px;
     }
-    input.left-border{
+    input.left-no-border{
         border-left: 0px;
+    }
+}
+
+.select2{
+    width:100% !important;
+}
+
+.audit{
+    .audit-li{
+        list-style: none;
+        .single-audit{
+            li{
+                list-style: none;
+            }
+        }
     }
 }

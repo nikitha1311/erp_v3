@@ -70,10 +70,12 @@ class ContractRouteController extends Controller
      */
     public function show(Customer $customer, Contract $contract, Route $route)
     {
+        $audits = $route->audits;
         return view('masters.routes.show')->with([
             'route' => $route->load('billingRates.createdBy'),
             'customer' => $customer,
             'contract' => $contract,
+            'audits' => $audits
         ]);
     }
 

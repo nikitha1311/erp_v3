@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\Domain\Customers\Models\Customer;
 use App\Traits\CreatedBy;
 use App\Domain\Routes\Models\Route;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class Contract extends Model
+class Contract extends Model implements AuditableContract
 {
-    use CreatedBy;
+    use CreatedBy,Auditable;
 
     protected $table = 'contracts';
 

@@ -22,7 +22,7 @@
         </div>
         <div class="panel-body ">
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="users_table">
                     <thead>
                     <tr>
                         <th>Name</th>
@@ -50,14 +50,11 @@
                                 {{ $user->branch->name }}
                             </td>
                             <td>
-                                <form id="userDeleteForm{{$user->id}}" action="{{route('users.destroy', $user->id )}}" method="post" hidden>
+                                <form action="{{route('users.destroy', $user->id )}}" method="post" class="delete_form">
                                     @csrf
                                     @method('DELETE')
+                                    <button type="button" class="fa fa-trash btn btn-danger delete_btn"></button>
                                 </form>
-                                <a  href="#" onclick="$('#userDeleteForm{{$user->id}}').submit()">
-                                    <i class="fa fa-trash justify-content-between text-danger"
-                                       aria-hidden="true"></i>
-                                </a>
                             </td>
                         </tr>
                     @endforeach
@@ -66,4 +63,13 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#users_table').DataTable();
+    });
+</script>
 @endsection

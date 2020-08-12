@@ -20,9 +20,11 @@ class BranchesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
         $branch=Branch::all();
-        return view('masters.branches.index')->with(['branches'=>$branch]);
+        return view('masters.branches.index')->with([
+            'branches'=>$branch,
+        ]);
     }
 
     /**
@@ -59,9 +61,11 @@ class BranchesController extends Controller
      */
     public function show(Branch $branch)
     {
+        $audits = $branch->audits;
         return view('masters.branches.show')
             ->with([
                 'branch' => $branch,
+                'audits' => $audits
             ]);
     }
 

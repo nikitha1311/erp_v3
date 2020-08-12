@@ -7,8 +7,8 @@ use App\Classes\Notification;
 use App\Domain\TruckType\Actions\UpdateTruckTypeAction;
 use App\Domain\TruckType\Models\TruckType;
 use App\Domain\TruckType\Requests\CreateTruckTypeRequest;
+use App\Domain\TruckType\Actions\CreateTruckExpenseAction;
 use App\Domain\TruckType\Actions\CreateTruckTypeAction;
-
 use App\Domain\TruckType\Requests\UpdateTruckTypeRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -60,9 +60,11 @@ class TruckTypesController extends Controller
      */
     public function show(TruckType $truckType)
     {
+        $audits = $truckType->audits;
         return view('masters.truckType.show')
             ->with([
                 'trucks' => $truckType,
+                'audits' => $audits
             ]);
     }
 

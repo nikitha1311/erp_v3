@@ -13,10 +13,13 @@ use App\Domain\Locations\Models\Location;
 use App\Domain\TruckType\Models\TruckType;
 use App\Domain\Branches\Models\Branch;
 use App\Domain\Transactions\Models\Transaction;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class LoadingHireAgreement extends Model
+
+class LoadingHireAgreement extends Model implements AuditableContract
 {
-    use SoftDeletes,HasApprovals;
+    use SoftDeletes,HasApprovals,Auditable;
 
     protected $guarded = ['id'];
 

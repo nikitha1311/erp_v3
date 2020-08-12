@@ -9,38 +9,19 @@
                         Edit Billing Rate for Route - #{{$route->id}}
                     </h5>
                 </div>
-                <div class="panel-body">
-                    <form action="{{ route("billing-rates.update", [$billingrate->route_id,$billingrate->id]) }}"
-                          method="post">
+                <form action="{{ route("billing-rates.update", [$billingrate->route_id,$billingrate->id]) }}"method="post">
+                    <div class="panel-body">
                         @method('PATCH')
                         {{csrf_field()}}
-                        <div class="form-group">
-                            <label for="rate">Rate</label>
-                            <input type="text" required class="form-control" value="{{$billingrate->rate}}" name='rate'
-                                   id="rate" placeholder="Rate">
-                            @if($errors->has('rate'))
-                                <span class="text-danger">{{ $errors->first('rate') }}</span>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="wef">Wef</label>
-                            <input type="text" class="form-control dmy" value="{{$billingrate->wef->format('d-m-Y')}}"
-                                   name='wef' id="wef" placeholder="Wef">
-                            @if($errors->has('wef'))
-                                <span class="text-danger">{{ $errors->first('wef') }}</span>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <input type="text" required class="form-control" value="{{$billingrate->description}}"
-                                   name='description' id="description" placeholder="Description">
-                            @if($errors->has('description'))
-                                <span class="text-danger">{{ $errors->first('description') }}</span>
-                            @endif
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
+                        @include('masters.billingRates.partials._form',[
+                            'billing_rate' => $billingrate,
+                            'disabled' => false
+                        ])
+                    </div>
+                    <div class="panel-footer">
+                        @include('components._formButtons', ['primaryText' => 'Update'])
+                    </div>
+                </form>
             </div>
         </div>
     </div>

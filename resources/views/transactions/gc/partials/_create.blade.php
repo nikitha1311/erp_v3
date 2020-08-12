@@ -95,7 +95,7 @@
                           <i class="fa fa-inr"></i>
                       </span>
                     </div>
-                    <input type="text" class="form-control left-border" required name="value"
+                    <input class="left-no-border" type="text" class="form-control" required name="value"
                                    placeholder="Enter Value of Cargo" value="{{$gc->value}}">
                 </div>
             </div>

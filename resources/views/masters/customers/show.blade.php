@@ -48,6 +48,7 @@
                         'customer' => $customer,
                         'disabled' => true
                     ])
+                    @include('components._audits')
                 </div>
             </div>
         </div>
@@ -68,7 +69,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover text-center">
+                        <table class="table table-bordered table-hover text-center" id="contracts_table">
                             <thead>
                             <tr>
                                 <th>Id</th>
@@ -106,10 +107,10 @@
                                         {{$contract->status}}
                                     </td>
                                     <td>
-                                        <form action="{{ route('contracts.destroy',[$customer->id,$contract->id]) }}" method='POST'>
+                                        <form action="{{ route('contracts.destroy',[$customer->id,$contract->id]) }}" method='POST' class="delete_form">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="fa fa-trash btn btn-danger"></button>
+                                            <button type="button" class="fa fa-trash btn btn-danger delete_btn"></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -123,5 +124,11 @@
     </div>
 @endsection
 
-
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#contracts_table').DataTable();
+    });
+</script>
+@endsection
 

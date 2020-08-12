@@ -22,7 +22,7 @@
         </div>
         <div class="panel-body ">
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="vendor_table">
                     <thead>
                     <tr>
                         <th>Name</th>
@@ -32,7 +32,7 @@
                         <th>Address</th>
                         <th>Remarks</th>
                         <th>Created By</th>
-                        <th></th>
+                        <th>Actions</th>
 
                     </tr>
                     </thead>
@@ -63,14 +63,11 @@
                                 {{ $vendor->createdBy->name }}
                             </td>
                             <td>
-                                <form id="vendorDeleteForm{{$vendor->id}}" action="{{route('vendors.destroy', $vendor->id )}}" method="post" hidden>
+                                <form action="{{route('vendors.destroy', $vendor->id )}}" method="post" class="delete_form">
                                     @csrf
                                     @method('DELETE')
+                                    <button type="button" class="fa fa-trash btn btn-danger delete_btn"></button>
                                 </form>
-                                <a  href="#" onclick="$('#vendorDeleteForm{{$vendor->id}}').submit()">
-                                    <i class="fa fa-trash ml-4 justify-content-between text-danger"
-                                       aria-hidden="true"></i>
-                                </a>
                             </td>
                         </tr>
                     @endforeach
@@ -79,4 +76,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#vendor_table').DataTable();
+    });
+</script>
 @endsection

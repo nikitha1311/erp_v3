@@ -3,9 +3,9 @@
 <div>
     <div class="row">
         <div class="col-sm-12 col-lg-4">
-            <div class="form-group m-form__group">
+            <div class="form-group ">
                 <label for="date">Date</label>
-                <input required type="text" class="form-control m-input" id="date" name="date"
+                <input required type="text" class="form-control " id="date" name="date"
                        placeholder="Date"
                        value="{{ $lha->date ? $lha->date->format('d-m-Y') : '' }}">
                 @if($errors->has('date'))
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="col-sm-12 col-lg-4">
-            <div class="form-group m-form__group">
+            <div class="form-group ">
                 <label for="branch_id">Branch</label>
                 <select name="branch_id" id="branch_id" class="form-control">
                     @foreach(branches() as $branch)
@@ -27,9 +27,9 @@
             </div>
         </div>
         <div class="col-sm-12 col-lg-4">
-            <div class="form-group m-form__group">
+            <div class="form-group ">
                 <label for="expected_delivery_date">Expected Delivery</label>
-                <input required type="text" class="form-control m-input" id="expected_delivery_date"
+                <input required type="text" class="form-control " id="expected_delivery_date"
                        name="expected_delivery_date" placeholder="Expected Delivery"
                        value="{{ old('expected_delivery_date') }}">
                 @if($errors->has('expected_delivery_date'))
@@ -40,7 +40,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12 col-lg-6">
-            <div class="form-group m-form__group">
+            <div class="form-group ">
                 <label for="number">Number</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -49,8 +49,7 @@
                             Auto-Generate
                         </span>
                     </div>
-                    <input type="text"  class="form-control  left-border" id="number" name="number"
-                    placeholder="Number" autocomplete="off"
+                    <input type="text"  class="form-control left-no-border" id="number" name="number" placeholder="Number" autocomplete="off"
                     value="{{ $lha->number ? $lha->number : old('number') }}"
                     style="text-transform:uppercase">
                 </div>
@@ -61,7 +60,7 @@
             </div>
         </div>
         <div class="col-sm-12 col-lg-6">
-            <div class="form-group m-form__group">
+            <div class="form-group ">
                 <label for="type">Type</label>
                 <select name="type" id="type" class="form-control">
                     <option value="0"{{$lha->type == 0 ? 'selected="selected"': ''}}>Local</option>
@@ -75,7 +74,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12 col-lg-4">
-            <div class="form-group m-form__group">
+            <div class="form-group ">
                 <label for="from_id">From</label>
                 <select name="from_id" id="from_id" class="form-control select">
                     @foreach(locations() as $location)
@@ -88,7 +87,7 @@
             </div>
         </div>
         <div class="col-sm-12 col-lg-4">
-            <div class="form-group m-form__group">
+            <div class="form-group ">
                 <label for="to_id">To</label>
                 <select name="to_id" id="to_id" class="form-control select">
                     @foreach(locations() as $location)
@@ -101,7 +100,7 @@
             </div>
         </div>
         <div class="col-sm-12 col-lg-4">
-            <div class="form-group m-form__group">
+            <div class="form-group ">
                 <label for="truck_type_id">Truck Type</label>
                 <select name="truck_type_id" id="truck_type_id" class="form-control select">
                     @foreach(truckTypes() as $truckType)
@@ -124,9 +123,13 @@
                           <i class="fa fa-truck"></i>
                       </span>
                     </div>
+<<<<<<< HEAD
                     <input required type="text"  class="form-control left-border" id="truck_number" name="truck_number"
                     placeholder="Truck Number"
                     value="{{ $lha->truck_number }}" style="text-transform:uppercase">
+=======
+                    <input  required type="text"  class="form-control left-no-border" id="truck_number" name="truck_number" placeholder="Truck Number" value="{{ $lha->truck_number }}" style="text-transform:uppercase">
+>>>>>>> 625d1febf7aacac8fac8eefe74689686d41a54c2
                 </div>
                 @if($errors->has('truck_number'))
                     <span class="text-danger">{{ $errors->first('truck_number') }}</span>
@@ -143,9 +146,14 @@
                           <i class="fa fa-inr"></i>
                       </span>
                     </div>
+<<<<<<< HEAD
                     <input required type="number"  min="0" class="form-control left-border" id="hire" name="hire"
                            placeholder="Hire"
                            value="{{ $lha->hire }}">
+=======
+
+                    <input  required type="number"   min="0" class="form-control left-no-border" id="hire" name="hire" placeholder="Hire" value="{{ $lha->hire }}">
+>>>>>>> 625d1febf7aacac8fac8eefe74689686d41a54c2
                 </div>
                 @if($errors->has('hire'))
                     <span class="text-danger">{{ $errors->first('hire') }}</span>
@@ -153,7 +161,7 @@
             </div>
         </div>
         <div class="col-sm-12 col-lg-4">
-            <div class="form-group m-form__group">
+            <div class="form-group ">
                 <label for="vendor_id">Vendor</label>
                 <select name="vendor_id" id="vendor_id" class="form-control select">
                     @foreach($vendors as $vendor)
@@ -171,7 +179,6 @@
                 {{--@if($errors->has('vendor_id'))--}}
                 {{--<span class="m-form__help twtext-red">{{ $errors->first('vendor_id') }}</span>--}}
                 {{--@endif--}}
-                <div class="m-separator m-separator--space m-separator--dashed"></div>
                {{-- <a href="" class="pull-right" data-toggle="modal" data-target="#createVendor">
                    <u>Create Vendor</u>
                </a> --}}

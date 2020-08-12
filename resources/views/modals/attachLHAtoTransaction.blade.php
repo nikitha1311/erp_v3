@@ -7,13 +7,13 @@
         {!! csrf_field() !!}
         <div class="form-group m-form__group">
             <label for="lha_id">Loading Hire Agreement Number</label>
-            <select required type="text" class="form-control m-input" id="attach_lha" name="lha_id" style="width: 100%;">
+            <select required type="text" class="form-control" id="attach_lha" name="lha_id" style="width: 100%;">
             </select>
             @if($errors->has('lha_id'))
-                <span class="m-form__help twtext-red">{{ $errors->first('lha_id') }}</span>
+                <span class="text-danger">{{ $errors->first('lha_id') }}</span>
             @endif
         </div>
-        <div class="m-form__actions">
+        <div>
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="reset" class="btn btn-default">Clear</button>
         </div>

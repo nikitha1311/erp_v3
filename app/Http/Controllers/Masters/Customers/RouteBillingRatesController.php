@@ -32,8 +32,10 @@ class RouteBillingRatesController extends Controller
     public function create(Route $route)
     {
         // dd($route);
+        $billing_rate = new BillingRate();
         return view('masters.billingRates.create')->with([
             'route' => $route,
+            'billing_rate' => $billing_rate
         ]);
     }
 
@@ -50,11 +52,13 @@ class RouteBillingRatesController extends Controller
     public function show(Customer $customer, Contract $contract, Route $route, BillingRate $billing_rate)
     {
         // dd($billing_rate->wef->format('d-m-Y'));
+        $audits = $billing_rate->audits;
         return view('masters.billingRates.show')->with([
             'route' => $route,
             'billingrate' => $billing_rate,
             'customer' => $customer,
             'contract' => $contract,
+            'audits' => $audits
         ]);
     }
 

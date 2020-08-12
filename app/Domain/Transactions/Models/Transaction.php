@@ -12,11 +12,14 @@ use App\Domain\LHAs\Models\LoadingHireAgreement;
 use App\Domain\GCs\Models\GoodsConsignmentNote;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
 
-class Transaction extends Model
+
+class Transaction extends Model implements AuditableContract
 {
-    use SoftDeletes,HasApprovals,CreatedBy;
+    use SoftDeletes,HasApprovals,CreatedBy,Auditable;
 
     protected $guarded = ['id'];
 
@@ -25,6 +28,12 @@ class Transaction extends Model
     public function id()
     {
         return "TRN#{$this->id}";
+    }
+    public function invoiceStatus()
+    {
+        return $this->invoice ?
+            new HtmlString("<a target='_blank' href='" . url("invoices/{$this->invoice_id}") . "'>{$this->invoice->id()} - {$this->invoice->number}</a>") :
+            'Not added to Invoice';
     }
 
     public function isEditable()
@@ -66,6 +75,14 @@ class Transaction extends Model
             ]);
         }
         return false;
+    }
+    public function updateTotal()
+    {
+        $billing = optional($this->billingRate)->rate;
+        $this->update([
+            'total' => $billing + $this->manual_freight + $this->loading + $this->unloading + $this->handling + $this->detention + $this->others,
+        ]);
+        return $this;
     }
 
     public function defaultLHA()

@@ -30,6 +30,8 @@ Route::resource('/vendors','\\App\\Http\\Controllers\\Masters\\Vendors\\VendorsC
 Route::resource('/locations','\\App\\Http\\Controllers\\Masters\\Locations\\LocationsController');
 
 Route::resource('/transactions','\\App\\Http\\Controllers\\Transactions\\TransactionsController');
+Route::post('transactions/{transaction}/approvals', '\\App\\Http\\Controllers\\Transactions\\TransactionsApprovalController@store');
+
 Route::resource('loading-hire-agreements','\\App\\Http\\Controllers\\Transactions\\LHA\\LoadingHireAgreementsController');
 Route::resource('loading-hire-agreements/{loading_hire_agreement}/approvals', '\\App\\Http\\Controllers\\Transactions\\LHA\\LHAsApprovalController');
 Route::PATCH('loading-hire-agreements/{loading_hire_agreement}/timestamps', '\\App\\Http\\Controllers\\Transactions\\LHA\\LHATimestampsController@store');
@@ -45,3 +47,17 @@ Route::resource('/customers/{customer}/contracts','\\App\\Http\\Controllers\\Mas
 
 Route::resource('/contracts/{contract}/routes', '\\App\\Http\\Controllers\\Masters\\Customers\\ContractRouteController');
 Route::resource('/routes/{route}/billing-rates','\\App\\Http\\Controllers\\Masters\\Customers\\RouteBillingRatesController');
+
+Route::resource('/fleetomata/trucks','\\App\\Http\\Controllers\\Fleetomata\\Trucks\\TrucksController');
+Route::resource('/fleetomata/trips','\\App\\Http\\Controllers\\Fleetomata\\Trips\\TripsController');
+Route::resource('/fleetomata/trips/{trip}/orders','\\App\\Http\\Controllers\\Fleetomata\\Orders\\OrdersController');
+Route::post('/fleetomata/trucks/{truck}/truck-expenses','\\App\\Http\\Controllers\\Fleetomata\\TruckExpenses\\TruckExpensesController@store');
+Route::DELETE('/fleetomata/trucks/{truck}/truck-expenses/{truck_expense}','\\App\\Http\\Controllers\\Fleetomata\\TruckExpenses\\TruckExpensesController@destroy');
+Route::post('fleetomata/trucks/{truck}/truck-expenses/{truck_expense}','\\App\\Http\\Controllers\\Fleetomata\\TruckExpenses\\TruckExpensesController@approve');
+Route::resource('/fleetomata/trips/{trip}/incomes','\\App\\Http\\Controllers\\Fleetomata\\VendorLedgers\\TripIncomeController');
+
+Route::get('select2/vendors','Select2Controller@vendors');
+Route::get('select2/customers','Select2Controller@customers');
+Route::get('select2/routes','Select2Controller@routes');
+
+Route::resource('/fleetomata/trips/{trip}/expenses','\\App\\Http\\Controllers\\Fleetomata\\Trips\\TripsExpensesController');

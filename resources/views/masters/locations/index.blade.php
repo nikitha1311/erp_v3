@@ -60,7 +60,7 @@
         </div>
         <div class="panel-body ">
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="location_table">
                     <thead>
                     <tr>
                         <th>Id</th>
@@ -69,7 +69,7 @@
                         <th>District</th>
                         <th>State</th>
                         <th>Pincode</th>
-                        <th></th>
+                        <th>Actions</th>
 
                     </tr>
                     </thead>
@@ -97,14 +97,11 @@
                                 {{ $location->postal_code }}
                             </td>
                             <td>
-                                <form id="locationDeleteForm{{$location->id}}" action="{{route('locations.destroy', $location->id )}}" method="post" hidden>
+                                <form action="{{route('locations.destroy', $location->id )}}" method="post" class="delete_form">
                                     @csrf
                                     @method('DELETE')
+                                    <button type="button" class="fa fa-trash btn btn-danger delete_btn"></button>
                                 </form>
-                                <a  href="#" onclick="$('#locationDeleteForm{{$location->id}}').submit()">
-                                    <i class="fa fa-trash ml-4 justify-content-between text-danger"
-                                       aria-hidden="true"></i>
-                                </a>
                             </td>
                         </tr>
                     @endforeach
@@ -121,14 +118,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/geocomplete/1.7.0/jquery.geocomplete.min.js"></script>
 
     <script>
+        $(document).ready( function () {
+            $('#location_table').DataTable();
 
-        $('#name').geocomplete({
-            country: ["IN", "NP"],
-            details: '.address',
-            detailsAttribute: 'id',
-            types: ["(regions)"]
+            
+            $('#name').geocomplete({
+                country: ["IN", "NP"],
+                details: '.address',
+                detailsAttribute: 'id',
+                types: ["(regions)"]
+            });
         });
-
     </script>
 
 @endsection
