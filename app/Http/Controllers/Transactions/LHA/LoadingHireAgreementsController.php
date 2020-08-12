@@ -88,7 +88,6 @@ class LoadingHireAgreementsController extends Controller
         }
         Notification::success('LHA updated successfully!');
         return redirect()->back();
-
     }
 
 
