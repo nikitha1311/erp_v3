@@ -89,38 +89,20 @@ class TransactionsController extends Controller
 
     public function destroy(Transaction $transaction)
     {
-//        dd($transaction);
-//        $notification = [];
+        dd($transaction);
         if ($transaction->trashed()) {
             $transaction->restore();
             if ($transaction->isApproved())
-
                 $transaction->disapprove();
             Notification::success('Transaction Restored successfully!');
         } else {
             $transaction->delete();
-            Notification::success('LHA Deleted successfully!');
+            dd(1);
+            // $transaction->loadingHireAgreements()->sync([]);
+            // $transaction->goodsConsignmentNotes()->sync([]);
+            Notification::success('Transaction Deleted successfully!');
         }
-        Notification::success('LHA Deleted successfully!');
+        Notification::success('Transaction Deleted successfully!');
         return redirect()->back();
-
-//        if ($transaction->trashed()) {
-//                    dd(1);
-//
-//            $transaction->restore();
-//            if ($transaction->isApproved()){
-//                $transaction->disapprove();
-//            }
-//                            Notification::success('Transaction Restore successfully!');
-//
-//        } else {
-//            dd(2);
-//            $transaction->delete();
-//            $transaction->loadingHireAgreements()->sync([]);
-//            $transaction->goodsConsignmentNotes()->sync([]);
-//            Notification::success('Transaction Deleted successfully!');
-//        }
-        return back();
-//        ->with(['notification' => $notification]);
     }
 }
