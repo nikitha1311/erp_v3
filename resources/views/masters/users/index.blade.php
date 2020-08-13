@@ -72,4 +72,4 @@
         $('#users_table').DataTable();
     });
 </script>
-@endsection
+@append

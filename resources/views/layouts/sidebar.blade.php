@@ -61,7 +61,7 @@
                             <i class="fa fa-file mr-2" aria-hidden="true"></i>
                             Create
                         </a>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('transactions.index') }}">
                             <i class="fa fa-list mr-2" aria-hidden="true"></i>
                             List
                         </a>

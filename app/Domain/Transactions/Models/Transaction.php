@@ -2,6 +2,7 @@
 
 namespace App\Domain\Transactions\Models;
 
+use App\Domain\Customers\Models\Customer;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CreatedBy;
 use App\Traits\HasApprovals;
@@ -45,16 +46,6 @@ class Transaction extends Model implements AuditableContract
         return false;
     }
 
-
-    public function route()
-    {
-        return $this->hasOne(Route::class, 'id', 'route_id')->withDefault([
-            'route.from' => new Location(['formatted_address' => '-']),
-            'route.to' => new Location(['formatted_address' => '-']),
-            'route.truck_type' => new TruckType(['name' => '-']),
-            'route.truckType' => new TruckType(['name' => '-']),
-        ]);
-    }
     public function addLHA(int $lhaID)
     {
         $oldVal['LHA Numbers'] = $this->loadingHireAgreements->pluck('number')->toArray();
@@ -76,6 +67,25 @@ class Transaction extends Model implements AuditableContract
         }
         return false;
     }
+
+    public function customer()
+    {
+        return $this->hasOne(Customer::class, 'id', 'customer_id')->withDefault([
+            'name' => '-',
+            'code' => '-'
+        ]);
+    }
+
+    public function route()
+    {
+        return $this->hasOne(Route::class, 'id', 'route_id')->withDefault([
+            'route.from' => new Location(['formatted_address' => '-']),
+            'route.to' => new Location(['formatted_address' => '-']),
+            'route.truck_type' => new TruckType(['name' => '-']),
+            'route.truckType' => new TruckType(['name' => '-']),
+        ]);
+    }
+
     public function updateTotal()
     {
         $billing = optional($this->billingRate)->rate;

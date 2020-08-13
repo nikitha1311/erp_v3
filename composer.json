@@ -19,7 +19,8 @@
         "owen-it/laravel-auditing": "^10.0",
         "sentry/sentry-laravel": "^1.8",
         "spatie/laravel-backup": "^6.11",
-        "spatie/laravel-permission": "^3.13"
+        "spatie/laravel-permission": "^3.13",
+        "laravel/nova": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",
@@ -57,6 +58,12 @@
             "Tests\\": "tests/"
         }
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./nova"
+        }
+    ],    
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
