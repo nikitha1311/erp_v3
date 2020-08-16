@@ -8,6 +8,7 @@ use App\Domain\Transactions\Requests\UpdateTransactionRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Classes\Notification;
+use App\Domain\Branches\Models\Branch;
 use App\Domain\Transactions\Models\Transaction;
 use App\Domain\LHAs\Models\LoadingHireAgreement;
 use App\Domain\GCs\Models\GoodsConsignmentNote;
@@ -21,8 +22,11 @@ class TransactionsController extends Controller
     public function index()
     {
         $transactions = Transaction::all();
+        // $branches = Branch::all();
         return view('transactions.index')->with([
-            'transactions' => $transactions->load('customer','route.from','route.to','route.truckType','loadingHireAgreements','goodsConsignmentNotes')
+            'transactions' => $transactions->load('customer','route.from','route.to',
+                'route.truckType','loadingHireAgreements','goodsConsignmentNotes'),
+            // 'branches' => $branches
         ]);
     }
 

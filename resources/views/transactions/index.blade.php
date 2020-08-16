@@ -11,6 +11,28 @@
             </div>
         </div>
         <div class="panel-body">
+            <div>
+                <div class="dropdown text-right filter">
+                    <button class="btn btn-primary btn-default dropdown-toggle" type="button" id="filter" data-toggle="dropdown" 
+                        aria-haspopup="true" aria-expanded="false">
+                      <i class="fa fa-filter"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="filter">
+                        <h6 class="dropdown-header">
+                            Branch
+                        </h6>
+                        <select name="branch_id" id="branch_id" class="form-control">
+                            <option value="">Select the Branch</option>
+                            {{-- @foreach($branches as $branch)
+                                <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                            @endforeach --}}
+                        </select>
+                      {{-- <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a> --}}
+                    </div>
+                </div>
+            </div>
             <div class="table-responsive">
                 <table class="table table-bordered text-center"  id='transaction_list'>
                     <thead>
@@ -49,23 +71,21 @@
                                 <td>
                                     {{ $transaction->route->truckType['name']}}
                                 </td>
-                                <td>
-                                    @foreach ($transaction->loadingHireAgreements as $lha)
-                                    {{ $lha->truck_number }}
-                                    @endforeach
+                                 <td>
+                                    {{ $transaction->lha_id }}
                                 </td>
-                                <td>
+                                {{-- <td>
                                     @foreach ($transaction->loadingHireAgreements as $lha)
                                     {{ $lha->number }}
                                     @endforeach
-                                </td>
-                                <td>
+                                </td> --}}
+                                {{-- <td>
                                     @foreach ($transaction->goodsConsignmentNotes as $gc)
                                     {{ $gc->number }}
                                     @endforeach
-                                </td>
+                                </td>   --}}
                             </tr>
-                        @endforeach
+                        @endforeach 
                     </tbody>
                 </table>
             </div>

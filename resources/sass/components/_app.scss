@@ -387,3 +387,18 @@ body{
         }
     }
 }
+
+.filter{
+    .dropdown-menu{
+        &.show{
+            left : -30px !important;
+            padding-top:0px;
+        }
+    }
+
+    .dropdown-header{
+        color: rgb(124, 133, 142);
+        background-color: rgb(244, 247, 250);
+        text-transform: uppercase;
+    }
+}

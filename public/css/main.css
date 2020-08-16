@@ -802,6 +802,17 @@ body {
   list-style: none;
 }
 
+.filter .dropdown-menu.show {
+  left: -30px !important;
+  padding-top: 0px;
+}
+
+.filter .dropdown-header {
+  color: #7c858e;
+  background-color: #f4f7fa;
+  text-transform: uppercase;
+}
+
 .noty_layout_mixin,
 #noty_layout__centerRight,
 #noty_layout__centerLeft,
