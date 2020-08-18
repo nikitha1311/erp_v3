@@ -69,8 +69,8 @@
                                     <p class="twtext-grey-darker twtext-sm">
                                         <a href="/contracts/{{ $transaction->route->contract_id}}/routes/{{$transaction->route->id}}">Route#{{$transaction->route->id}}</a>
                                     </p>
-                                    <p><b>From : </b>{{ $transaction->route->from->formatted_address }}</p>
-                                    <p><b>To : </b>{{ $transaction->route->to->formatted_address }}</p>
+                                    <p><b>From : </b>{{ optional($transaction->route->from)->formatted_address }}</p>
+                                    <p><b>To : </b>{{ optional($transaction->route->to)->formatted_address }}</p>
                                     <p><b>Truck Type : </b>{{ optional($transaction->route->truckType)->name }}</p>
                                 </div>
                             @endif

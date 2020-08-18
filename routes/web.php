@@ -22,7 +22,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::resource('/play','\\App\\Http\\Controllers\\PlayGroundCOntroller');
 Route::resource('/users','\\App\\Http\\Controllers\\Masters\\Users\\UsersController');
 Route::resource('/truck-types','\\App\\Http\\Controllers\\Masters\\TruckType\\TruckTypesController');
 Route::resource('/branches','\\App\\Http\\Controllers\\Masters\\Branches\\BranchesController');

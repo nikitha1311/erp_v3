@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Domain\Vendors\Models;
+
+use App\Domain\LHAs\Models\LoadingHireAgreement;
 use App\Domain\VendorLedgers\Models\VendorLedger;
 use App\Traits\CreatedBy;
 use App\Domain\Orders\Models\Order;
@@ -35,5 +37,11 @@ class Vendor extends Model implements AuditableContract
     {
         return $this->ledgers()->where('ledgerable_type','App\Domain\Orders\Models\Order');
     }
+
+    public function loadingHireAgreement()
+    {
+        return $this->hasMany(LoadingHireAgreement::class,'vendor_id');
+    }
+
 
 }

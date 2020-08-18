@@ -12,15 +12,16 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
+        "laravel-views/laravel-views": "^1.0",
         "laravel/framework": "^7.0",
+        "laravel/nova": "*",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
         "needim/noty": "^3.1",
         "owen-it/laravel-auditing": "^10.0",
         "sentry/sentry-laravel": "^1.8",
         "spatie/laravel-backup": "^6.11",
-        "spatie/laravel-permission": "^3.13",
-        "laravel/nova": "*"
+        "spatie/laravel-permission": "^3.13"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",

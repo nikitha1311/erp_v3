@@ -12,13 +12,18 @@ use Illuminate\Http\Request;
 use App\Classes\Notification;
 use App\Domain\LHAs\Actions\CreateLHAAction;
 use App\Domain\LHAs\Actions\UpdateLHAAction;
+use App\Http\Livewire\LoadingHireAgreementView;
+use LaravelViews\LaravelViews;
 
 class LoadingHireAgreementsController extends Controller
 {
 
-    public function index()
+    public function index(LaravelViews $laravelViews)
     {
-        //
+        $laravelViews->create(LoadingHireAgreementView::class);
+        return view('transactions.lha.index',[
+            'view' => $laravelViews
+        ]);
     }
 
 

@@ -12,16 +12,23 @@ use App\Domain\Users\Requests\CreateUserRequest;
 use App\Domain\Users\Requests\UpdateUserRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use LaravelViews\LaravelViews;
+use App\Http\Livewire\UsersTableView;
 
 class UsersController extends Controller
 {
-    public function index()
+    public function index(LaravelViews $laravelViews)
     {
-        $user = User::all();
-        return view('masters.users.index')
-            ->with([
-                'users' => $user->load('branch')
-            ]);
+        $laravelViews->create(UsersTableView::class);
+        // $user = User::all();
+        return view('masters.users.index',[
+            'view' => $laravelViews
+        ]);
+        // return view('masters.users.index')
+        //     ->with([
+        //         // 'users' => $user->load('branch'),
+        //         'view' => $laravelViews
+        //     ]);
     }
 
     public function create()

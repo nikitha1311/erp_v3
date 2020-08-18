@@ -146,6 +146,25 @@
                         </div>
                     </nav>
                 </div>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#testing" aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon">
+                        <i class="fa fa-envelope" aria-hidden="true">
+                        </i>
+                    </div>
+                    Testing
+                    <div class="sb-sidenav-collapse-arrow">
+                        <i class="fa fa-angle-down">
+                        </i>
+                    </div>
+                </a>
+                <div class="collapse" id="testing" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="{{ route('loading-hire-agreements.index') }}">
+                            <i class="fa fa-file mr-2" aria-hidden="true"></i>
+                            LHA
+                        </a>
+                    </nav>
+                </div>
             </div>
         </div>
         <div class="sb-sidenav-footer">

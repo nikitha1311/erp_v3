@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="panel-body ">
-            <div class="table-responsive">
+            {{-- <div class="table-responsive">
                 <table class="table table-bordered" id="users_table">
                     <thead>
                     <tr>
@@ -60,7 +60,8 @@
                     @endforeach
                     </tbody>
                 </table>
-            </div>
+            </div> --}}
+            {!! $view->render() !!}
         </div>
     </div>
 @endsection
