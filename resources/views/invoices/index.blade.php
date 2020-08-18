@@ -3,8 +3,8 @@
 
 @endsection
 @section('content')
-    <div id="filterDiv" class="m-portlet m-portlet--mobile ">
-        <div class="m-portlet__foot twflex justify-content-around">
+    <div>
+        <div class="d-flex justify-content-around">
             <div class="row">
                 <div class="col-md-4 col-sm-4">
                     <label for="">Dates</label>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <br>
-                    <div class="m-form__actions m-form__actions">
+                    <div>
                         <button class="btn btn-success" onclick="invoiceFilter();">
                             <i class="fa fa-filter">
                                 Filter

@@ -17,8 +17,6 @@ class WSPInvoicesController extends Controller
     public function index()
     {
 //        $invoice=Invoice::all();
-//        $invoice = Invoice::with('customer','statuses');
-//        $invoice = Invoice::whereType(2)->with('customer','statuses');
         $invoice = Invoice::where('type', '2')->get();
 
         return view("invoices.index")->with([
@@ -38,7 +36,7 @@ class WSPInvoicesController extends Controller
         $createwspInvoiceAction = new CreateWspInvoiceAction($request->number, $request->date, $request->type, $request->total, $request->outstanding,$request->customer_id,$request->created_by);
         $invoice = $createwspInvoiceAction->handle();
         Notification::success('Wsp-Invoice created successfully!');
-        return redirect("invoices");
+        return redirect("wsp-invoices");
     }
 
 

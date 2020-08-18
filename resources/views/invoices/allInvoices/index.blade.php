@@ -3,8 +3,8 @@
 
 @endsection
 @section('content')
-    <div id="filterDiv" class="m-portlet m-portlet--mobile ">
-        <div class="m-portlet__foot twflex justify-content-around">
+    <div>
+        <div class="d-flex justify-content-around">
             <div class="row">
                 <div class="col-md-4 col-sm-4">
                     <label for="">Dates</label>
