@@ -23,6 +23,7 @@ window.Alert =require('sweetalert');
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('desc-of-articles', require('./components/DescOfArticles.vue').default);
+Vue.component('transaction-rows-adder', require('./components/TransactionRowsAdder.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

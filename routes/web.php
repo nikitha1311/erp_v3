@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('login', '\\App\\Http\\Controllers\\Auth\\LoginController@showLoginForm')->name('login');
 
 Route::get('/', 'DashboardController@index')->name('dashboard');
-//Route::get('/backup','playgroundController@backup');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -44,9 +43,17 @@ Route::resource('goods-consignment-notes/{goodsConsignmentNote}/approvals','\\Ap
 
 Route::resource('/customers','\\App\\Http\\Controllers\\Masters\\Customers\\CustomersController');
 Route::resource('/customers/{customer}/contracts','\\App\\Http\\Controllers\\Masters\\Customers\\CustomerContractsController');
+Route::resource('customers/{customer}/transactions','\\App\\Http\\Controllers\\Masters\\Customers\\CustomerTransactionsController')->only(['index']);
 
 Route::resource('/contracts/{contract}/routes', '\\App\\Http\\Controllers\\Masters\\Customers\\ContractRouteController');
 Route::resource('/routes/{route}/billing-rates','\\App\\Http\\Controllers\\Masters\\Customers\\RouteBillingRatesController');
+
+Route::resource('invoices/payment-advices','\\App\\Http\\Controllers\\Invoices\\PaymentAdvicesController');
+Route::get('/invoices/all','\\App\\Http\\Controllers\\Invoices\AllInvoicesController@index');
+Route::resource('wsp-invoices','\\App\\Http\\Controllers\\Invoices\WSPInvoicesController')->only(['index','store','create']);
+Route::resource('invoices/{invoice}/invoice-rows','\\App\\Http\\Controllers\\Invoices\\InvoiceRowsController')->only(['index','store','destroy']);
+Route::resource('invoices/{invoice}/statuses','\\App\\Http\\Controllers\\Invoices\\InvoiceStatusesController');
+Route::resource('invoices','\\App\\Http\\Controllers\\Invoices\\InvoicesController');
 
 Route::resource('/fleetomata/trucks','\\App\\Http\\Controllers\\Fleetomata\\Trucks\\TrucksController');
 Route::resource('/fleetomata/trips','\\App\\Http\\Controllers\\Fleetomata\\Trips\\TripsController');

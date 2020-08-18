@@ -2,6 +2,9 @@
 
 namespace App\Domain\Transactions\Models;
 
+use App\Domain\BillingRates\Models\BillingRate;
+use App\Domain\Customers\Models\Customer;
+use App\Domain\Invoices\Models\Invoice;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\CreatedBy;
 use App\Traits\HasApprovals;
@@ -29,6 +32,12 @@ class Transaction extends Model implements AuditableContract
     {
         return "TRN#{$this->id}";
     }
+    public function addLHA(int $lhaID)
+    {
+        $oldVal['LHA Numbers'] = $this->loadingHireAgreements->pluck('number')->toArray();
+        $this->loadingHireAgreements()->syncWithoutDetaching($lhaID);
+        return $this;
+    }
     public function invoiceStatus()
     {
         return $this->invoice ?
@@ -44,21 +53,35 @@ class Transaction extends Model implements AuditableContract
             return true;
         return false;
     }
-
-
-    public function route()
+    public function updateTotal()
     {
-        return $this->hasOne(Route::class, 'id', 'route_id')->withDefault([
-            'route.from' => new Location(['formatted_address' => '-']),
-            'route.to' => new Location(['formatted_address' => '-']),
-            'route.truck_type' => new TruckType(['name' => '-']),
-            'route.truckType' => new TruckType(['name' => '-']),
+        $billing = optional($this->billingRate)->rate;
+        $this->update([
+            'total' => $billing + $this->manual_freight + $this->loading + $this->unloading + $this->handling + $this->detention + $this->others,
         ]);
+        return $this;
     }
-    public function addLHA(int $lhaID)
+
+    public function removeLHA(int $lhaID)
     {
         $oldVal['LHA Numbers'] = $this->loadingHireAgreements->pluck('number')->toArray();
-        $this->loadingHireAgreements()->syncWithoutDetaching($lhaID);
+        $this->loadingHireAgreements()->detach($lhaID);
+        if ($lhaID == $this->lha_id)
+            $this->makeDefaultLHA(0);
+        return $this;
+    }
+
+
+    public function addGC(int $goodsConsignmentNote)
+    {
+        $oldVal['GC Numbers'] = $this->goodsConsignmentNotes->pluck('number')->toArray();
+        $this->goodsConsignmentNotes()->syncWithoutDetaching($goodsConsignmentNote);
+        return $this;
+    }
+    public function removeGC(int $gc)
+    {
+        $oldVal['GC Numbers'] = $this->goodsConsignmentNotes->pluck('number')->toArray();
+        $this->goodsConsignmentNotes()->detach($gc);
         return $this;
     }
 
@@ -76,18 +99,41 @@ class Transaction extends Model implements AuditableContract
         }
         return false;
     }
-    public function updateTotal()
+
+    public function updates()
     {
-        $billing = optional($this->billingRate)->rate;
-        $this->update([
-            'total' => $billing + $this->manual_freight + $this->loading + $this->unloading + $this->handling + $this->detention + $this->others,
-        ]);
-        return $this;
+        return $this->notes()->where('type','Status Update')->latest();
     }
 
     public function defaultLHA()
     {
         return $this->hasOne(LoadingHireAgreement::class, 'id', 'lha_id');
+    }
+    public function invoice()
+    {
+        return $this->hasOne(Invoice::class, 'id', 'invoice_id');
+    }
+
+    public function route()
+    {
+        return $this->hasOne(Route::class, 'id', 'route_id')->withDefault([
+            'route.from' => new Location(['formatted_address' => '-']),
+            'route.to' => new Location(['formatted_address' => '-']),
+            'route.truck_type' => new TruckType(['name' => '-']),
+            'route.truckType' => new TruckType(['name' => '-']),
+        ]);
+    }
+    public function billingRate()
+    {
+        return $this->hasOne(BillingRate::class, 'id', 'billing_id');
+    }
+
+    public function customer()
+    {
+        return $this->hasOne(Customer::class, 'id', 'customer_id')->withDefault([
+            'name' => '-',
+            'code' => '-'
+        ]);
     }
 
     public function loadingHireAgreements()
@@ -101,11 +147,6 @@ class Transaction extends Model implements AuditableContract
         return $this->belongsToMany(GoodsConsignmentNote::class, 'gcs_transactions',
             'transaction_id', 'gc_id')->withTimestamps();
     }
-    public function addGC(int $goodsConsignmentNote)
-    {
-        $oldVal['GC Numbers'] = $this->goodsConsignmentNotes->pluck('number')->toArray();
-        $this->goodsConsignmentNotes()->syncWithoutDetaching($goodsConsignmentNote);
-        return $this;
-    }
+
 
 }

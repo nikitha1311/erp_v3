@@ -147,12 +147,75 @@
                         </div>
                     </nav>
                 </div>
-                    <a class='nav-link' href='{{ backpack_url('backup') }}'>
-                        <i class='nav-icon la la-hdd-o'>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#invoice" aria-expanded="false" aria-controls="collapsePages">
+                    <div class="sb-nav-link-icon"><i class="fa fa-inr"></i></div>
+                    Invoices
+                    <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="invoice" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#invoice_create" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                            <i class="fa fa-plus mr-2" aria-hidden="true"></i>
+                            Create
+                            <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="invoice_create" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-file mr-2" aria-hidden="true"></i>
+                                    Transport Invoice
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-file mr-2" aria-hidden="true"></i>
+                                    WSP Invoice
+                                </a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#invoice_list" aria-expanded="false" aria-controls="pagesCollapseError">
+                            <i class="fa fa-list-alt mr-2" aria-hidden="true"></i>
+                            List
+                            <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="invoice_list" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="invoices/all">
+                                    <i class="fa fa-list mr-2" aria-hidden="true"></i>
+                                    All Invoices
+                                </a>
+                                <a class="nav-link" href="invoices">
+                                    <i class="fa fa-list mr-2" aria-hidden="true"></i>
+                                    Transport Invoices
+                                </a>
+                                <a class="nav-link" href="wsp-invoices">
+                                    <i class="fa fa-list mr-2" aria-hidden="true"></i>
+                                    WSP Invoices
+                                </a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#payment_advice" aria-expanded="false" aria-controls="pagesCollapseError">
+                            <i class="fa fa-briefcase mr-2" aria-hidden="true"></i>
+                            Payment Advices
+                            <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="payment_advice" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-plus mr-2" aria-hidden="true"></i>
+                                    Create
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-list mr-2" aria-hidden="true"></i>
+                                    List
+                                </a>
+                            </nav>
+                        </div>
+                    </nav>
+                </div>
 
-                        </i>
-                        Backups
-                    </a>
+                <a class="nav-link" href="{{ url('/backup')}}">
+                    <i class="fa fa-database mr-2" aria-hidden="true"></i>
+                    Backups
+                </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">
