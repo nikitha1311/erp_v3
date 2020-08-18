@@ -73,8 +73,7 @@
                     <th>Number</th>
                     <th>Total</th>
                     <th>Code</th>
-{{--                    <th>Status</th>--}}
-{{--                    <th></th>--}}
+                    <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>

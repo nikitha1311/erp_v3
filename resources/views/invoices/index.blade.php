@@ -72,7 +72,7 @@
                     <th>Number</th>
                     <th>Total</th>
                     <th>Code</th>
-{{--                    <th>Status</th>--}}
+                    <th>Status</th>
                 </tr>
                 </thead>
             <tbody>
@@ -80,7 +80,6 @@
                 <tr>
                     <td>
                         <a href="{{ route('invoices.show', $invoice->id) }}">
-
                         {{ $invoice->id }}
                         </a>
                     </td>
@@ -96,9 +95,9 @@
                     <td>
                         {{ $invoice->customer->code }}
                     </td>
-{{--                    <td>--}}
-{{--                        {{ $invoice->status() }}--}}
-{{--                    </td>--}}
+                    <td>
+                        {{ $invoice->status() }}
+                    </td>
                 </tr>
             @endforeach
             </tbody>
